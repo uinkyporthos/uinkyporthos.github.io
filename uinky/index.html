@@ -768,6 +768,96 @@ html[data-marca="porthos"] :focus-visible{outline:2px solid var(--jade);outline-
 @media(prefers-reduced-motion:reduce){.intro{display:none}}
 
 
+/* =======================================================================
+   HISTORIAS DE LOS JABONES
+   La tarjeta con más de una foto se vuelve un botón: arriba lleva una
+   tirita por foto y abajo la cuenta. Al tocarla se abre la historia a
+   pantalla completa, que pasa sola cada 4 s y se puede adelantar a mano.
+   ======================================================================= */
+.marca-bloque .figura.abre{
+  display:block;width:100%;padding:0;border:0;font:inherit;color:inherit;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.marca-bloque .figura.abre:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.figura .tiras{
+  position:absolute;top:9px;left:9px;right:9px;display:flex;gap:3px;
+  z-index:2;pointer-events:none;
+}
+.figura .tiras i{
+  flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.55);
+  box-shadow:0 0 0 .5px rgba(0,0,0,.18);
+}
+.figura .cuenta{
+  position:absolute;left:9px;bottom:9px;z-index:2;pointer-events:none;
+  padding:.3rem .55rem;border-radius:999px;font-size:.66rem;letter-spacing:.1em;
+  text-transform:uppercase;background:rgba(0,0,0,.42);color:#fff;
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+}
+.figura.abre::after{
+  content:"";position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .4s ease;
+  background:linear-gradient(to top,rgba(0,0,0,.28),transparent 45%);
+}
+.figura.abre:hover::after,.figura.abre:focus-visible::after{opacity:1}
+
+.historia[hidden]{display:none!important}
+.historia{
+  position:fixed;inset:0;z-index:120;display:grid;place-items:center;
+  padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px));
+  background:rgba(32,22,13,.93);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  --tinte:#FFBE75;--sobre:#FFFFFF;
+  animation:histEntra .22s ease both;
+}
+html[data-marca="porthos"] .historia{background:rgba(12,10,10,.95);--tinte:#3EA398;--sobre:#E9E4D0}
+@keyframes histEntra{from{opacity:0}to{opacity:1}}
+.hist-caja{
+  position:relative;width:min(440px,100%);height:100%;max-height:min(900px,100%);
+  display:flex;flex-direction:column;gap:10px;color:var(--sobre);
+}
+.hist-barras{display:flex;gap:4px;flex:0 0 auto}
+.hist-barras span{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.26);overflow:hidden}
+.hist-barras b{display:block;height:100%;width:0;background:var(--tinte);border-radius:2px}
+.hist-barras span.vista b{width:100%}
+.hist-barras span.activa b{animation:histAvanza var(--dura,4000ms) linear forwards}
+.historia.quieta .hist-barras span.activa b{animation-play-state:paused}
+@keyframes histAvanza{from{width:0}to{width:100%}}
+
+.hist-cab{display:flex;align-items:center;gap:.8rem;flex:0 0 auto}
+.hist-titulo{
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.92;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.hist-x{
+  margin-left:auto;width:34px;height:34px;flex:0 0 auto;border:0;border-radius:50%;
+  background:rgba(255,255,255,.14);color:var(--sobre);font-size:1.25rem;line-height:1;
+  cursor:pointer;display:grid;place-items:center;transition:background .2s ease;
+}
+.hist-x:hover{background:rgba(255,255,255,.26)}
+
+.hist-marco{position:relative;flex:1 1 auto;min-height:0;border-radius:6px;overflow:hidden}
+.hist-marco img{width:100%;height:100%;object-fit:contain;display:block}
+.hist-zona{position:absolute;top:0;bottom:0;width:34%;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hist-zona.atras{left:0}
+.hist-zona.ade{left:34%;right:0;width:66%}
+.hist-zona:focus-visible{outline:2px solid var(--tinte);outline-offset:-4px}
+
+.hist-pie{flex:0 0 auto;display:flex;flex-direction:column;gap:.7rem}
+.hist-texto{margin:0;font-size:.98rem;line-height:1.4;text-wrap:balance}
+.hist-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem 1.1rem;border-radius:999px;text-decoration:none;font-size:.85rem;
+  letter-spacing:.06em;background:var(--tinte);color:#231708;font-weight:600;
+}
+html[data-marca="porthos"] .hist-btn{color:#14312F}
+.hist-btn svg{width:17px;height:17px;fill:currentColor}
+@media(max-width:620px){
+  .hist-caja{width:100%}
+  .hist-texto{font-size:.92rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .historia{animation:none}
+  .hist-barras span.activa b{animation:none;width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -1362,6 +1452,26 @@ html[data-marca="porthos"] :focus-visible{outline:2px solid var(--jade);outline-
 
 </div>
 
+
+<div class="historia" id="historia" role="dialog" aria-modal="true" aria-label="Fotos del jabón" hidden>
+  <div class="hist-caja">
+    <div class="hist-barras" id="hist-barras"></div>
+    <div class="hist-cab">
+      <span class="hist-titulo" id="hist-titulo"></span>
+      <button class="hist-x" id="hist-x" type="button" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="hist-marco" id="hist-marco">
+      <img id="hist-img" alt="">
+      <button class="hist-zona atras" id="hist-atras" type="button" aria-label="Foto anterior"></button>
+      <button class="hist-zona ade"   id="hist-ade"   type="button" aria-label="Foto siguiente"></button>
+    </div>
+    <div class="hist-pie">
+      <p class="hist-texto" id="hist-texto"></p>
+      <a class="hist-btn" id="hist-wa" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+</div>
+
 <script>
 /* =======================================================================
    1 · WHATSAPP — cámbialo aquí y cambia en las dos marcas.
@@ -1443,6 +1553,7 @@ function cierraCortina(){
     scrollTo(0, 0);
     /* la dirección acompaña a la marca: /uinky/ y /porthos/ */
     try { history.pushState({marca}, "", marca === "uinky" ? "../uinky/" : "../porthos/"); } catch (e) {}
+    dispatchEvent(new Event("marcacambia"));
   }
   function pon(marca){
     if (!MARCAS[marca] || raiz.dataset.marca === marca) return;
@@ -1545,10 +1656,20 @@ document.querySelectorAll("[data-catalogo]").forEach(el => {
 function pinta(destino, jabones, marca){
   const caja = document.getElementById(destino);
   if (!caja) return;
-  caja.innerHTML = jabones.map(j => {
+  const clave = destino.startsWith("u-") ? "uinky" : "porthos";
+  caja.innerHTML = jabones.map((j, n) => {
     const proximo = j.estado === "proximo";
-    const visual = j.foto
-      ? `<img src="${j.foto}" alt="${esc(j.nombre)}" loading="lazy">`
+    const hist = j.historia || [];
+    const portada = hist.length ? hist[0].f : j.foto;
+    const varias = hist.length > 1;
+    const barritas = varias
+      ? `<span class="tiras" aria-hidden="true">${hist.map(() => "<i></i>").join("")}</span>`
+      : ``;
+    const contador = varias
+      ? `<span class="cuenta">${hist.length} fotos</span>`
+      : ``;
+    const visual = portada
+      ? `<img src="${portada}" alt="${esc(j.nombre)}" loading="lazy">`
       : `<div class="pastilla">
            <div class="barrita" style="background:${j.color}">
              ${j.veta ? `<div class="veta" style="background:radial-gradient(140% 70% at 15% 0%,${j.veta} 0%,transparent 55%),radial-gradient(120% 60% at 90% 40%,${j.veta} 0%,transparent 50%)"></div>` : ``}
@@ -1563,9 +1684,15 @@ function pinta(destino, jabones, marca){
       : (j.precio == null
           ? `Hola ${marca}, quiero saber el precio del ${j.nombre}.`
           : `Hola ${marca}, quiero pedir el ${j.nombre} (${j.gramos}) — $${j.precio}.`);
+    const figura = varias
+      ? `<button class="figura abre" type="button" data-marca="${clave}" data-jabon="${n}"
+                 aria-label="Ver las ${hist.length} fotos del ${esc(j.nombre)}">
+           ${visual}${barritas}${contador}${chip}
+         </button>`
+      : `<div class="figura">${visual}${chip}</div>`;
     return `
     <article class="jabon">
-      <div class="figura">${visual}${chip}</div>
+      ${figura}
       ${j.gramos ? `<p class="gramos">${esc(j.gramos)}</p>` : ``}
       <h3>${esc(j.nombre)}</h3>
       <p class="desc">${esc(j.desc)}</p>
@@ -1581,12 +1708,26 @@ const JABONES_UINKY = [
   {
     nombre:"Jabón de Cúrcuma", gramos:"130 g", precio:15,
     desc:"Cúrcuma, naranja y vainilla. Cítrico y cálido, con las motitas de la raíz a la vista.",
-    color:"#C8A03C", veta:"#E7CE8E", foto:"../assets/uinky-curcuma.webp", estado:"disponible", etiqueta:"El de la casa"
+    color:"#C8A03C", veta:"#E7CE8E", estado:"disponible", etiqueta:"El de la casa",
+    historia:[
+      {f:"../assets/uinky-curcuma.webp", pie:"Cúrcuma, naranja y vainilla."},
+      {f:"../assets/uinky-curcuma-2.webp",         pie:"El sello va uno por uno, a mano."},
+      {f:"../assets/uinky-curcuma-3.webp",         pie:"Recién cortados, con las motitas de la raíz a la vista."},
+      {f:"../assets/uinky-curcuma-4.webp",         pie:"Ya curados, puestos en el plato de barro."},
+      {f:"../assets/uinky-curcuma-5.webp",         pie:"Listos para salir."}
+    ]
   },
   {
     nombre:"Jabón Vasija de Barro", gramos:"130 g", precio:15,
     desc:"Vainilla, coco y café. Dulce y tostado, con café molido en la masa y vasijitas de barro en miniatura sobre la barra.",
-    color:"#7A5238", veta:"#A8794F", foto:"../assets/uinky-vasija.webp", estado:"disponible", etiqueta:""
+    color:"#7A5238", veta:"#A8794F", estado:"disponible", etiqueta:"",
+    historia:[
+      {f:"../assets/uinky-vasija.webp", pie:"Vainilla, coco y café."},
+      {f:"../assets/uinky-vasija-2.webp",      pie:"El sello, marcado a mano en cada barra."},
+      {f:"../assets/uinky-vasija-3.webp",      pie:"El molde entero, antes de cortarlo."},
+      {f:"../assets/uinky-vasija-4.webp",      pie:"Las vasijitas de barro se ponen una por una."},
+      {f:"../assets/uinky-vasija-5.webp",      pie:"Café molido en la masa: se ve y se siente."}
+    ]
   },
   {
     nombre:"Jabón de Arroz", gramos:"85 g", precio:8,
@@ -1596,7 +1737,13 @@ const JABONES_UINKY = [
   {
     nombre:"Jabón de Mango", gramos:"85 g", precio:8,
     desc:"Mango, naranja y mandarina. Moldeado en flor, el más frutal de los cuatro.",
-    color:"#DE7420", veta:"#F5B171", foto:"../assets/uinky-mango.webp", estado:"disponible", etiqueta:""
+    color:"#DE7420", veta:"#F5B171", estado:"disponible", etiqueta:"",
+    historia:[
+      {f:"../assets/uinky-mango.webp", pie:"Moldeado en flor."},
+      {f:"../assets/uinky-mango-2.webp",      pie:"Mango, naranja y mandarina."},
+      {f:"../assets/uinky-mango-3.webp",      pie:"Secando junto a los de vasija de barro."},
+      {f:"../assets/uinky-mango-4.webp",      pie:"Un lote entero, secando."}
+    ]
   }
 ];
 
@@ -1604,7 +1751,14 @@ const JABONES_PORTHOS = [
   {
     nombre:"Jabón de Bambú", gramos:"130 g", precio:15,
     desc:"Extracto de bambú y carbón activado. Verde con vetas de humo y el escudo marcado a mano.",
-    color:"#3EA398", veta:"#14312F", foto:"../assets/porthos-bambu.webp", estado:"disponible", etiqueta:"El de la casa"
+    color:"#3EA398", veta:"#14312F", estado:"disponible", etiqueta:"El de la casa",
+    historia:[
+      {f:"../assets/porthos-bambu.webp", pie:"Bambú y carbón activado."},
+      {f:"../assets/porthos-bambu-2.webp",        pie:"El escudo, marcado a mano en cada barra."},
+      {f:"../assets/porthos-bambu-3.webp",        pie:"Curando en la repisa."},
+      {f:"../assets/porthos-bambu-4.webp",        pie:"130 g: buen peso en la mano."},
+      {f:"../assets/porthos-bambu-5.webp",        pie:"Una por una, con el mazo."}
+    ]
   },
   {
     nombre:"Jabón de Pino", gramos:"130 g", precio:15,
@@ -1664,6 +1818,160 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObse
 } else {
   revelaTodo();
 }
+
+/* =======================================================================
+   HISTORIAS DE LOS JABONES
+   Pantalla completa, una foto a la vez. Pasa sola a los 4 s; se adelanta
+   tocando la derecha, se retrocede tocando la izquierda, se pausa dejando
+   el dedo puesto y se cierra con la X, con Esc o deslizando hacia abajo.
+   ======================================================================= */
+(function(){
+  const DURA  = 4000;
+  const CAJAS = {uinky:JABONES_UINKY, porthos:JABONES_PORTHOS};
+  const capa    = document.getElementById("historia");
+  const marco   = document.getElementById("hist-marco");
+  const foto    = document.getElementById("hist-img");
+  const barras  = document.getElementById("hist-barras");
+  const titulo  = document.getElementById("hist-titulo");
+  const texto   = document.getElementById("hist-texto");
+  const boton   = document.getElementById("hist-wa");
+  const cerrarX = document.getElementById("hist-x");
+  const atras   = document.getElementById("hist-atras");
+  const adelante= document.getElementById("hist-ade");
+  if (!capa) return;
+
+  const AUTO = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let jabon = null, i = 0, reloj = null, desde = 0, resta = DURA;
+  let abierto = false, quienAbrio = null, scrollPrevio = "";
+
+  /* ---- el reloj que hace pasar la foto ---- */
+  function arranca(ms){
+    if (!AUTO) return;
+    clearTimeout(reloj);
+    resta = ms; desde = Date.now();
+    reloj = setTimeout(() => ve(1), ms);
+  }
+  function pausa(){
+    if (!reloj) return;
+    clearTimeout(reloj); reloj = null;
+    resta = Math.max(500, resta - (Date.now() - desde));
+    capa.classList.add("quieta");
+  }
+  function sigue(){
+    if (reloj || !abierto || !AUTO) return;
+    capa.classList.remove("quieta");
+    arranca(resta);
+  }
+
+  /* ---- pintar la foto n ---- */
+  function pon(n){
+    const h = jabon.historia;
+    i = n;
+    foto.src = h[i].f;
+    foto.alt = jabon.nombre + " — foto " + (i + 1) + " de " + h.length;
+    texto.textContent = h[i].pie;
+    [...barras.children].forEach((s, k) => {
+      s.classList.toggle("vista",  k <  i);
+      s.classList.toggle("activa", k === i);
+      if (k === i){ const b = s.firstElementChild; b.style.animation = "none"; void b.offsetWidth; b.style.animation = ""; }
+    });
+    capa.classList.remove("quieta");
+    arranca(DURA);
+    const prox = h[i + 1];                       // adelanta la descarga
+    if (prox){ const p = new Image(); p.src = prox.f; }
+  }
+  function ve(paso){
+    const n = i + paso;
+    if (n < 0) return;
+    if (n >= jabon.historia.length) return cierra();
+    pon(n);
+  }
+
+  /* ---- abrir y cerrar ---- */
+  function abre(marca, n, origen){
+    jabon = (CAJAS[marca] || [])[n];
+    if (!jabon || !jabon.historia) return;
+    quienAbrio = origen || null;
+    barras.innerHTML = jabon.historia.map(() => "<span><b></b></span>").join("");
+    barras.style.setProperty("--dura", DURA + "ms");
+    titulo.textContent = jabon.nombre;
+    const mensaje = jabon.precio == null
+      ? "Hola " + marca.toUpperCase() + ", quiero saber el precio del " + jabon.nombre + "."
+      : "Hola " + marca.toUpperCase() + ", quiero pedir el " + jabon.nombre + " (" + jabon.gramos + ") — $" + jabon.precio + ".";
+    boton.href = wa(mensaje);
+    boton.innerHTML = ICONO_WA + "Pedir este jabón";
+    capa.hidden = false;
+    abierto = true;
+    scrollPrevio = raiz.style.overflow;
+    raiz.style.overflow = "hidden";
+    pon(0);
+    cerrarX.focus();
+  }
+  function cierra(){
+    if (!abierto) return;
+    clearTimeout(reloj); reloj = null;
+    abierto = false;
+    capa.hidden = true;
+    capa.classList.remove("quieta");
+    foto.removeAttribute("src");
+    raiz.style.overflow = scrollPrevio;
+    if (quienAbrio) quienAbrio.focus();
+    quienAbrio = null;
+  }
+
+  /* ---- abrir desde las tarjetas ---- */
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".figura.abre");
+    if (!b) return;
+    e.preventDefault();
+    abre(b.dataset.marca, +b.dataset.jabon, b);
+  });
+
+  /* ---- controles ---- */
+  cerrarX.addEventListener("click", cierra);
+  let saltaClick = false;
+  atras.addEventListener("click", () => { if (saltaClick) return saltaClick = false; ve(-1); });
+  adelante.addEventListener("click", () => { if (saltaClick) return saltaClick = false; ve(1); });
+
+  /* dejar el dedo puesto pausa; soltar rápido es un toque; deslizar navega */
+  let t0 = 0, x0 = 0, y0 = 0;
+  marco.addEventListener("pointerdown", e => {
+    t0 = Date.now(); x0 = e.clientX; y0 = e.clientY;
+    saltaClick = false;
+    pausa();
+  });
+  marco.addEventListener("pointerup", e => {
+    const dt = Date.now() - t0, dx = e.clientX - x0, dy = e.clientY - y0;
+    if (dy > 90 && Math.abs(dy) > Math.abs(dx)) { saltaClick = true; return cierra(); }
+    if (Math.abs(dx) > 60)                      { saltaClick = true; return ve(dx < 0 ? 1 : -1); }
+    if (dt >= 250)                              { saltaClick = true; return sigue(); }
+    /* toque corto: el click del botón de zona se encarga */
+  });
+  marco.addEventListener("pointercancel", sigue);
+  marco.addEventListener("pointerleave", () => { if (capa.classList.contains("quieta")) sigue(); });
+
+  addEventListener("keydown", e => {
+    if (!abierto) return;
+    if (e.key === "Escape")     { e.preventDefault(); cierra(); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); ve(1); }
+    else if (e.key === "ArrowLeft")  { e.preventDefault(); ve(-1); }
+    else if (e.key === " ")     { e.preventDefault(); reloj ? pausa() : sigue(); }
+    else if (e.key === "Tab"){
+      const foco = [atras, adelante, cerrarX, boton];
+      const pos = foco.indexOf(document.activeElement);
+      const sig = e.shiftKey ? (pos <= 0 ? foco.length - 1 : pos - 1)
+                             : (pos === foco.length - 1 || pos < 0 ? 0 : pos + 1);
+      e.preventDefault(); foco[sig].focus();
+    }
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (!abierto) return;
+    document.hidden ? pausa() : sigue();
+  });
+  /* si se cambia de marca con la historia abierta, se cierra */
+  addEventListener("marcacambia", cierra);
+})();
 
 </script>
 </body>
