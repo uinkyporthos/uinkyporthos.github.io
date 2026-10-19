@@ -858,6 +858,59 @@ html[data-marca="porthos"] .hist-btn{color:#14312F}
   .hist-barras span.activa b{animation:none;width:100%}
 }
 
+/* =======================================================================
+   PAQUETES
+   Combos con descuento. Cada marca muestra los suyos y, al final, los
+   mixtos de la casa. Los colores salen de alias --pq-*, porque los tokens
+   de las dos marcas se llaman distinto.
+   ======================================================================= */
+html[data-marca="uinky"]{
+  --pq-fondo:var(--blanco); --pq-texto:var(--tinta); --pq-suave:var(--tinta-2);
+  --pq-acento:var(--naranja); --pq-sobre:var(--tinta); --pq-tono:var(--durazno);
+}
+html[data-marca="porthos"]{
+  --pq-fondo:var(--carbon-3); --pq-texto:var(--crema); --pq-suave:var(--crema-2);
+  --pq-acento:var(--jade); --pq-sobre:var(--carbon-2); --pq-tono:var(--carbon-2);
+}
+.sec.paquetes{border-top:1px solid var(--linea)}
+.pq-rejilla{
+  display:grid;gap:1.6rem;margin-top:2.4rem;
+  grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  max-width:940px;margin-inline:auto;
+}
+.paquete{
+  display:flex;flex-direction:column;background:var(--pq-fondo);
+  border:1px solid var(--linea);border-radius:4px;overflow:hidden;
+  color:var(--pq-texto);
+}
+.paquete.casa{border-color:var(--pq-acento)}
+.pq-fotos{display:flex;gap:2px;background:var(--linea);aspect-ratio:16/9}
+.pq-fotos img{flex:1;min-width:0;height:100%;object-fit:cover;display:block}
+.pq-cuerpo{display:flex;flex-direction:column;gap:.55rem;padding:1.15rem 1.15rem 1.3rem;flex:1}
+.pq-marca{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pq-suave);
+  display:flex;align-items:center;gap:.45rem;
+}
+.pq-marca::before{content:"";width:16px;height:2px;border-radius:2px;background:var(--pq-acento)}
+.paquete h3{font-family:var(--display);margin:0;line-height:1.14;font-size:1.3rem;font-weight:500}
+.pq-desc{margin:0;font-size:.85rem;line-height:1.5;color:var(--pq-suave)}
+.pq-lista{list-style:none;margin:.15rem 0 0;padding:0;display:flex;flex-direction:column;gap:.2rem}
+.pq-lista li{font-size:.8rem;line-height:1.4;display:flex;gap:.45rem}
+.pq-lista li::before{content:"·";color:var(--pq-acento);font-weight:700}
+.pq-precio{display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;margin-top:auto;padding-top:.9rem}
+.pq-precio s{color:var(--pq-suave);font-size:.9rem;text-decoration-thickness:1px}
+.pq-precio b{font-family:var(--display);font-size:1.65rem;font-weight:500;letter-spacing:.01em}
+.pq-ahorro{
+  font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-style:normal;
+  padding:.3rem .55rem;border-radius:999px;background:var(--pq-acento);color:var(--pq-sobre);
+  white-space:nowrap;
+}
+.paquete .btn{width:100%;margin-top:.9rem}
+@media(max-width:620px){
+  .pq-rejilla{gap:1.2rem}
+  .paquete h3{font-size:1.18rem}
+}
+
 </style>
 </head>
 <body>
@@ -895,6 +948,7 @@ html[data-marca="porthos"] .hist-btn{color:#14312F}
     <a class="logo" href="#u-inicio" aria-label="ÜINKY, inicio"><img src="../assets/uinky-marca-tinta.png" alt="ÜINKY"></a>
     <nav class="nav">
       <a href="#u-jabones">Jabones</a>
+      <a href="#u-paquetes">Paquetes</a>
       <a href="#u-proceso">Cómo se hacen</a>
       <a href="#u-formula">La fórmula</a>
       <a href="#u-empaque">Empaque</a>
@@ -971,6 +1025,17 @@ html[data-marca="porthos"] .hist-btn{color:#14312F}
       <p class="entrada" style="margin-inline:auto">Todos salen de la misma base de cuatro grasas. Lo único que cambia entre uno y otro es el bloque de aroma y color. Si algo se agota, el siguiente lote toma cuatro o cinco semanas.</p>
     </div>
     <div class="rejilla" id="u-rejilla"></div>
+  </div>
+</section>
+
+<section class="sec paquetes" id="u-paquetes">
+  <div class="env">
+    <div class="cabecera centro">
+      <p class="sup">Paquetes</p>
+      <h2 class="tit">Llévate varios</h2>
+      <p class="entrada" style="margin-inline:auto">Armados para que salgan más baratos que comprando barra por barra. Los últimos dos mezclan ÜINKY con PORTHOS: es la misma cocina, la misma base de cuatro grasas.</p>
+    </div>
+    <div class="pq-rejilla" id="u-paq-rejilla"></div>
   </div>
 </section>
 
@@ -1183,6 +1248,7 @@ html[data-marca="porthos"] .hist-btn{color:#14312F}
     <a class="logo" href="#p-inicio" aria-label="PORTHOS, inicio"><img src="../assets/porthos-marca.png" alt="PORTHOS"></a>
     <nav class="nav">
       <a href="#p-jabones">Jabones</a>
+      <a href="#p-paquetes">Paquetes</a>
       <a href="#p-proceso">Cómo se hacen</a>
       <a href="#p-formula">La fórmula</a>
       <a href="#p-caja">La caja</a>
@@ -1260,6 +1326,17 @@ html[data-marca="porthos"] .hist-btn{color:#14312F}
       <p class="entrada" style="margin-inline:auto">Los dos salen de la misma base de cuatro grasas. Lo único que cambia entre uno y otro es el bloque de aroma y color. Si algo se agota, el siguiente lote toma cuatro o cinco semanas.</p>
     </div>
     <div class="rejilla" id="p-rejilla"></div>
+  </div>
+</section>
+
+<section class="sec paquetes" id="p-paquetes">
+  <div class="env">
+    <div class="cabecera centro">
+      <p class="sup">Paquetes</p>
+      <h2 class="tit">Llévate varios</h2>
+      <p class="entrada" style="margin-inline:auto">Armados para que salgan más baratos que comprando barra por barra. Los últimos dos mezclan PORTHOS con ÜINKY: es la misma cocina, la misma base de cuatro grasas.</p>
+    </div>
+    <div class="pq-rejilla" id="p-paq-rejilla"></div>
   </div>
 </section>
 
@@ -1769,6 +1846,114 @@ const JABONES_PORTHOS = [
 
 pinta("u-rejilla", JABONES_UINKY, "ÜINKY");
 pinta("p-rejilla", JABONES_PORTHOS, "PORTHOS");
+
+/* =======================================================================
+   PAQUETES — combos con descuento
+   `lleva` apunta a los jabones por marca e índice, así las fotos, los
+   nombres y los gramos salen del mismo catálogo de arriba y no hay nada
+   que mantener dos veces. marca "casa" = paquete mixto, sale en las dos.
+   ======================================================================= */
+const PAQUETES = [
+  { marca:"uinky", nombre:"Baño de arroz", antes:16, precio:14,
+    desc:"Las dos barras chicas de 85 g: una para el lavamanos y otra para llevar.",
+    lleva:[{m:"uinky",i:2},{m:"uinky",i:3}] },
+
+  { marca:"uinky", nombre:"Dúo de la casa", antes:30, precio:26,
+    desc:"Las dos barras grandes de ÜINKY. La cítrica y la tostada, una al lado de la otra.",
+    lleva:[{m:"uinky",i:0},{m:"uinky",i:1}] },
+
+  { marca:"uinky", nombre:"Multicolor", antes:46, precio:39,
+    desc:"Los cuatro jabones de ÜINKY. Dos de 130 g y dos de 85 g, un aroma distinto cada uno.",
+    lleva:[{m:"uinky",i:0},{m:"uinky",i:1},{m:"uinky",i:2},{m:"uinky",i:3}] },
+
+  { marca:"porthos", nombre:"Dos escudos", antes:30, precio:26,
+    desc:"Dos barras de Bambú: una a la ducha y otra guardada para cuando se acabe.",
+    lleva:[{m:"porthos",i:0,n:2}] },
+
+  { marca:"porthos", nombre:"El bosque entero", antes:30, precio:26, estado:"proximo",
+    desc:"Bambú y Pino, las dos de PORTHOS. Sale cuando esté listo el próximo lote de Pino.",
+    lleva:[{m:"porthos",i:0},{m:"porthos",i:1}] },
+
+  { marca:"casa", nombre:"Mitad y mitad", antes:30, precio:26,
+    desc:"El de la casa de cada marca: Cúrcuma por ÜINKY y Bambú por PORTHOS. Para probar las dos.",
+    lleva:[{m:"uinky",i:0},{m:"porthos",i:0}] },
+
+  { marca:"casa", nombre:"Paquete familiar", antes:53, precio:45,
+    desc:"Cuatro barras para una casa entera: dos grandes de ÜINKY, la de PORTHOS y la chica de arroz.",
+    lleva:[{m:"uinky",i:0},{m:"uinky",i:1},{m:"porthos",i:0},{m:"uinky",i:2}] },
+];
+
+function pintaPaquetes(destino, marca){
+  const caja = document.getElementById(destino);
+  if (!caja) return;
+  const cajas = {uinky:JABONES_UINKY, porthos:JABONES_PORTHOS};
+  const rotulo = {uinky:"ÜINKY", porthos:"PORTHOS"};
+  const lista = PAQUETES.filter(p => p.marca === marca || p.marca === "casa");
+
+  caja.innerHTML = lista.map(p => {
+    const piezas = [];
+    p.lleva.forEach(r => {
+      const j = cajas[r.m][r.i];
+      for (let k = 0; k < (r.n || 1); k++) piezas.push({j, m:r.m});
+    });
+    /* la tira es decorativa: solo jabones con foto, sin repetir, y hasta 3
+       para que no queden tajadas demasiado finas */
+    const vistos = new Set();
+    const conFoto = [];
+    piezas.forEach(({j}) => {
+      const f = j.historia ? j.historia[0].f : j.foto;
+      if (!f || vistos.has(j.nombre)) return;
+      vistos.add(j.nombre);
+      conFoto.push(f);
+    });
+    const fotos = conFoto.length
+      ? conFoto.slice(0, 3).map(f => `<img src="${f}" alt="" loading="lazy">`).join("")
+      : `<span style="flex:1;background:${piezas[0].j.color}"></span>`;
+    const cuenta = {};
+    piezas.forEach(({j, m}) => {
+      const llave = j.nombre + "||" + m;
+      cuenta[llave] = (cuenta[llave] || 0) + 1;
+    });
+    const items = Object.entries(cuenta).map(([llave, n]) => {
+      const [nombre, m] = llave.split("||");
+      const j = cajas[m].find(x => x.nombre === nombre);
+      const marcado = p.marca === "casa" ? ` <span style="opacity:.6">· ${rotulo[m]}</span>` : "";
+      return `<li><span>${esc(nombre)}${n > 1 ? " ×" + n : ""} · ${esc(j.gramos)}${marcado}</span></li>`;
+    }).join("");
+    const detalle = Object.entries(cuenta)
+      .map(([llave, n]) => llave.split("||")[0] + (n > 1 ? " x" + n : ""))
+      .join(" + ");
+    const ahorro = p.antes - p.precio;
+    const proximo = p.estado === "proximo";
+    const quien = p.marca === "casa" ? "Hola" : "Hola " + rotulo[p.marca];
+    const mensaje = proximo
+      ? `${quien}, avísame cuando salga el paquete "${p.nombre}".`
+      : `${quien}, quiero el paquete "${p.nombre}" (${detalle}) — $${p.precio}.`;
+    const rotuloMarca = p.marca === "casa" ? "Una casa, dos marcas" : rotulo[p.marca];
+
+    return `
+    <article class="paquete${p.marca === "casa" ? " casa" : ""}">
+      <div class="pq-fotos">${fotos}</div>
+      <div class="pq-cuerpo">
+        <p class="pq-marca">${rotuloMarca}</p>
+        <h3>${esc(p.nombre)}</h3>
+        <p class="pq-desc">${esc(p.desc)}</p>
+        <ul class="pq-lista">${items}</ul>
+        <div class="pq-precio">
+          <s>$${p.antes}</s><b>$${p.precio}</b>
+          <em class="pq-ahorro">${proximo ? "Próximo lote" : "Ahorras $" + ahorro}</em>
+        </div>
+        <a class="btn${proximo ? " linea" : ""}" href="${wa(mensaje)}" target="_blank" rel="noopener">
+          ${proximo ? "" : ICONO_WA}${proximo ? "Avísame cuando salga" : "Pedir este paquete"}
+        </a>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+pintaPaquetes("u-paq-rejilla", "uinky");
+pintaPaquetes("p-paq-rejilla", "porthos");
+
 
 /* ---------------- de aquí para abajo no hace falta tocar ---------------- */
 document.querySelectorAll("#u-anio,#p-anio").forEach(e => e.textContent = new Date().getFullYear());
