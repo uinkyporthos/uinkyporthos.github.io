@@ -28,4 +28,4 @@ Mismo sistema que Bataká y TOROTE: cada 30 minutos un GitHub Action publica en 
 - **Revisar sin publicar:** *Run workflow → `validate`*.
 - **Registro:** `ig/published.json`.
 
-Reglas: sin precios; único texto en francés, «Formule française»; sobre los videos solo el nombre del jabón. El reel del empaque va en cámara lenta y sin sonido; los del taller y del sello llevan el sonido real.
+Reglas: sin precios; único texto en francés, «Formule française»; sobre los videos solo el nombre del jabón. Los reels van sin audio, para ponerles música después.
