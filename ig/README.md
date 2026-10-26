@@ -2,10 +2,11 @@
 
 Mismo sistema que Bataká y TOROTE: cada 30 minutos un GitHub Action publica en **@uinky__** lo de `ig/queue.json` que ya venció **y** tiene `"aprobado": true`. Los archivos se sirven desde este mismo sitio (`https://uinkyporthos.github.io/ig/...`).
 
-## Lote 1 · 28 oct – 10 nov 2026 (56 publicaciones)
+## Lote 1 · mié 28 oct – dom 1 nov 2026 (30 publicaciones)
 
-- **Feed, 19:00:** 14 piezas — 6 carruseles, 5 posts y 3 reels (máx. 12 s).
-- **Stories, 09:00 · 13:00 · 20:30:** 42 en total — una frase en la mañana, un dato o pregunta al mediodía y un pedido en la noche.
+- **Feed, 3 al día (09:00 · 13:00 · 19:00):** 15 piezas — 6 carruseles, 6 posts y 3 reels (máx. 12 s).
+- **Stories, 08:30 · 13:30 · 20:30:** 15 en total — una frase en la mañana, un dato o pregunta al mediodía y un pedido en la noche.
+- Desde el lunes 2-nov, una tarea programada arma cada sábado la semana siguiente (21 posts + stories) y te la manda para aprobar hasta el domingo 22:00.
 - Todo entra con `"aprobado": false`. **Nada se publica hasta que lo apruebes.**
 
 ## Puesta en marcha (una sola vez)
