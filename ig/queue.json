@@ -20,17 +20,17 @@
     "aprobado": false
   },
   {
-    "id": "P01_le_ciel",
+    "id": "P01_vasija",
     "tipo": "carrusel",
     "fecha": "2026-10-28T19:00:00-05:00",
     "archivos": [
-      "P01_le_ciel_1.jpg",
-      "P01_le_ciel_2.jpg",
-      "P01_le_ciel_3.jpg",
-      "P01_le_ciel_4.jpg",
-      "P01_le_ciel_5.jpg"
+      "P01_vasija_1.jpg",
+      "P01_vasija_2.jpg",
+      "P01_vasija_3.jpg",
+      "P01_vasija_4.jpg",
+      "P01_vasija_5.jpg"
     ],
-    "caption": "Jabón Vasija de Barro 🏺\nVainilla, coco y café. 130 g · $15.\nHecho a mano en Quito, proceso en frío, curado 30 días.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Jabón Vasija de Barro 🏺\nVainilla, coco y café.\nHecho a mano en Quito, proceso en frío, curado 30 días.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false
   },
   {
@@ -110,9 +110,9 @@
     "archivos": [
       "R1_atelier.mp4"
     ],
-    "caption": "Jabón Vasija de Barro 🏺\nHecho a mano en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Jabón Vasija de Barro 🏺\nHecho a mano en Quito. Sube el volumen.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false,
-    "portada_ms": 9000
+    "portada_ms": 1500
   },
   {
     "id": "S03c_pedido",
@@ -196,7 +196,7 @@
     "archivos": [
       "P05_curcuma.jpg"
     ],
-    "caption": "Jabón de Cúrcuma 🧡\nCúrcuma, naranja y vainilla. 130 g · $15.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Jabón de Cúrcuma 🧡\nCúrcuma, naranja y vainilla.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false
   },
   {
@@ -240,7 +240,7 @@
       "P06_quatre_4.jpg",
       "P06_quatre_5.jpg"
     ],
-    "caption": "La colección ✨\nCúrcuma · Vasija de Barro · Mango · Arroz.\nLas cuatro en el paquete Multicolor: $39.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "La colección ✨\nCúrcuma · Vasija de Barro · Mango · Arroz.\nLas cuatro juntas en el paquete Multicolor.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false
   },
   {
@@ -274,15 +274,15 @@
     "aprobado": false
   },
   {
-    "id": "R2_curcuma",
+    "id": "R2_empaque",
     "tipo": "reel",
     "fecha": "2026-11-03T19:00:00-05:00",
     "archivos": [
-      "R2_curcuma.mp4"
+      "R2_empaque.mp4"
     ],
-    "caption": "Jabón de Cúrcuma 🧡\nCúrcuma, naranja y vainilla. Hecho a mano en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Así empacamos cada jabón 📦\nUno por uno, a mano, en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false,
-    "portada_ms": 9000
+    "portada_ms": 8500
   },
   {
     "id": "S07c_pedido",
@@ -405,7 +405,7 @@
     "archivos": [
       "P10_vasija.jpg"
     ],
-    "caption": "Jabón Vasija de Barro 🏺\nVainilla, coco y café. 130 g · $15.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Jabón Vasija de Barro 🏺\nVainilla, coco y café.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false
   },
   {
@@ -447,7 +447,7 @@
     ],
     "caption": "Jabón Vasija de Barro 🏺\nArtesanal. Sube el volumen.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false,
-    "portada_ms": 13000
+    "portada_ms": 4500
   },
   {
     "id": "S11c_pedido",
@@ -491,7 +491,7 @@
       "P12_atelier_30_5.jpg",
       "P12_atelier_30_6.jpg"
     ],
-    "caption": "Curado 30 días ⏳\nProceso en frío, hecho a mano en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Curado 30 días ⏳\nY después, empacado a mano en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false
   },
   {
@@ -531,7 +531,7 @@
     "archivos": [
       "P13_multicolor.jpg"
     ],
-    "caption": "Multicolor 🎁\nCúrcuma, Vasija de Barro, Mango y Arroz. $39 en lugar de $46.\nTambién: Baño de Arroz ($14) y Dos gemas de la casa ($26).\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "caption": "Multicolor 🎁\nCúrcuma, Vasija de Barro, Mango y Arroz.\nTambién: Baño de Arroz y Dos gemas de la casa.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
     "aprobado": false
   },
   {
@@ -565,15 +565,17 @@
     "aprobado": false
   },
   {
-    "id": "R4_vasijas",
-    "tipo": "reel",
+    "id": "P14_vasija_sonrisa",
+    "tipo": "carrusel",
     "fecha": "2026-11-10T19:00:00-05:00",
     "archivos": [
-      "R4_vasijas.mp4"
+      "P14_vasija_sonrisa_1.jpg",
+      "P14_vasija_sonrisa_2.jpg",
+      "P14_vasija_sonrisa_3.jpg",
+      "P14_vasija_sonrisa_4.jpg"
     ],
-    "caption": "Jabón Vasija de Barro 🏺\n130 g · $15. Pedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
-    "aprobado": false,
-    "portada_ms": 1200
+    "caption": "Jabón Vasija de Barro 🏺\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": false
   },
   {
     "id": "S14c_pedido",

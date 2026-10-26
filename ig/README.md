@@ -4,8 +4,8 @@ Mismo sistema que Bataká y TOROTE: cada 30 minutos un GitHub Action publica en 
 
 ## Lote 1 · 28 oct – 10 nov 2026 (56 publicaciones)
 
-- **Feed, 19:00:** 14 piezas — 5 carruseles, 5 posts y 4 reels.
-- **Stories, 09:00 · 13:00 · 20:30:** 42 en total — «le mot du jour» en la mañana, un dato o pregunta al mediodía y un pedido en la noche.
+- **Feed, 19:00:** 14 piezas — 6 carruseles, 5 posts y 3 reels (máx. 12 s).
+- **Stories, 09:00 · 13:00 · 20:30:** 42 en total — una frase en la mañana, un dato o pregunta al mediodía y un pedido en la noche.
 - Todo entra con `"aprobado": false`. **Nada se publica hasta que lo apruebes.**
 
 ## Puesta en marcha (una sola vez)
@@ -28,4 +28,4 @@ Mismo sistema que Bataká y TOROTE: cada 30 minutos un GitHub Action publica en 
 - **Revisar sin publicar:** *Run workflow → `validate`*.
 - **Registro:** `ig/published.json`.
 
-Los reels del cielo, del jardín y de «les quatre» van sin sonido (las tomas originales no tienen audio). El del taller lleva el sonido real del corte y del mazo.
+Reglas: sin precios; único texto en francés, «Formule française»; sobre los videos solo el nombre del jabón. El reel del empaque va en cámara lenta y sin sonido; los del taller y del sello llevan el sonido real.
