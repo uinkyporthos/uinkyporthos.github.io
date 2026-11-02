@@ -470,5 +470,446 @@
     ],
     "caption": "",
     "aprobado": true
+  },
+  {
+    "id": "w45_P01_formule",
+    "tipo": "post",
+    "fecha": "2026-11-02T17:00:00-05:00",
+    "archivos": [
+      "w45_P01_formule.jpg"
+    ],
+    "caption": "Formule française.\nAceite de oliva, proceso en frío y mucha paciencia.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S01a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-02T17:15:00-05:00",
+    "archivos": [
+      "w45_S01a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P02_sello",
+    "tipo": "carrusel",
+    "fecha": "2026-11-02T18:00:00-05:00",
+    "archivos": [
+      "w45_P02_sello_1.jpg",
+      "w45_P02_sello_2.jpg",
+      "w45_P02_sello_3.jpg",
+      "w45_P02_sello_4.jpg",
+      "w45_P02_sello_5.jpg"
+    ],
+    "caption": "El sello ÜINKY 🌸\nVa en cada barra y en cada envoltura: es nuestra firma.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S01b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-02T18:15:00-05:00",
+    "archivos": [
+      "w45_S01b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_R1_molde",
+    "tipo": "reel",
+    "fecha": "2026-11-02T19:00:00-05:00",
+    "archivos": [
+      "w45_R1_molde.mp4"
+    ],
+    "caption": "Jabón Vasija de Barro 🏺\nDel molde a tus manos.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true,
+    "portada_ms": 1800
+  },
+  {
+    "id": "w45_S01c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-02T20:30:00-05:00",
+    "archivos": [
+      "w45_S01c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S02a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-03T08:30:00-05:00",
+    "archivos": [
+      "w45_S02a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P04_curcuma",
+    "tipo": "post",
+    "fecha": "2026-11-03T09:00:00-05:00",
+    "archivos": [
+      "w45_P04_curcuma.jpg"
+    ],
+    "caption": "Jabón de Cúrcuma 🧡\nCúrcuma, naranja y vainilla. 130 g, curado 30 días.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P05_curado",
+    "tipo": "carrusel",
+    "fecha": "2026-11-03T13:00:00-05:00",
+    "archivos": [
+      "w45_P05_curado_1.jpg",
+      "w45_P05_curado_2.jpg",
+      "w45_P05_curado_3.jpg",
+      "w45_P05_curado_4.jpg",
+      "w45_P05_curado_5.jpg"
+    ],
+    "caption": "¿Por qué esperamos 30 días? ⏳\nDel molde a la repisa: así se cura cada barra antes de llegar a ti.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S02b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-03T13:30:00-05:00",
+    "archivos": [
+      "w45_S02b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P06_imperfecto",
+    "tipo": "post",
+    "fecha": "2026-11-03T19:00:00-05:00",
+    "archivos": [
+      "w45_P06_imperfecto.jpg"
+    ],
+    "caption": "Perfectamente imperfecto.\nNinguna barra sale igual a otra.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S02c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-03T20:30:00-05:00",
+    "archivos": [
+      "w45_S02c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S03a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-04T08:30:00-05:00",
+    "archivos": [
+      "w45_S03a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P07_quito",
+    "tipo": "post",
+    "fecha": "2026-11-04T09:00:00-05:00",
+    "archivos": [
+      "w45_P07_quito.jpg"
+    ],
+    "caption": "Hecho a mano en Quito 🇪🇨\nUna barra a la vez.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P08_regalo",
+    "tipo": "carrusel",
+    "fecha": "2026-11-04T13:00:00-05:00",
+    "archivos": [
+      "w45_P08_regalo_1.jpg",
+      "w45_P08_regalo_2.jpg",
+      "w45_P08_regalo_3.jpg",
+      "w45_P08_regalo_4.jpg",
+      "w45_P08_regalo_5.jpg"
+    ],
+    "caption": "Para regalar 🎁\nMulticolor, Dos gemas de la casa o Baño de arroz.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S03b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-04T13:30:00-05:00",
+    "archivos": [
+      "w45_S03b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P09_vasija",
+    "tipo": "post",
+    "fecha": "2026-11-04T19:00:00-05:00",
+    "archivos": [
+      "w45_P09_vasija.jpg"
+    ],
+    "caption": "Jabón Vasija de Barro 🏺\nVainilla, coco y café. 130 g, curado 30 días.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S03c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-04T20:30:00-05:00",
+    "archivos": [
+      "w45_S03c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S04a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-05T08:30:00-05:00",
+    "archivos": [
+      "w45_S04a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_R2_papel",
+    "tipo": "reel",
+    "fecha": "2026-11-05T09:00:00-05:00",
+    "archivos": [
+      "w45_R2_papel.mp4"
+    ],
+    "caption": "Jabón Vasija de Barro 🏺\nSello, papel y listo.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true,
+    "portada_ms": 1500
+  },
+  {
+    "id": "w45_P11_mango",
+    "tipo": "post",
+    "fecha": "2026-11-05T13:00:00-05:00",
+    "archivos": [
+      "w45_P11_mango.jpg"
+    ],
+    "caption": "Jabón de Mango 🥭\nMango, naranja y mandarina. 85 g.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S04b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-05T13:30:00-05:00",
+    "archivos": [
+      "w45_S04b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P12_formule",
+    "tipo": "post",
+    "fecha": "2026-11-05T19:00:00-05:00",
+    "archivos": [
+      "w45_P12_formule.jpg"
+    ],
+    "caption": "Formule française.\nJabonería artesanal, hecha en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S04c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-05T20:30:00-05:00",
+    "archivos": [
+      "w45_S04c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S05a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-06T08:30:00-05:00",
+    "archivos": [
+      "w45_S05a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P13_frio",
+    "tipo": "carrusel",
+    "fecha": "2026-11-06T09:00:00-05:00",
+    "archivos": [
+      "w45_P13_frio_1.jpg",
+      "w45_P13_frio_2.jpg",
+      "w45_P13_frio_3.jpg",
+      "w45_P13_frio_4.jpg",
+      "w45_P13_frio_5.jpg"
+    ],
+    "caption": "¿Sabías que…? 🫒\nProceso en frío: sin calor, con aceites naturales y 30 días de curado.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P14_curcuma",
+    "tipo": "post",
+    "fecha": "2026-11-06T13:00:00-05:00",
+    "archivos": [
+      "w45_P14_curcuma.jpg"
+    ],
+    "caption": "Jabón de Cúrcuma 🧡\nEl de la casa.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S05b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-06T13:30:00-05:00",
+    "archivos": [
+      "w45_S05b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P15_artesanal",
+    "tipo": "post",
+    "fecha": "2026-11-06T19:00:00-05:00",
+    "archivos": [
+      "w45_P15_artesanal.jpg"
+    ],
+    "caption": "Artesanal.\nCada barra se hace, se corta y se sella en nuestro taller.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S05c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-06T20:30:00-05:00",
+    "archivos": [
+      "w45_S05c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S06a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-07T08:30:00-05:00",
+    "archivos": [
+      "w45_S06a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P16_curado",
+    "tipo": "post",
+    "fecha": "2026-11-07T09:00:00-05:00",
+    "archivos": [
+      "w45_P16_curado.jpg"
+    ],
+    "caption": "Curado 30 días ⏳\nLo bueno toma su tiempo.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P17_arroz",
+    "tipo": "post",
+    "fecha": "2026-11-07T13:00:00-05:00",
+    "archivos": [
+      "w45_P17_arroz.jpg"
+    ],
+    "caption": "Jabón de Arroz 🍚\nVainilla, coco y café, con harina de arroz. 85 g.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S06b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-07T13:30:00-05:00",
+    "archivos": [
+      "w45_S06b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_R3_sello",
+    "tipo": "reel",
+    "fecha": "2026-11-07T19:00:00-05:00",
+    "archivos": [
+      "w45_R3_sello.mp4"
+    ],
+    "caption": "Jabón Vasija de Barro 🏺\nCon nuestro sello.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true,
+    "portada_ms": 1500
+  },
+  {
+    "id": "w45_S06c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-07T20:30:00-05:00",
+    "archivos": [
+      "w45_S06c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S07a_frase",
+    "tipo": "story",
+    "fecha": "2026-11-08T08:30:00-05:00",
+    "archivos": [
+      "w45_S07a_frase.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P19_coleccion",
+    "tipo": "carrusel",
+    "fecha": "2026-11-08T09:00:00-05:00",
+    "archivos": [
+      "w45_P19_coleccion_1.jpg",
+      "w45_P19_coleccion_2.jpg",
+      "w45_P19_coleccion_3.jpg"
+    ],
+    "caption": "Cuatro jabones ✨\nCúrcuma · Vasija de Barro · Mango · Arroz.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P20_formule",
+    "tipo": "post",
+    "fecha": "2026-11-08T13:00:00-05:00",
+    "archivos": [
+      "w45_P20_formule.jpg"
+    ],
+    "caption": "Formule française.\nJabón como en las jabonerías artesanales de Francia, hecho en Quito.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S07b_tarjeta",
+    "tipo": "story",
+    "fecha": "2026-11-08T13:30:00-05:00",
+    "archivos": [
+      "w45_S07b_tarjeta.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w45_P21_pedidos",
+    "tipo": "post",
+    "fecha": "2026-11-08T19:00:00-05:00",
+    "archivos": [
+      "w45_P21_pedidos.jpg"
+    ],
+    "caption": "Pedidos por WhatsApp 📲\nLink en el perfil. Entregas en Quito y envíos.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w45_S07c_pedido",
+    "tipo": "story",
+    "fecha": "2026-11-08T20:30:00-05:00",
+    "archivos": [
+      "w45_S07c_pedido.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
   }
 ]
