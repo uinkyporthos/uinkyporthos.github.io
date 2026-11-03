@@ -4,7 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ÜINKY · Jabonería artesanal francesa hecha en Quito</title>
-<meta name="description" content="Dos marcas de jabón artesanal de proceso en frío hechas en Quito: ÜINKY, de frutas y flores, y PORTHOS, de bambú y carbón activado. Pedidos por WhatsApp en Quito y todo Ecuador.">
+<meta name="description" content="ÜINKY: jabones artesanales de proceso en frío hechos a mano en Quito, de frutas y flores: Cúrcuma, Vasija de Barro, Arroz y Mango. Pedidos por WhatsApp en Quito y todo Ecuador.">
+<link rel="canonical" href="https://uinkyporthos.github.io/uinky/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://uinkyporthos.github.io/uinky/">
+<meta property="og:title" content="ÜINKY · Jabonería artesanal francesa hecha en Quito">
+<meta property="og:description" content="ÜINKY: jabones artesanales de proceso en frío hechos a mano en Quito, de frutas y flores: Cúrcuma, Vasija de Barro, Arroz y Mango. Pedidos por WhatsApp en Quito y todo Ecuador.">
+<meta property="og:image" content="https://uinkyporthos.github.io/assets/uinky-portada-h.webp">
+<meta property="og:locale" content="es_EC">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Store", "name": "ÜINKY", "url": "https://uinkyporthos.github.io/uinky/", "image": "https://uinkyporthos.github.io/assets/uinky-portada-h.webp", "description": "ÜINKY: jabones artesanales de proceso en frío hechos a mano en Quito, de frutas y flores: Cúrcuma, Vasija de Barro, Arroz y Mango. Pedidos por WhatsApp en Quito y todo Ecuador.", "address": {"@type": "PostalAddress", "addressLocality": "Quito", "addressCountry": "EC"}, "sameAs": ["https://www.instagram.com/uinky__/"]}</script>
+
 <meta name="theme-color" content="#FFBE75">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -915,6 +925,7 @@ html[data-marca="porthos"]{
 </style>
 </head>
 <body>
+<h1 style="position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">ÜINKY: jabón artesanal de proceso en frío hecho a mano en Quito</h1>
 
 <div class="casa">
   <div class="env">
@@ -939,7 +950,7 @@ html[data-marca="porthos"]{
     <span style="--i:4;--tono:var(--durazno)"></span>
     <span style="--i:5;--tono:var(--naranja)"></span>
   </div>
-  <div class="marca-intro"><img src="../assets/uinky-marca-tinta.png" alt=""></div>
+  <div class="marca-intro"><img src="../assets/uinky-marca-tinta.png" alt="ÜINKY"></div>
 </div>
 
 <div class="anuncio"><b>Lotes pequeños, curado de 30 días</b><span>·</span>Entregas en Quito y envíos a todo Ecuador</div>
@@ -1239,7 +1250,7 @@ html[data-marca="porthos"]{
     <span style="--i:4;--tono:var(--carbon)"></span>
     <span style="--i:5;--tono:var(--carbon-2)"></span>
   </div>
-  <div class="marca-intro"><img src="../assets/porthos-marca.png" alt=""></div>
+  <div class="marca-intro"><img src="../assets/porthos-marca.png" alt="PORTHOS"></div>
 </div>
 
 <div class="anuncio"><b>Edición especial bambú y carbón activado</b><span>·</span>Entregas en Quito y envíos a todo Ecuador</div>
@@ -1916,7 +1927,7 @@ function pintaPaquetes(destino, marca){
       conFoto.push(f);
     });
     const fotos = conFoto.length
-      ? conFoto.slice(0, 3).map(f => `<img src="${f}" alt="" loading="lazy">`).join("")
+      ? conFoto.slice(0, 3).map(f => `<img src="${f}" alt="Jabón artesanal ${document.documentElement.dataset.marca === "porthos" ? "PORTHOS" : "ÜINKY"}" loading="lazy">`).join("")
       : `<span style="flex:1;background:${piezas[0].j.color}"></span>`;
     const cuenta = {};
     piezas.forEach(({j, m, nota}) => {
