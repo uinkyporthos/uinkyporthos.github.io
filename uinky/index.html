@@ -922,6 +922,69 @@ html[data-marca="porthos"]{
   .paquete h3{font-size:1.18rem}
 }
 
+/* =======================================================================
+   ARMA TU CAJA
+   El cliente elige jabones de las dos marcas. Por cada 3 de 130 g, uno
+   de 85 g va de regalo. Usa los mismos alias --pq-* de los paquetes.
+   ======================================================================= */
+.sec.arma{border-top:1px solid var(--linea)}
+/* menú: con "Arma tu caja" son 8 enlaces; en pantallas medianas se aprietan y se ocultan dos */
+.m-uinky .nav a,.m-porthos .nav a{white-space:nowrap}
+@media(max-width:1180px){.m-uinky .nav,.m-porthos .nav{gap:1.1rem}}
+@media(max-width:1080px){.m-uinky .nav a[href$="-formula"],.m-uinky .nav a[href$="-taller"],.m-porthos .nav a[href$="-formula"],.m-porthos .nav a[href$="-taller"]{display:none}}
+.ar-promo{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap;
+  margin:1.6rem auto 0;max-width:940px;padding:.8rem 1rem;border-radius:4px;
+  background:var(--pq-acento);color:var(--pq-sobre);font-size:.9rem;line-height:1.4;text-align:center;
+}
+.ar-promo b{font-weight:700}
+.ar-promo span{display:block}
+.ar-promo span+span{opacity:.85}
+.ar{display:grid;gap:1.6rem;margin:1.6rem auto 0;max-width:940px;grid-template-columns:1fr;align-items:start}
+@media(min-width:900px){.ar{grid-template-columns:minmax(0,1fr) 330px}}
+.ar-lista{display:flex;flex-direction:column;gap:.7rem}
+.ar-grupo{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pq-suave);margin:.6rem 0 .1rem;display:flex;align-items:center;gap:.45rem}
+.ar-grupo::before{content:"";width:16px;height:2px;border-radius:2px;background:var(--pq-acento)}
+.ar-item{
+  display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:.85rem;align-items:center;
+  background:var(--pq-fondo);color:var(--pq-texto);border:1px solid var(--linea);border-radius:4px;padding:.6rem .75rem .6rem .6rem;
+}
+.ar-item.lleno{border-color:var(--pq-acento)}
+.ar-foto{width:64px;height:64px;border-radius:3px;object-fit:cover;display:block;background:var(--pq-tono)}
+.ar-nombre{font-family:var(--display);font-size:1.08rem;line-height:1.15;margin:0}
+.ar-meta{font-size:.76rem;color:var(--pq-suave);margin-top:.15rem}
+.ar-regalo{display:inline-block;margin-top:.3rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .45rem;border-radius:999px;background:var(--pq-acento);color:var(--pq-sobre)}
+.ar-paso{display:flex;align-items:center;border:1px solid var(--linea-fuerte);border-radius:999px;overflow:hidden}
+.ar-paso button{width:38px;height:38px;border:0;background:transparent;color:inherit;font-size:1.2rem;line-height:1;cursor:pointer;font-family:inherit}
+.ar-paso button:disabled{opacity:.3;cursor:default}
+.ar-paso button:not(:disabled):hover{background:var(--pq-tono)}
+.ar-paso span{min-width:1.6rem;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.ar-resumen{background:var(--pq-fondo);color:var(--pq-texto);border:1px solid var(--pq-acento);border-radius:4px;padding:1.15rem}
+@media(min-width:900px){.ar-resumen{position:sticky;top:calc(var(--alto-casa) + 90px)}}
+.ar-resumen h3{font-family:var(--display);font-weight:500;font-size:1.3rem;margin:0 0 .7rem}
+.ar-filas{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem;font-size:.84rem;line-height:1.35}
+.ar-filas li{display:flex;justify-content:space-between;gap:.8rem}
+.ar-filas li span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.ar-vacio{font-size:.86rem;color:var(--pq-suave);margin:0}
+.ar-cuentas{border-top:1px solid var(--linea);margin-top:.8rem;padding-top:.7rem;display:flex;flex-direction:column;gap:.25rem;font-size:.84rem}
+.ar-cuentas div{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+.ar-cuentas .ar-desc{color:var(--pq-suave)}
+.ar-total{align-items:baseline;margin-top:.3rem}
+.ar-total b{font-family:var(--display);font-size:1.75rem;font-weight:500}
+.ar-pista{margin:.8rem 0 0;font-size:.8rem;line-height:1.45;color:var(--pq-suave)}
+.ar-pista b{color:var(--pq-texto)}
+.ar-sumar{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.5rem}
+.ar-sumar button{font:inherit;font-size:.78rem;padding:.4rem .75rem;border-radius:999px;border:1px solid var(--pq-acento);background:transparent;color:inherit;cursor:pointer}
+.ar-sumar button:hover{background:var(--pq-acento);color:var(--pq-sobre)}
+.ar-resumen .btn{width:100%;margin-top:1rem}
+.ar-resumen .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.ar-limpiar{display:block;margin:.6rem auto 0;background:none;border:0;color:var(--pq-suave);font:inherit;font-size:.76rem;text-decoration:underline;cursor:pointer}
+@media(max-width:620px){
+  .ar-item{grid-template-columns:54px minmax(0,1fr) auto;gap:.65rem}
+  .ar-foto{width:54px;height:54px}
+  .ar-paso button{width:34px;height:34px}
+}
+
 </style>
 </head>
 <body>
@@ -961,6 +1024,7 @@ html[data-marca="porthos"]{
     <nav class="nav">
       <a href="#u-jabones">Jabones</a>
       <a href="#u-paquetes">Paquetes</a>
+      <a href="#u-arma">Arma tu caja</a>
       <a href="#u-proceso">La conversión</a>
       <a href="#u-formula">La fórmula</a>
       <a href="#u-empaque">Empaque</a>
@@ -1048,6 +1112,18 @@ html[data-marca="porthos"]{
       <p class="entrada" style="margin-inline:auto">Elige los que más te gusten, con un descuento rebajado, para que disfrutes de todas nuestras creaciones ÜINKY o PORTHOS para el hombre. Todos están formulados con aceites nobles y exquisitas notas perfumadas.</p>
     </div>
     <div class="pq-rejilla" id="u-paq-rejilla"></div>
+  </div>
+</section>
+
+<section class="sec arma" id="u-arma">
+  <div class="env">
+    <div class="cabecera centro">
+      <p class="sup">A tu gusto</p>
+      <h2 class="tit">Arma tu caja</h2>
+      <p class="entrada" style="margin-inline:auto">Elige los jabones que quieras y cuántos de cada uno. Puedes mezclar ÜINKY y PORTHOS en la misma caja.</p>
+    </div>
+    <p class="ar-promo"><span>Por cada <b>3 jabones de 130 g</b>, uno de <b>85 g va de regalo</b>.</span><span>Cúrcuma: <b>2 por $25</b>, o a <b>$12</b> si la sumas a tu caja.</span></p>
+    <div class="ar" id="u-arma-caja"></div>
   </div>
 </section>
 
@@ -1261,6 +1337,7 @@ html[data-marca="porthos"]{
     <nav class="nav">
       <a href="#p-jabones">Jabones</a>
       <a href="#p-paquetes">Paquetes</a>
+      <a href="#p-arma">Arma tu caja</a>
       <a href="#p-proceso">La conversión</a>
       <a href="#p-formula">La fórmula</a>
       <a href="#p-caja">La caja</a>
@@ -1349,6 +1426,18 @@ html[data-marca="porthos"]{
       <p class="entrada" style="margin-inline:auto">Elige los que más te gusten, con un descuento rebajado, para que disfrutes de todas nuestras creaciones ÜINKY o PORTHOS para el hombre. Todos están formulados con aceites nobles y exquisitas notas perfumadas.</p>
     </div>
     <div class="pq-rejilla" id="p-paq-rejilla"></div>
+  </div>
+</section>
+
+<section class="sec arma" id="p-arma">
+  <div class="env">
+    <div class="cabecera centro">
+      <p class="sup">A tu gusto</p>
+      <h2 class="tit">Arma tu caja</h2>
+      <p class="entrada" style="margin-inline:auto">Elige los jabones que quieras y cuántos de cada uno. Puedes mezclar ÜINKY y PORTHOS en la misma caja.</p>
+    </div>
+    <p class="ar-promo"><span>Por cada <b>3 jabones de 130 g</b>, uno de <b>85 g va de regalo</b>.</span><span>Cúrcuma: <b>2 por $25</b>, o a <b>$12</b> si la sumas a tu caja.</span></p>
+    <div class="ar" id="p-arma-caja"></div>
   </div>
 </section>
 
@@ -1857,7 +1946,7 @@ const JABONES_PORTHOS = [
   {
     nombre:"Jabón de Pino", gramos:"130 g", precio:15,
     desc:"Bosque húmedo y resina, con aceite esencial de pino. Más seco y más firme en la jabonera.",
-    color:"#2F4A3C", veta:"#8CA98F", estado:"proximo", etiqueta:"",
+    color:"#2F4A3C", veta:"#8CA98F", estado:"disponible", etiqueta:"",
     historia:[
       {f:"../assets/porthos-pino.webp",   pie:"Aceite esencial de pino."},
       {f:"../assets/porthos-pino-2.webp", pie:"El escudo, marcado a mano en cada barra."},
@@ -1902,8 +1991,8 @@ const PAQUETES = [
     desc:"Dos barras de Bambú: una a la ducha y otra guardada para cuando se acabe.",
     lleva:[{m:"porthos",i:0,n:2}] },
 
-  { marca:"porthos", nombre:"El bosque entero", antes:30, precio:26, estado:"proximo",
-    desc:"Bambú y Pino, las dos de PORTHOS. Sale cuando esté listo el próximo lote de Pino.",
+  { marca:"porthos", nombre:"El bosque entero", antes:30, precio:26, estado:"disponible",
+    desc:"Bambú y Pino, las dos de PORTHOS.",
     lleva:[{m:"porthos",i:0},{m:"porthos",i:1}] },
 
   { marca:"casa", nombre:"Mitad y mitad", antes:30, precio:26,
@@ -1989,6 +2078,152 @@ function pintaPaquetes(destino, marca){
 
 pintaPaquetes("u-paq-rejilla", "uinky");
 pintaPaquetes("p-paq-rejilla", "porthos");
+
+
+/* =======================================================================
+   ARMA TU CAJA — el cliente arma su pedido con las dos marcas.
+   Promo: por cada PROMO.cada jabones de PROMO.paga, uno de PROMO.regalo
+   va gratis (el que el cliente elija). La caja se comparte entre las dos
+   páginas y se recuerda en este navegador.
+   ======================================================================= */
+const PROMO = { cada:3, paga:"130 g", regalo:"85 g" };
+/* Cúrcuma (lo que más hay en stock): 2 por $25, y una suelta a $12 si en la caja hay otro jabón */
+const CURCUMA = { clave:"u0", par:25, suelta:12 };
+const ARMA = (() => {
+  const rotulo = {uinky:"ÜINKY", porthos:"PORTHOS"};
+  const todos = [
+    ...JABONES_UINKY.map((j, i) => ({...j, m:"uinky", k:"u" + i})),
+    ...JABONES_PORTHOS.map((j, i) => ({...j, m:"porthos", k:"p" + i})),
+  ].filter(j => j.estado !== "proximo");
+  const porClave = Object.fromEntries(todos.map(j => [j.k, j]));
+  let caja = {};
+  try { caja = JSON.parse(localStorage.getItem("cw_caja") || "{}") || {}; } catch (e) { caja = {}; }
+  Object.keys(caja).forEach(k => { if (!porClave[k] || !(caja[k] > 0)) delete caja[k]; });
+  const guarda = () => { try { localStorage.setItem("cw_caja", JSON.stringify(caja)); } catch (e) { /* sin almacenamiento */ } };
+
+  function calcula(){
+    const filas = todos.filter(j => caja[j.k] > 0).map(j => ({j, n:caja[j.k]}));
+    const grandes = filas.filter(f => f.j.gramos === PROMO.paga).reduce((a, f) => a + f.n, 0);
+    const regalos = Math.floor(grandes / PROMO.cada);
+    let libres = regalos;
+    const gratis = {};
+    filas.filter(f => f.j.gramos === PROMO.regalo).sort((a, b) => b.j.precio - a.j.precio).forEach(f => {
+      const g = Math.min(f.n, libres);
+      if (g) { gratis[f.j.k] = g; libres -= g; }
+    });
+    const subtotal = filas.reduce((a, f) => a + f.n * f.j.precio, 0);
+    const descuentos = [];
+    const regaloV = filas.reduce((a, f) => a + (gratis[f.j.k] || 0) * f.j.precio, 0);
+    if (regaloV) descuentos.push({t:`Regalo de ${PROMO.regalo}`, v:regaloV});
+    const cur = porClave[CURCUMA.clave], nc = caja[CURCUMA.clave] || 0;
+    if (cur && nc) {
+      const pares = Math.floor(nc / 2);
+      if (pares) descuentos.push({t:`Cúrcuma 2 por $${CURCUMA.par}`, v:pares * (2 * cur.precio - CURCUMA.par)});
+      const otros = filas.some(f => f.j.k !== CURCUMA.clave && f.n - (gratis[f.j.k] || 0) > 0);
+      if (nc % 2 && otros) descuentos.push({t:`Cúrcuma a $${CURCUMA.suelta}`, v:cur.precio - CURCUMA.suelta});
+    }
+    const descuento = descuentos.reduce((a, d) => a + d.v, 0);
+    return {filas, grandes, regalos, libres, gratis, subtotal, descuentos, descuento, total: subtotal - descuento, nc};
+  }
+
+  function mensaje(c){
+    const lineas = ["Hola, armé mi caja de jabones:"];
+    c.filas.forEach(({j, n}) => {
+      const pagados = n - (c.gratis[j.k] || 0);
+      if (pagados) lineas.push(`• ${pagados} × ${j.nombre} ${j.gramos} (${rotulo[j.m]}) — $${pagados * j.precio}`);
+    });
+    c.filas.forEach(({j}) => {
+      const g = c.gratis[j.k] || 0;
+      if (g) lineas.push(`• ${g} × ${j.nombre} ${j.gramos} (${rotulo[j.m]}) — $0 (regalo)`);
+    });
+    c.descuentos.filter(d => !d.t.startsWith("Regalo")).forEach(d => lineas.push(`Promo ${d.t}: −$${d.v}`));
+    if (c.regalos) lineas.push(`Promo: por cada ${PROMO.cada} de ${PROMO.paga}, uno de ${PROMO.regalo} de regalo.`);
+    lineas.push(`Total: $${c.total}`);
+    return lineas.join("\n");
+  }
+
+  function pistaCurcuma(c){
+    const cur = porClave[CURCUMA.clave];
+    if (!cur || !c.filas.length) return "";
+    const otros = c.filas.some(f => f.j.k !== CURCUMA.clave && f.n - (c.gratis[f.j.k] || 0) > 0);
+    if (!c.nc && otros) return `<div class="ar-sumar"><button type="button" data-ar-mas="${CURCUMA.clave}">+ Cúrcuma por $${CURCUMA.suelta}</button></div>`;
+    if (c.nc % 2) return `<p class="ar-pista">Lleva otra Cúrcuma: <b>las 2 por $${CURCUMA.par}</b>.</p><div class="ar-sumar"><button type="button" data-ar-mas="${CURCUMA.clave}">+ Otra Cúrcuma</button></div>`;
+    return "";
+  }
+
+  function pista(c){
+    const chicos = todos.filter(j => j.gramos === PROMO.regalo);
+    if (c.libres > 0) {
+      return `<p class="ar-pista"><b>Te ${c.libres === 1 ? "toca 1 regalo" : "tocan " + c.libres + " regalos"} de ${PROMO.regalo}.</b> Súmalo a tu caja:</p>
+        <div class="ar-sumar">${chicos.map(j => `<button type="button" data-ar-mas="${j.k}">+ ${esc(j.nombre.replace("Jabón de ", ""))} gratis</button>`).join("")}</div>`;
+    }
+    const faltan = PROMO.cada - (c.grandes % PROMO.cada);
+    if (!c.filas.length) return "";
+    const cuantos = faltan === 1 ? "<b>1 jabón" : "<b>" + faltan + " jabones";
+    return c.regalos
+      ? `<p class="ar-pista">Ya tienes tu regalo. Con ${cuantos} más de ${PROMO.paga}</b> te llevas otro de ${PROMO.regalo}.</p>`
+      : `<p class="ar-pista">Te ${faltan === 1 ? "falta" : "faltan"} ${cuantos} de ${PROMO.paga}</b> para llevarte uno de ${PROMO.regalo} de regalo.</p>`;
+  }
+
+  function pinta(destino, marca){
+    const el = document.getElementById(destino);
+    if (!el) return;
+    const c = calcula();
+    const orden = marca === "porthos" ? ["porthos", "uinky"] : ["uinky", "porthos"];
+    const lista = orden.map(m => {
+      const js = todos.filter(j => j.m === m);
+      if (!js.length) return "";
+      return `<p class="ar-grupo">${rotulo[m]}</p>` + js.map(j => {
+        const n = caja[j.k] || 0, g = c.gratis[j.k] || 0;
+        const f = j.historia ? j.historia[0].f : j.foto;
+        const foto = f ? `<img class="ar-foto" src="${f}" alt="${esc(j.nombre)}" loading="lazy">` : `<span class="ar-foto" style="background:${j.color}"></span>`;
+        return `<div class="ar-item${n ? " lleno" : ""}">
+          ${foto}
+          <div><p class="ar-nombre">${esc(j.nombre)}</p>
+            <p class="ar-meta">${esc(j.gramos)} · $${j.precio}${j.k === CURCUMA.clave ? ` · <b>2 por $${CURCUMA.par}</b>` : ""}</p>
+            ${g ? `<span class="ar-regalo">${g === n ? "De regalo" : g + " de regalo"}</span>` : ""}</div>
+          <div class="ar-paso" role="group" aria-label="Cantidad de ${esc(j.nombre)}">
+            <button type="button" data-ar-menos="${j.k}" aria-label="Quitar uno" ${n ? "" : "disabled"}>−</button>
+            <span aria-live="polite">${n}</span>
+            <button type="button" data-ar-mas="${j.k}" aria-label="Agregar uno" ${n >= 20 ? "disabled" : ""}>+</button>
+          </div>
+        </div>`;
+      }).join("");
+    }).join("");
+    const filas = c.filas.map(({j, n}) => {
+      const g = c.gratis[j.k] || 0, pagados = n - g;
+      return (pagados ? `<li><span>${pagados} × ${esc(j.nombre)}</span><span>$${pagados * j.precio}</span></li>` : "") +
+             (g ? `<li><span>${g} × ${esc(j.nombre)}</span><span>regalo</span></li>` : "");
+    }).join("");
+    const vacio = !c.filas.length;
+    el.innerHTML = `
+      <div class="ar-lista">${lista}</div>
+      <aside class="ar-resumen" aria-label="Tu caja">
+        <h3>Tu caja</h3>
+        ${vacio ? `<p class="ar-vacio">Todavía está vacía. Usa el + para agregar jabones.</p>` : `<ul class="ar-filas">${filas}</ul>
+        <div class="ar-cuentas">
+          ${c.descuento ? `<div><span>Subtotal</span><span>$${c.subtotal}</span></div>` + c.descuentos.map(d => `<div class="ar-desc"><span>${esc(d.t)}</span><span>−$${d.v}</span></div>`).join("") : ""}
+          <div class="ar-total"><span>Total</span><b>$${c.total}</b></div>
+        </div>`}
+        ${pista(c)}
+        ${pistaCurcuma(c)}
+        <a class="btn" href="${vacio ? "#" : wa(mensaje(c))}" target="_blank" rel="noopener" aria-disabled="${vacio}">${ICONO_WA}Pedir mi caja</a>
+        ${vacio ? "" : `<button type="button" class="ar-limpiar" data-ar-limpiar>Vaciar la caja</button>`}
+      </aside>`;
+  }
+
+  const todo = () => { pinta("u-arma-caja", "uinky"); pinta("p-arma-caja", "porthos"); };
+  document.addEventListener("click", e => {
+    const mas = e.target.closest("[data-ar-mas]"), menos = e.target.closest("[data-ar-menos]"), limpiar = e.target.closest("[data-ar-limpiar]");
+    if (!mas && !menos && !limpiar) return;
+    if (mas) { const k = mas.dataset.arMas; caja[k] = Math.min(20, (caja[k] || 0) + 1); }
+    if (menos) { const k = menos.dataset.arMenos; caja[k] = Math.max(0, (caja[k] || 0) - 1); if (!caja[k]) delete caja[k]; }
+    if (limpiar) caja = {};
+    guarda(); todo();
+  });
+  todo();
+  return { calcula, mensaje, caja: () => caja };
+})();
 
 
 /* ---------------- de aquí para abajo no hace falta tocar ---------------- */
