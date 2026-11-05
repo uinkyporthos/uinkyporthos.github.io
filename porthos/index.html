@@ -2894,8 +2894,48 @@ function sxAutoplay({ end, chip, speed = .5, delay = 1700, offset = () => 0 }) {
 
   /* recorrido automático hasta los jabones de la marca que esté abierta */
   const fin = { getBoundingClientRect: () => ($(`#${b()}-jabones`) || document.body).getBoundingClientRect() };
-  sxAutoplay({ end: fin, chip: $('.sx-chip'), speed: .5, delay: 2700, offset: top });
+  window.sxTour = sxAutoplay({ end: fin, chip: $('.sx-chip'), speed: .5, delay: 2700, offset: top });
 })();
 </script>
+<!-- Asistente de chat y voz (el mismo de Creative Whisper). La información sale de la base de ÜINKY y PORTHOS. -->
+<script>
+(function () {
+  var html = document.documentElement;
+  var marca = function () { return html.dataset.marca === "porthos" ? "porthos" : "uinky"; };
+  var TEMAS = {
+    uinky: { fondo: "#FFFFFF", panel: "#FFFFFF", panel2: "#FFF1E8", texto: "#3A2A1C", suave: "#7A6552",
+             acento: "#FFBE75", acentoTexto: "#A3561A", sobreAcento: "#3A2A1C", linea: "rgba(58,42,28,.16)",
+             fuente: '"Karla",system-ui,-apple-system,"Segoe UI",sans-serif', titulo: '"Cormorant Garamond",Georgia,serif' },
+    porthos: { fondo: "#1A1716", panel: "#262221", panel2: "#302B29", texto: "#E9E4D0", suave: "#9E978A",
+               acento: "#3EA398", acentoTexto: "#5CC2B6", sobreAcento: "#14312F", linea: "rgba(233,228,208,.16)",
+               fuente: '"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif', titulo: '"Cinzel",Georgia,serif' }
+  };
+  window.CW_ASISTENTE = {
+    sitio: "jabones",
+    tema: function () { return TEMAS[marca()]; },
+    textos: {
+      titulo: "Asistente ÜINKY · PORTHOS",
+      saludo: "Hola. Soy el asistente de ÜINKY y PORTHOS: te ayudo con los jabones, los paquetes y cómo pedir.",
+      sugerencias: ["¿Qué jabón me recomiendas para regalar?", "¿Cuánto cuestan los paquetes?", "¿Cómo se hacen los jabones?", "¿Cómo hago mi pedido?"],
+      nota: "Asistente automático de ÜINKY y PORTHOS. El pedido se envía por WhatsApp."
+    },
+    cabecera: ".casa",
+    evitar: [".flotante", ".sx-chip"],
+    contexto: function () { return "la persona está viendo " + (marca() === "porthos" ? "PORTHOS" : "ÜINKY"); },
+    // uinky-jabones, porthos-paquetes…: si la otra marca está abierta, cambia de marca y luego muestra la parte
+    resolver: function (id) {
+      var m = /^(uinky|porthos)-(.+)$/.exec(id);
+      if (!m) return null;
+      var el = function () { return document.getElementById((m[1] === "uinky" ? "u-" : "p-") + m[2]); };
+      if (marca() === m[1]) return el();
+      var op = document.querySelector('.cambio .op[data-marca="' + m[1] + '"]');
+      if (op) op.click();
+      return new Promise(function (listo) { setTimeout(function () { listo(el()); }, 1100); });
+    }
+  };
+  addEventListener("marcacambia", function () { if (window.cwAsistente) window.cwAsistente.tema(TEMAS[marca()]); });
+})();
+</script>
+<script src="https://creativewhisper.github.io/asistente/asistente.js" defer></script>
 </body>
 </html>
