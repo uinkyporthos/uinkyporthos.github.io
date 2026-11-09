@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#3A2A1C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#262221" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Taller">
+<title>Taller ÜINKY · PORTHOS</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Una app de taller para dos marcas: ÜINKY pone el papel blanco y el naranja; PORTHOS, el carbón y el jade.
+   Números grandes en Barlow Condensed (la letra de PORTHOS), texto en Karla (la de ÜINKY). */
+:root{
+  --papel:#FFFFFF; --papel-2:#FFF5EE; --durazno:#FFE2D1;
+  --tinta:#3A2A1C; --tinta-2:#76604D; --linea:#EEDFD3;
+  --naranja:#FFBE75; --jade:#3EA398; --sobre-acento:#3A2A1C;
+  --barra:#3A2A1C; --barra-txt:#FFFFFF;
+  --listo:#2B7049; --listo-fondo:#E3F2E8;
+  --curando:#875610; --curando-fondo:#FCEBD2;
+  --alerta:#B42318; --alerta-fondo:#FDE7E4;
+  --sombra:0 1px 2px rgba(58,42,28,.07),0 6px 18px rgba(58,42,28,.06);
+  --f-texto:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-num:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --papel:#1C1918; --papel-2:#262221; --durazno:#3A2D25;
+    --tinta:#EEE7D7; --tinta-2:#B6AA97; --linea:#3A3432;
+    --naranja:#FFBE75; --jade:#4DB8AC; --sobre-acento:#2A1E14;
+    --barra:#262221; --barra-txt:#EEE7D7;
+    --listo:#7CCF9C; --listo-fondo:#1D3127;
+    --curando:#EDB45E; --curando-fondo:#3A2C18;
+    --alerta:#FF8F80; --alerta-fondo:#3C1F1B;
+    --sombra:none;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:16px/1.45 var(--f-texto);min-height:100dvh;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--jade);outline-offset:2px}
+.envoltura{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+
+/* marca de la app: dos barras, una por marca */
+.barras{display:inline-flex;gap:3px;align-items:center}
+.barras i{display:block;width:9px;height:18px;border-radius:3px}
+.barras i:first-child{background:var(--naranja)}
+.barras i:last-child{background:var(--jade)}
+.punto{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.punto.uinky{background:var(--naranja)}
+.punto.porthos{background:var(--jade)}
+
+/* cabecera */
+.cabecera{position:sticky;top:0;z-index:20;background:var(--barra);color:var(--barra-txt);padding-top:env(safe-area-inset-top,0px)}
+.cabecera .envoltura{display:flex;align-items:center;gap:10px;min-height:56px}
+.marca-app{display:flex;align-items:center;gap:10px;font:700 22px/1 var(--f-num);letter-spacing:.04em;text-transform:uppercase}
+.cab-der{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px;min-width:0}
+.cab-quien{display:flex;flex-direction:column;align-items:flex-end;line-height:1.2;min-width:0}
+.cab-quien b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw}
+.cab-quien span{opacity:.72;font-size:12px;white-space:nowrap}
+.btn-cab{background:transparent;border:1px solid rgba(255,255,255,.3);color:var(--barra-txt);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700}
+.girando{animation:gira 1s linear infinite;display:inline-block}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+main.vista{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));padding-top:4px}
+
+/* navegación inferior */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--papel);border-top:1px solid var(--linea);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav .envoltura{display:grid;grid-template-columns:repeat(4,1fr)}
+.nav button{background:none;border:0;padding:8px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:700;color:var(--tinta-2);position:relative}
+.nav button[aria-current="page"]{color:var(--tinta)}
+.nav .ico{width:52px;height:30px;border-radius:999px;display:grid;place-items:center}
+.nav button[aria-current="page"] .ico{background:var(--naranja);color:var(--sobre-acento)}
+.nav svg{width:22px;height:22px}
+.insignia{position:absolute;top:3px;left:calc(50% + 12px);background:var(--alerta);color:#fff;font:700 11px/18px var(--f-texto);min-width:18px;height:18px;border-radius:9px;padding:0 5px;text-align:center}
+
+/* títulos */
+.titulo{font:700 30px/1.05 var(--f-num);letter-spacing:.01em;margin:20px 0 4px;text-wrap:balance}
+.bajada{color:var(--tinta-2);margin:0 0 16px;font-size:15px;max-width:60ch}
+.subtitulo{display:flex;align-items:center;gap:8px;font:700 13px var(--f-texto);letter-spacing:.1em;text-transform:uppercase;margin:26px 0 10px;color:var(--tinta-2)}
+
+/* resumen */
+.resumen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:14px;overflow:hidden;margin:14px 0 6px}
+.resumen > *{background:var(--papel);padding:10px 12px;border:0;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0}
+.resumen b{font:700 32px/1 var(--f-num);font-variant-numeric:tabular-nums}
+.resumen span{font-size:13px;color:var(--tinta-2);line-height:1.2}
+.resumen .hay b{color:var(--alerta)}
+
+/* filtros */
+.filtros{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.filtro{border:1px solid var(--linea);background:var(--papel);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.filtro[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+
+/* tarjetas de jabón */
+.lista{display:flex;flex-direction:column;gap:10px}
+.modelo{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:14px;box-shadow:var(--sombra)}
+.m-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.m-nombre{font-weight:700;font-size:17px;display:flex;align-items:center;gap:8px}
+.m-meta{font-size:13px;color:var(--tinta-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+.chip{font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--papel-2);color:var(--tinta-2);border:1px solid var(--linea);line-height:1.35}
+.chip.curando{background:var(--curando-fondo);color:var(--curando);border-color:transparent}
+.chip.alerta{background:var(--alerta-fondo);color:var(--alerta);border-color:transparent}
+.chip.listo{background:var(--listo-fondo);color:var(--listo);border-color:transparent}
+.chip.pendiente{background:var(--naranja);color:var(--sobre-acento);border-color:transparent}
+.m-num{text-align:right;flex:none;min-width:64px}
+.m-num b{display:block;font:700 46px/.92 var(--f-num);font-variant-numeric:tabular-nums}
+.m-num small{font-size:11.5px;color:var(--tinta-2);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.m-num.bajo b{color:var(--alerta)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:12px 16px;font-weight:700;border:1px solid var(--linea);background:var(--papel);min-height:48px;text-align:center}
+.btn.primario{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.btn.acento{background:var(--naranja);color:var(--sobre-acento);border-color:var(--naranja)}
+.btn.peligro{color:var(--alerta)}
+.btn.ancho{width:100%}
+.btn:disabled{opacity:.5;cursor:default}
+.btn-link{background:none;border:0;color:inherit;opacity:.8;text-decoration:underline;text-underline-offset:3px;padding:10px;font-size:14px}
+.fila-btn{display:flex;gap:8px;flex-wrap:wrap}
+.fila-btn .btn{flex:1}
+
+/* formularios */
+.campo{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;min-width:0}
+.etq{font-size:12.5px;font-weight:700;color:var(--tinta-2);letter-spacing:.06em;text-transform:uppercase}
+input[type=text],input[type=number],input[type=date],input[type=email],input[type=password],input[type=tel],select,textarea{width:100%;border:1px solid var(--linea);background:var(--papel);border-radius:12px;padding:11px 12px;min-height:48px;font-size:16px}
+textarea{min-height:76px;resize:vertical}
+.ayuda{font-size:13px;color:var(--tinta-2);margin:0}
+.dos-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.paso{display:inline-flex;align-items:stretch;border:1px solid var(--linea);border-radius:12px;overflow:hidden;background:var(--papel)}
+.paso button{width:48px;border:0;background:var(--papel-2);font-size:22px;font-weight:700;line-height:1}
+.paso input{width:76px;border:0!important;border-radius:0!important;text-align:center;font:700 24px var(--f-num)!important;min-height:48px;padding:0!important;font-variant-numeric:tabular-nums}
+.paso.chico button{width:38px;font-size:18px}
+.paso.chico input{width:48px;font-size:20px!important;min-height:42px}
+.atajos{display:flex;gap:6px;flex-wrap:wrap}
+.atajo{border:1px solid var(--linea);background:var(--papel);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:700}
+.atajo[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+
+/* elegir jabón */
+.elige{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.elige label{position:relative;border:1px solid var(--linea);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;background:var(--papel);cursor:pointer;min-width:0}
+.elige label b{font-size:15px;display:flex;gap:7px;align-items:center}
+.elige label span{font-size:12.5px;color:var(--tinta-2)}
+.elige input{position:absolute;opacity:0;pointer-events:none}
+.elige label:has(input:checked){border-color:var(--tinta);box-shadow:inset 0 0 0 1px var(--tinta);background:var(--papel-2)}
+.elige label:has(input:focus-visible){outline:3px solid var(--jade);outline-offset:2px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--linea);border-radius:12px;overflow:hidden}
+.seg label{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;font-weight:700;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--tinta);color:var(--papel)}
+
+/* vista previa del lote */
+.previa{background:var(--durazno);border-radius:14px;padding:14px 16px;margin:4px 0 16px;display:flex;flex-direction:column;gap:2px}
+.previa .codigo{font-size:26px}
+.previa p{margin:0}
+
+/* lotes */
+.codigo{font:700 19px/1.1 var(--f-num);letter-spacing:.05em}
+.lote{border:1px solid var(--linea);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:var(--papel)}
+.lote-cab{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.lote-cab .der{font-size:14px;color:var(--tinta-2)}
+.prog{height:8px;border-radius:4px;background:var(--papel-2);overflow:hidden;border:1px solid var(--linea)}
+.prog i{display:block;height:100%;background:var(--curando);border-radius:3px}
+.prog.lista i{background:var(--listo)}
+.lote small{font-size:13px;color:var(--tinta-2)}
+
+/* pedidos */
+.pedido{border:1px solid var(--linea);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--papel);box-shadow:var(--sombra)}
+.pedido.nuevo{border-color:var(--naranja);box-shadow:0 0 0 3px rgba(255,190,117,.45)}
+.p-cab{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.p-num{font:700 28px/1 var(--f-num)}
+.p-quien{font-weight:700}
+.p-pago{font-size:13.5px;color:var(--listo);font-weight:700;margin:0}
+.p-texto{background:var(--papel-2);border-radius:10px;padding:10px 12px;font-size:15px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.p-notas{font-size:14px;color:var(--tinta-2);margin:0;overflow-wrap:anywhere}
+.items{display:flex;flex-direction:column;gap:8px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto 42px;gap:8px;align-items:center}
+.item select{min-height:44px;padding:8px 10px;font-size:15px}
+.quitar{width:42px;height:42px;border-radius:10px;border:1px solid var(--linea);background:var(--papel);font-size:20px;line-height:1}
+.falta{font-size:13px;color:var(--alerta);font-weight:700;grid-column:1/-1;margin-top:-2px}
+.vacio{border:1px dashed var(--linea);border-radius:16px;padding:22px 18px;text-align:center;color:var(--tinta-2)}
+.vacio b{display:block;color:var(--tinta);font-size:17px;margin-bottom:4px}
+.empacado{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--linea)}
+.empacado > div{flex:1;min-width:0}
+.empacado small{display:block;color:var(--tinta-2);font-size:13px}
+
+/* historial */
+.evento{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--linea)}
+.ev-tipo{flex:none;width:74px;font:700 13px/1.35 var(--f-num);letter-spacing:.07em;text-transform:uppercase;padding-top:2px;color:var(--tinta-2)}
+.ev-tipo.lote{color:var(--curando)}
+.ev-tipo.empaque,.ev-tipo.salida{color:var(--alerta)}
+.ev-tipo.conteo,.ev-tipo.inicial{color:var(--listo)}
+.ev-txt{flex:1;min-width:0;overflow-wrap:anywhere}
+.ev-txt small{display:block;color:var(--tinta-2);font-size:13px}
+.evento.anulado .ev-txt{text-decoration:line-through;opacity:.55}
+.deshacer{flex:none;background:none;border:1px solid var(--linea);border-radius:999px;padding:6px 11px;font-size:13px;font-weight:700}
+
+/* hoja inferior */
+dialog.hoja{border:0;padding:0;margin:auto auto 0;width:100%;max-width:640px;max-height:92dvh;border-radius:22px 22px 0 0;background:var(--papel);color:var(--tinta);overflow:hidden}
+dialog.hoja::backdrop{background:rgba(20,14,10,.5)}
+.hoja-in{padding:18px max(16px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow:auto;max-height:92dvh}
+.hoja-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px}
+.hoja-cab h2{font:700 28px/1.05 var(--f-num);margin:0;text-wrap:balance}
+.hoja-cab p{margin:4px 0 0;color:var(--tinta-2);font-size:14px}
+.cerrar{border:1px solid var(--linea);background:var(--papel);border-radius:999px;width:42px;height:42px;font-size:22px;line-height:1;flex:none}
+.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.cifras div{background:var(--papel-2);border-radius:12px;padding:10px 12px}
+.cifras b{display:block;font:700 30px/1 var(--f-num);font-variant-numeric:tabular-nums}
+.cifras span{font-size:12.5px;color:var(--tinta-2)}
+.acciones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:4px 0 14px}
+.acciones .btn{padding:10px 6px;font-size:15px}
+.acciones .btn[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.panel{border:1px solid var(--linea);border-radius:14px;padding:14px;margin-bottom:14px}
+
+/* entrada */
+.entrar{min-height:100dvh;display:flex;flex-direction:column;background:var(--barra);color:var(--barra-txt);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.entrar .envoltura{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding-block:28px;max-width:420px;width:100%}
+.lockup{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.lockup .barras i{width:16px;height:34px;border-radius:5px}
+.lockup .barras{gap:5px}
+.lockup h1{font:700 44px/1 var(--f-num);letter-spacing:.06em;text-transform:uppercase;margin:4px 0 0}
+.lockup p{margin:0;opacity:.75;letter-spacing:.14em;font-size:13px;font-weight:700}
+.puntos-pin{display:flex;justify-content:center;gap:14px;margin:6px 0}
+.puntos-pin i{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;opacity:.6}
+.puntos-pin i.lleno{background:var(--naranja);border-color:var(--naranja);opacity:1}
+.puntos-pin.error{animation:tiembla .35s}
+@keyframes tiembla{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.teclado{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tecla{height:64px;border-radius:16px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:var(--barra-txt);font:600 30px var(--f-num)}
+.tecla:active{background:rgba(255,190,117,.25)}
+.tecla.vacia{visibility:hidden}
+.tecla.chica{font:700 15px var(--f-texto)}
+.msg-entrar{min-height:22px;text-align:center;font-weight:700;color:var(--naranja);margin:0}
+.pie-entrar{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:13px;opacity:.85;text-align:center}
+.tarjeta-admin{background:var(--papel);color:var(--tinta);border-radius:18px;padding:18px}
+.tarjeta-admin h2{font:700 26px var(--f-num);margin:0 0 4px}
+.persona{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--linea)}
+.persona > div{flex:1;min-width:0}
+.persona small{display:block;color:var(--tinta-2);font-size:13px}
+
+/* aviso flotante */
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));background:var(--tinta);color:var(--papel);padding:12px 14px 12px 16px;border-radius:14px;font-weight:700;z-index:60;width:max-content;max-width:min(600px,calc(100% - 32px));display:flex;gap:12px;align-items:center;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+#toast button{background:var(--naranja);color:var(--sobre-acento);border:0;border-radius:9px;padding:8px 12px;font-weight:700;flex:none}
+
+.aviso-barra{display:flex;align-items:center;gap:10px;background:var(--alerta-fondo);color:var(--alerta);border-radius:12px;padding:10px 12px;font-weight:700;margin:12px 0 0;border:0;width:100%;text-align:left;font-size:15px}
+.aviso-barra span{flex:1}
+details.archivados{margin-top:18px}
+details.archivados summary{cursor:pointer;color:var(--tinta-2);font-weight:700;padding:8px 0}
+.instalar{margin-top:22px;padding:14px;border-radius:14px;background:var(--papel-2);font-size:14px;color:var(--tinta-2)}
+.instalar b{color:var(--tinta)}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media (min-width:560px){.elige{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div id="app"><div class="entrar"><div class="envoltura"><div class="lockup"><span class="barras"><i></i><i></i></span><h1>Taller</h1><p>ÜINKY · PORTHOS</p></div><p class="msg-entrar">Cargando…</p></div></div></div>
+<dialog id="hoja" class="hoja" aria-label="Detalle"></dialog>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<noscript><p style="padding:16px">Esta app necesita JavaScript activado.</p></noscript>
+
+<script>
+"use strict";
+const SB = "https://jlyrymgbykhpktabvlkl.supabase.co";
+const KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpseXJ5bWdieWtocGt0YWJ2bGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM2NjA0NjAsImV4cCI6MjEwOTIzNjQ2MH0.WX1GQOGDa6iFIjodwBbP9kts60HePGaShKCSzW8fmwI";
+const PESTANAS = ["inventario", "empacar", "fabricar", "historial"];
+const MOTIVOS = ["Venta en persona", "Regalo", "Muestra", "Dañada", "Otro"];
+const NUMS = { un: 1, una: 1, uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10 };
+
+const LS = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+  del(k) { try { localStorage.removeItem(k); } catch {} },
+};
+let vistosGuardados = [];
+try { vistosGuardados = JSON.parse(LS.get("taller.vistos") || "[]"); } catch {}
+
+const S = {
+  pin: LS.get("taller.pin"),
+  d: null,
+  tab: PESTANAS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "inventario",
+  filtro: LS.get("taller.filtro") || "todas",
+  edits: {},
+  vistos: new Set(vistosGuardados),
+  nuevos: new Set(),
+  cargando: false,
+  ultima: 0,
+  pendiente: false,
+  fab: { modelo: null, cant: 10, fecha: null, notas: "" },
+  hojaModelo: null, hojaAccion: null,
+  admin: null,
+  tecleado: "",
+};
+
+const app = document.getElementById("app");
+const hoja = document.getElementById("hoja");
+
+/* ---------- utilidades ---------- */
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fd = (s) => { const [y, m, d] = String(s).slice(0, 10).split("-").map(Number); return new Date(y, m - 1, d); };
+const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const addDias = (s, n) => { const d = fd(s); d.setDate(d.getDate() + n); return iso(d); };
+const diasEntre = (a, b) => Math.round((fd(b) - fd(a)) / 864e5);
+const fCorta = (s) => new Intl.DateTimeFormat("es-EC", { day: "numeric", month: "short" }).format(fd(s)).replace(".", "");
+const fDia = (s) => new Intl.DateTimeFormat("es-EC", { weekday: "short", day: "numeric", month: "short" }).format(fd(s)).replace(/\./g, "");
+const fLarga = (s) => new Intl.DateTimeFormat("es-EC", { weekday: "long", day: "numeric", month: "long" }).format(fd(s));
+const diaDe = (ts) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Guayaquil" }).format(new Date(ts));
+const hora = (ts) => new Intl.DateTimeFormat("es-EC", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: "America/Guayaquil" }).format(new Date(ts));
+function cuando(ts) {
+  const d = diaDe(ts), h = S.d ? S.d.hoy : diaDe(Date.now());
+  if (d === h) return "hoy " + hora(ts);
+  if (diasEntre(d, h) === 1) return "ayer " + hora(ts);
+  return fCorta(d) + " " + hora(ts);
+}
+function relativo(s) {
+  const n = diasEntre(S.d.hoy, s);
+  if (n === 0) return "hoy";
+  if (n === 1) return "mañana";
+  if (n === -1) return "ayer";
+  return n > 0 ? `en ${n} días` : `hace ${-n} días`;
+}
+const plural = (n, a, b) => `${n} ${n === 1 ? a : b}`;
+const claseMarca = (m) => (m === "PORTHOS" ? "porthos" : "uinky");
+const modelo = (id) => S.d.modelos.find((m) => m.id === Number(id));
+const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[“”"«»]/g, " ").replace(/[^\S\n]+/g, " ").trim();
+const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/* ---------- servidor ---------- */
+class ErrorPin extends Error {}
+async function rpc(fn, args = {}, token) {
+  let r;
+  try {
+    r = await fetch(`${SB}/rest/v1/rpc/${fn}`, {
+      method: "POST",
+      headers: { apikey: KEY, Authorization: "Bearer " + (token || KEY), "Content-Type": "application/json" },
+      body: JSON.stringify(args),
+    });
+  } catch { throw new Error("Sin conexión. Revisa el internet e intenta de nuevo."); }
+  let j = null;
+  try { j = await r.json(); } catch {}
+  if (!r.ok) throw new Error((j && (j.message || j.msg || j.error_description)) || `Algo falló (${r.status}). Intenta de nuevo.`);
+  if (j && j.error === "pin") throw new ErrorPin("Tu PIN ya no es válido. Vuelve a entrar.");
+  if (j && j.error === "bloqueado") throw new ErrorPin("Demasiados intentos con PIN incorrecto. Espera 15 minutos.");
+  return j;
+}
+
+/* ---------- avisos ---------- */
+let tToast;
+function toast(txt, accion, fn) {
+  const t = document.getElementById("toast");
+  t.innerHTML = `<span>${esc(txt)}</span>${accion ? `<button type="button">${esc(accion)}</button>` : ""}`;
+  t.hidden = false;
+  if (accion) t.querySelector("button").onclick = () => { t.hidden = true; fn(); };
+  clearTimeout(tToast);
+  tToast = setTimeout(() => (t.hidden = true), accion ? 8000 : 3800);
+}
+let audio = null;
+document.addEventListener("pointerdown", () => { if (!audio) { try { audio = new (window.AudioContext || window.webkitAudioContext)(); } catch {} } }, { once: true });
+function pitido() {
+  if (!audio) return;
+  try {
+    [0, 0.22].forEach((t0) => {
+      const o = audio.createOscillator(), g = audio.createGain();
+      o.frequency.value = 880; o.connect(g); g.connect(audio.destination);
+      const t = audio.currentTime + t0;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.25, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+      o.start(t); o.stop(t + 0.2);
+    });
+  } catch {}
+}
+function avisarNuevos(n) {
+  const txt = n === 1 ? "Hay un pedido pagado para empacar." : `Hay ${n} pedidos pagados para empacar.`;
+  toast(txt, S.tab === "empacar" ? null : "Ver", () => irA("empacar"));
+  try { navigator.vibrate && navigator.vibrate([220, 120, 220]); } catch {}
+  pitido();
+  if (document.visibilityState !== "visible" && "Notification" in window && Notification.permission === "granted" && navigator.serviceWorker) {
+    navigator.serviceWorker.ready.then((reg) => reg.showNotification("Taller · pedido para empacar", { body: txt, icon: "icon-192.png", badge: "icon-192.png", tag: "empacar", renotify: true })).catch(() => {});
+  }
+}
+
+/* ---------- leer los productos que escribió el bot ---------- */
+function cantidadEn(s) {
+  s = s.replace(/\$\s*\d+(?:[.,]\d+)?/g, " ").replace(/\b\d+(?:[.,]\d+)?\s*(?:g|gr|grs|gramos|usd|dolares)\b/g, " ").replace(/#\s*\d+/g, " ");
+  const m = s.match(/[x×]\s*(\d{1,3})\b/) || s.match(/\b(\d{1,3})\s*[x×]/) || s.match(/\((\d{1,3})\)/) || s.match(/^\s*(\d{1,3})\b/) ||
+    s.match(/\b(\d{1,3})\s*(?:u|uds?|unidad(?:es)?|barras?|jabon(?:es)?|paquetes?|combos?)\b/);
+  if (m) return Math.min(500, Math.max(1, parseInt(m[1], 10)));
+  const w = s.match(/\b(una|uno|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\b/);
+  return w ? NUMS[w[1]] : 1;
+}
+function leerPedido(texto) {
+  const d = S.d, porCodigo = {};
+  d.modelos.forEach((m) => (porCodigo[m.codigo] = m));
+  const paqs = d.paquetes || [];
+  let t = " " + norm(texto) + " ";
+  paqs.forEach((p, i) => {
+    (p.palabras || []).map(norm).filter(Boolean).sort((a, b) => b.length - a.length).forEach((k) => { t = t.split(k).join(` §${i}§ `); });
+  });
+  t = t.replace(/(§(\d+)§)(\s*§\2§)+/g, "$1");
+  const P = {}, M = {}, hallados = [];
+  const sumar = (o, id, n) => (o[id] = (o[id] || 0) + n);
+  for (const seg of t.split(/[,;\n+\/|]|\s+y\s+|\s+e\s+|\s+mas\s+|\s+con\s+/)) {
+    const toks = [...seg.matchAll(/§(\d+)§/g)].map((m) => +m[1]);
+    const resto = seg.replace(/§\d+§/g, " ");
+    if (toks.length) {
+      const n = cantidadEn(resto);
+      toks.forEach((i) => {
+        hallados.push([i, n]);
+        (paqs[i].componentes || []).forEach((c) => { const m = porCodigo[c.c]; if (m) sumar(P, m.id, (c.n || 1) * n); });
+      });
+      continue;
+    }
+    const ids = d.modelos.filter((m) => (m.palabras || []).some((k) => { k = norm(k); return k && new RegExp("\\b" + reEsc(k) + "\\b").test(resto); })).map((m) => m.id);
+    if (!ids.length) continue;
+    const n = ids.length === 1 ? cantidadEn(resto) : 1;
+    ids.forEach((id) => sumar(M, id, n));
+  }
+  // Si el texto describe lo que trae un paquete ("Multicolor (Cúrcuma + Vasija…)"), no se cuenta dos veces.
+  for (const [i, n] of hallados) for (const c of paqs[i].componentes || []) {
+    const m = porCodigo[c.c]; if (!m) continue;
+    const q = Math.min(M[m.id] || 0, (c.n || 1) * n); if (q) M[m.id] -= q;
+  }
+  const out = { ...P };
+  for (const id in M) if (M[id] > 0) sumar(out, id, M[id]);
+  return Object.entries(out).map(([id, c]) => ({ modelo_id: +id, cantidad: c }));
+}
+function itemsDe(p) {
+  if (!S.edits[p.id]) S.edits[p.id] = leerPedido(p.productos || "");
+  return S.edits[p.id];
+}
+function apartados() {
+  const a = {};
+  for (const p of S.d.pedidos) for (const it of itemsDe(p)) if (it.modelo_id) a[it.modelo_id] = (a[it.modelo_id] || 0) + (+it.cantidad || 0);
+  return a;
+}
+
+/* ---------- carga ---------- */
+async function cargar() {
+  if (S.cargando || !S.pin) return;
+  S.cargando = true; pintarCab();
+  try {
+    const d = await rpc("taller_estado", { p_pin: S.pin });
+    S.d = d; S.ultima = Date.now();
+    const vivos = new Set(d.pedidos.map((p) => p.id));
+    for (const id in S.edits) if (!vivos.has(+id)) delete S.edits[id];
+    const nuevos = d.pedidos.map((p) => p.id).filter((id) => !S.vistos.has(id));
+    nuevos.forEach((id) => { S.vistos.add(id); S.nuevos.add(id); });
+    LS.set("taller.vistos", JSON.stringify([...S.vistos].slice(-300)));
+    try { d.pedidos.length ? navigator.setAppBadge && navigator.setAppBadge(d.pedidos.length) : navigator.clearAppBadge && navigator.clearAppBadge(); } catch {}
+    document.title = (d.pedidos.length ? `(${d.pedidos.length}) ` : "") + "Taller ÜINKY · PORTHOS";
+    if (!document.querySelector(".cabecera")) pantallaPrincipal(); else pintar();
+    if (nuevos.length) avisarNuevos(nuevos.length);
+  } catch (e) {
+    if (e instanceof ErrorPin) { salir(e.message); return; }
+    if (!S.d) pantallaEntrar(e.message); else toast(e.message);
+  } finally { S.cargando = false; pintarCab(); }
+}
+setInterval(() => { if (S.pin && S.d && document.visibilityState === "visible") cargar(); }, 30000);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && S.pin && S.d && Date.now() - S.ultima > 10000) cargar(); });
+window.addEventListener("online", () => { if (S.pin && S.d) cargar(); });
+
+async function hacer(btn, fn) {
+  if (btn) btn.disabled = true;
+  try { return await fn(); }
+  catch (e) { if (e instanceof ErrorPin) salir(e.message); else toast(e.message); }
+  finally { if (btn && btn.isConnected) btn.disabled = false; }
+}
+
+/* ---------- entrada con PIN ---------- */
+function pantallaEntrar(msg = "") {
+  S.tecleado = "";
+  cerrarHoja();
+  const teclas = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "borrar"];
+  app.innerHTML = `<div class="entrar"><div class="envoltura">
+    <div class="lockup"><span class="barras"><i></i><i></i></span><h1>Taller</h1><p>ÜINKY · PORTHOS</p></div>
+    <div><p style="text-align:center;margin:0 0 8px;font-weight:700">Escribe tu PIN</p>
+      <div class="puntos-pin" id="puntos" aria-hidden="true">${"<i></i>".repeat(6)}</div>
+      <p class="msg-entrar" id="msg" role="alert">${esc(msg)}</p></div>
+    <div class="teclado">${teclas.map((t) => t === "" ? `<span class="tecla vacia"></span>` :
+      t === "borrar" ? `<button class="tecla chica" type="button" data-tecla="borrar" aria-label="Borrar">Borrar</button>` :
+      `<button class="tecla" type="button" data-tecla="${t}">${t}</button>`).join("")}</div>
+    <div class="pie-entrar"><button class="btn-link" type="button" data-accion="admin">Soy administrador</button>
+      <span>Matías te da tu PIN de 6 números.</span></div>
+  </div></div>`;
+}
+function teclear(t) {
+  const msg = document.getElementById("msg"); if (!msg) return;
+  if (t === "borrar") S.tecleado = S.tecleado.slice(0, -1);
+  else if (S.tecleado.length < 6) { S.tecleado += t; msg.textContent = ""; }
+  document.querySelectorAll("#puntos i").forEach((i, k) => i.classList.toggle("lleno", k < S.tecleado.length));
+  if (S.tecleado.length === 6) entrarCon(S.tecleado);
+}
+async function entrarCon(pin) {
+  const msg = document.getElementById("msg");
+  msg.textContent = "Entrando…";
+  try {
+    await rpc("taller_entrar", { p_pin: pin });
+    S.pin = pin; LS.set("taller.pin", pin);
+    await cargar();
+  } catch (e) {
+    S.tecleado = "";
+    const p = document.getElementById("puntos");
+    if (p) { p.classList.remove("error"); void p.offsetWidth; p.classList.add("error"); p.querySelectorAll("i").forEach((i) => i.classList.remove("lleno")); }
+    if (msg) msg.textContent = e instanceof ErrorPin ? (e.message.startsWith("Demasiados") ? e.message : "PIN incorrecto. Intenta otra vez.") : e.message;
+  }
+}
+function salir(msg) {
+  S.pin = null; S.d = null; LS.del("taller.pin");
+  try { navigator.clearAppBadge && navigator.clearAppBadge(); } catch {}
+  pantallaEntrar(msg || "");
+}
+document.addEventListener("keydown", (e) => {
+  if (!document.getElementById("puntos")) return;
+  if (/^[0-9]$/.test(e.key)) teclear(e.key);
+  else if (e.key === "Backspace") teclear("borrar");
+});
+
+/* ---------- pantalla principal ---------- */
+const ICONOS = {
+  inventario: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="2"/><rect x="3" y="11" width="18" height="5" rx="2"/><path d="M6 20h12"/></svg>',
+  empacar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>',
+  fabricar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M9 6v12M15 6v12"/></svg>',
+  historial: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+};
+const NOMBRES = { inventario: "Inventario", empacar: "Empacar", fabricar: "Fabricar", historial: "Historial" };
+
+function pantallaPrincipal() {
+  app.innerHTML = `<header class="cabecera"><div class="envoltura">
+      <span class="marca-app"><span class="barras"><i></i><i></i></span>Taller</span>
+      <div class="cab-der"><div class="cab-quien" id="cab-quien"></div>
+      <button class="btn-cab" type="button" data-accion="refrescar" aria-label="Actualizar">Actualizar</button></div>
+    </div></header>
+    <main class="vista envoltura" id="vista"></main>
+    <nav class="nav" aria-label="Secciones"><div class="envoltura">${PESTANAS.map((t) =>
+      `<button type="button" data-ir="${t}"><span class="ico">${ICONOS[t]}</span>${NOMBRES[t]}<span class="insignia" data-insignia="${t}" hidden></span></button>`).join("")}</div></nav>`;
+  pintar(true);
+}
+function pintarCab() {
+  const q = document.getElementById("cab-quien"); if (!q || !S.d) return;
+  q.innerHTML = `<b>${esc(S.d.trabajador.nombre)}</b><span>${S.cargando ? '<span class="girando">↻</span> actualizando' : "al día · " + hora(S.ultima)}</span>`;
+}
+function pintarNav() {
+  document.querySelectorAll(".nav [data-ir]").forEach((b) => b.setAttribute("aria-current", b.dataset.ir === S.tab ? "page" : "false"));
+  const ins = document.querySelector('[data-insignia="empacar"]');
+  if (ins) { const n = S.d.pedidos.length; ins.hidden = !n; ins.textContent = n; }
+}
+function ocupadoEditando() {
+  const a = document.activeElement;
+  const v = document.getElementById("vista");
+  return v && a && v.contains(a) && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName);
+}
+function pintar(forzar) {
+  if (!S.d) return;
+  pintarCab(); pintarNav();
+  if (!forzar && (ocupadoEditando() || hoja.open)) { S.pendiente = true; return; }
+  S.pendiente = false;
+  const v = document.getElementById("vista"); if (!v) return;
+  v.innerHTML = { inventario: vInventario, empacar: vEmpacar, fabricar: vFabricar, historial: vHistorial }[S.tab]();
+}
+function irA(tab) {
+  if (!PESTANAS.includes(tab)) return;
+  S.tab = tab;
+  if (location.hash !== "#" + tab) history.replaceState(null, "", "#" + tab);
+  pintar(true);
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", () => { const t = location.hash.slice(1); if (PESTANAS.includes(t) && t !== S.tab && S.d) irA(t); });
+document.addEventListener("focusout", () => setTimeout(() => { if (S.pendiente && !ocupadoEditando() && !hoja.open) pintar(); }, 400));
+
+/* ---------- inventario ---------- */
+function tarjetaModelo(m, ap) {
+  const apart = ap[m.id] || 0, disp = m.listos - apart;
+  const chips = [];
+  if (m.curando > 0) chips.push(`<span class="chip curando">${m.curando} curándose · listas ${fCorta(m.proximo)}</span>`);
+  if (apart) chips.push(`<span class="chip">${apart} para pedidos</span>`);
+  if (m.listos < 0) chips.push(`<span class="chip alerta">Revisa: haz un conteo</span>`);
+  else if (m.activo && disp <= m.minimo) chips.push(`<span class="chip alerta">${disp <= 0 ? "Sin barras libres" : "Quedan pocas"} · mínimo ${m.minimo}</span>`);
+  if (m.conteo && m.conteo.tipo === "inicial") chips.push(`<span class="chip pendiente">Falta el primer conteo</span>`);
+  const contado = m.conteo && m.conteo.tipo === "conteo" ? ` · contado ${cuando(m.conteo.creado_en)}` : "";
+  return `<button class="modelo" type="button" data-accion="ver-modelo" data-id="${m.id}">
+    <span class="m-info"><span class="m-nombre"><span class="punto ${claseMarca(m.marca)}"></span>${esc(m.nombre)}</span>
+      <span class="m-meta">${m.gramos ? m.gramos + " g · " : ""}lotes ${esc(m.codigo)}${contado}</span>
+      ${chips.length ? `<span class="chips">${chips.join("")}</span>` : ""}</span>
+    <span class="m-num${m.activo && disp <= m.minimo ? " bajo" : ""}"><b>${m.listos}</b><small>listas</small></span></button>`;
+}
+function vInventario() {
+  const d = S.d, ap = apartados();
+  const activos = d.modelos.filter((m) => m.activo), arch = d.modelos.filter((m) => !m.activo);
+  const totL = activos.reduce((s, m) => s + Math.max(0, m.listos), 0), totC = activos.reduce((s, m) => s + m.curando, 0);
+  const nP = d.pedidos.length;
+  let h = `<h1 class="titulo">Inventario</h1><p class="bajada">Barras listas para vender. Las que siguen curándose se suman solas cuando cumplen sus días.</p>`;
+  h += `<div class="resumen"><div><b>${totL}</b><span>listas</span></div><div><b>${totC}</b><span>curándose</span></div>
+    <button type="button" data-ir="empacar" class="${nP ? "hay" : ""}"><b>${nP}</b><span>${nP === 1 ? "pedido" : "pedidos"} por empacar</span></button></div>`;
+  h += `<div class="filtros" role="group" aria-label="Marca">${[["todas", "Todas", ""], ["ÜINKY", "ÜINKY", "uinky"], ["PORTHOS", "PORTHOS", "porthos"]].map(([k, t, c]) =>
+    `<button class="filtro" type="button" data-accion="filtro" data-f="${k}" aria-pressed="${S.filtro === k}">${c ? `<span class="punto ${c}"></span>` : ""}${t}</button>`).join("")}</div>`;
+  for (const marca of ["ÜINKY", "PORTHOS"]) {
+    if (S.filtro !== "todas" && S.filtro !== marca) continue;
+    const ms = activos.filter((m) => m.marca === marca);
+    if (!ms.length) continue;
+    h += `<h2 class="subtitulo"><span class="punto ${claseMarca(marca)}"></span>${marca}</h2><div class="lista">${ms.map((m) => tarjetaModelo(m, ap)).join("")}</div>`;
+  }
+  h += `<div style="margin-top:18px"><button class="btn ancho" type="button" data-accion="nuevo-modelo">+ Agregar modelo</button></div>`;
+  if (arch.length) h += `<details class="archivados"><summary>Archivados (${arch.length})</summary><div class="lista">${arch.map((m) => tarjetaModelo(m, ap)).join("")}</div></details>`;
+  h += bloqueInstalar();
+  return h;
+}
+
+/* ---------- hoja de un jabón ---------- */
+function abrirHoja(html) {
+  hoja.innerHTML = `<div class="hoja-in">${html}</div>`;
+  if (!hoja.open) hoja.showModal();
+}
+function cerrarHoja() { if (hoja.open) hoja.close(); }
+hoja.addEventListener("click", (e) => { if (e.target === hoja) cerrarHoja(); });
+hoja.addEventListener("close", () => { S.hojaModelo = null; S.hojaAccion = null; if (S.pendiente) pintar(); });
+
+function paso(id, valor, min, max, chico) {
+  return `<span class="paso${chico ? " chico" : ""}"><button type="button" data-accion="paso" data-obj="${id}" data-delta="-1" aria-label="Menos">−</button>
+    <input id="${id}" type="number" inputmode="numeric" min="${min}" max="${max}" value="${valor}"><button type="button" data-accion="paso" data-obj="${id}" data-delta="1" aria-label="Más">+</button></span>`;
+}
+function hojaModelo(id, accion) {
+  const m = modelo(id); if (!m) return;
+  S.hojaModelo = m.id; S.hojaAccion = accion || null;
+  const ap = apartados()[m.id] || 0;
+  const lotes = S.d.lotes.filter((l) => l.modelo_id === m.id && l.cura_hasta > S.d.hoy);
+  let panel = "";
+  if (accion === "contar") {
+    panel = `<div class="panel"><div class="campo"><span class="etq">Barras listas ahora</span>${paso("c-cant", Math.max(0, m.listos), 0, 100000)}
+      <p class="ayuda">Cuenta solo las que ya terminaron el curado. Las de los lotes que siguen curándose no van aquí.</p></div>
+      <div class="campo"><label class="etq" for="c-nota">Nota (opcional)</label><input id="c-nota" type="text" maxlength="200" placeholder="Ej.: conteo del lunes"></div>
+      <button class="btn primario ancho" type="button" data-accion="guardar-conteo">Guardar conteo</button></div>`;
+  } else if (accion === "sacar") {
+    panel = `<div class="panel"><div class="campo"><span class="etq">Cuántas barras salen</span>${paso("s-cant", 1, 1, 1000)}</div>
+      <div class="campo"><span class="etq">Por qué</span><div class="atajos" role="radiogroup">${MOTIVOS.map((t, i) =>
+        `<button class="atajo" type="button" role="radio" data-accion="motivo" data-m="${esc(t)}" aria-pressed="${i === 0}">${esc(t)}</button>`).join("")}</div>
+        <input id="s-otro" type="text" maxlength="120" placeholder="Escribe el motivo" hidden></div>
+      <p class="ayuda" style="margin-bottom:12px">Los pedidos de WhatsApp no van aquí: se descuentan solos al marcarlos como empacados.</p>
+      <button class="btn primario ancho" type="button" data-accion="guardar-salida">Sacar del inventario</button></div>`;
+  }
+  const conteo = m.conteo ? (m.conteo.tipo === "inicial" ? `Dato de partida: ${m.conteo.cantidad} barras (${fCorta(diaDe(m.conteo.creado_en))}). Falta el primer conteo.` :
+    `Último conteo: ${m.conteo.cantidad} listas, ${cuando(m.conteo.creado_en)}${m.conteo.quien ? " por " + esc(m.conteo.quien) : ""}.`) : "Todavía no se ha contado.";
+  abrirHoja(`<div class="hoja-cab"><div><h2>${esc(m.nombre)}</h2><p><span class="punto ${claseMarca(m.marca)}"></span> ${m.marca}${m.gramos ? " · " + m.gramos + " g" : ""} · ${m.curado_dias} días de curado · mínimo ${m.minimo}</p></div>
+      <button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+    <div class="cifras"><div><b>${m.listos}</b><span>listas</span></div><div><b>${ap}</b><span>para pedidos</span></div><div><b>${m.curando}</b><span>curándose</span></div></div>
+    <p class="ayuda" style="margin:-4px 0 12px">${conteo}</p>
+    <div class="acciones"><button class="btn" type="button" data-accion="modelo-accion" data-a="contar" aria-pressed="${accion === "contar"}">Contar</button>
+      <button class="btn" type="button" data-accion="modelo-accion" data-a="sacar" aria-pressed="${accion === "sacar"}">Sacar</button>
+      <button class="btn" type="button" data-accion="fabricar-este" ${m.activo ? "" : "disabled"}>Fabricar</button></div>
+    ${panel}
+    ${lotes.length ? `<h3 class="subtitulo" style="margin-top:6px">Curándose</h3><div class="lista">${lotes.map(tarjetaLote).join("")}</div>` : ""}
+    <div style="margin-top:16px"><button class="btn ancho" type="button" data-accion="editar-modelo" data-id="${m.id}">Editar datos del jabón</button></div>`);
+}
+
+function codigoSugerido(nombre) {
+  const base = norm(nombre).replace(/^jabon\s+(de\s+)?/, "").replace(/[^a-z ]/g, "");
+  const pals = base.split(" ").filter((w) => w.length > 2);
+  let c = pals.length > 1 ? pals.slice(0, 3).map((w) => w[0]).join("") : (pals[0] || base).slice(0, 3);
+  c = c.toUpperCase();
+  if (c.length < 2) c = (c + "XX").slice(0, 2);
+  return c;
+}
+function hojaFormModelo(id) {
+  const m = id ? modelo(id) : null;
+  const marca = m ? m.marca : (S.filtro === "PORTHOS" ? "PORTHOS" : "ÜINKY");
+  abrirHoja(`<div class="hoja-cab"><div><h2>${m ? "Editar jabón" : "Agregar modelo"}</h2><p>${m ? "Los lotes ya registrados no cambian." : "Aparece en el inventario de su marca."}</p></div>
+      <button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+    <form id="f-modelo" data-id="${m ? m.id : ""}">
+      <div class="campo"><span class="etq">Marca</span><div class="seg">${["ÜINKY", "PORTHOS"].map((k) =>
+        `<label><input type="radio" name="marca" value="${k}" ${marca === k ? "checked" : ""}><span class="punto ${claseMarca(k)}"></span>${k}</label>`).join("")}</div></div>
+      <div class="campo"><label class="etq" for="fm-nombre">Nombre</label><input id="fm-nombre" type="text" maxlength="60" required value="${esc(m ? m.nombre : "Jabón de ")}" placeholder="Jabón de Lavanda"></div>
+      <div class="dos-col">
+        <div class="campo"><label class="etq" for="fm-codigo">Código de lote</label><input id="fm-codigo" type="text" maxlength="5" autocapitalize="characters" value="${esc(m ? m.codigo : "")}" placeholder="LAV" required></div>
+        <div class="campo"><label class="etq" for="fm-gramos">Gramos por barra</label><input id="fm-gramos" type="number" inputmode="numeric" min="10" max="2000" value="${m && m.gramos ? m.gramos : 130}"></div>
+        <div class="campo"><label class="etq" for="fm-curado">Días de curado</label><input id="fm-curado" type="number" inputmode="numeric" min="0" max="120" value="${m ? m.curado_dias : 30}"></div>
+        <div class="campo"><label class="etq" for="fm-minimo">Avisar si quedan</label><input id="fm-minimo" type="number" inputmode="numeric" min="0" max="1000" value="${m ? m.minimo : 5}"></div>
+      </div>
+      <div class="campo"><label class="etq" for="fm-palabras">Palabras en los pedidos de WhatsApp</label>
+        <input id="fm-palabras" type="text" maxlength="200" value="${esc(m ? (m.palabras || []).join(", ") : "")}" placeholder="lavanda">
+        <p class="ayuda">Separadas por coma. Con ellas la app reconoce este jabón en los pedidos. Si lo dejas vacío, usa el nombre.</p></div>
+      ${m ? `<label class="campo" style="flex-direction:row;align-items:center;gap:10px"><input id="fm-activo" type="checkbox" ${m.activo ? "" : "checked"} style="width:22px;height:22px"><span>Archivar (ya no se fabrica)</span></label>` : ""}
+      <button class="btn primario ancho" type="submit">${m ? "Guardar cambios" : "Agregar modelo"}</button>
+    </form>`);
+  const nom = document.getElementById("fm-nombre"), cod = document.getElementById("fm-codigo");
+  if (!m) {
+    nom.addEventListener("input", () => { if (!cod.dataset.tocado) cod.value = codigoSugerido(nom.value); });
+    cod.addEventListener("input", () => { cod.dataset.tocado = "1"; });
+    nom.focus(); nom.setSelectionRange(nom.value.length, nom.value.length);
+  }
+}
+
+/* ---------- fabricar ---------- */
+function tarjetaLote(l) {
+  const m = modelo(l.modelo_id), hoy = S.d.hoy;
+  const total = Math.max(1, diasEntre(l.elaborado, l.cura_hasta)), pasados = Math.min(total, Math.max(0, diasEntre(l.elaborado, hoy)));
+  const lista = l.cura_hasta <= hoy, faltan = diasEntre(hoy, l.cura_hasta);
+  return `<div class="lote"><div class="lote-cab"><span><span class="codigo">${esc(l.codigo)}</span> · ${plural(l.cantidad, "barra", "barras")}</span>
+      <span class="der">${lista ? `<b style="color:var(--listo)">Lista desde ${fCorta(l.cura_hasta)}</b>` : `faltan <b>${faltan}</b> ${faltan === 1 ? "día" : "días"} · ${fDia(l.cura_hasta)}`}</span></div>
+    <div class="prog${lista ? " lista" : ""}" role="img" aria-label="${pasados} de ${total} días de curado"><i style="width:${Math.round((pasados / total) * 100)}%"></i></div>
+    <small>${m ? esc(m.nombre) + " · " : ""}elaborado ${fCorta(l.elaborado)}${l.quien ? " por " + esc(l.quien) : ""}${l.notas ? " · " + esc(l.notas) : ""}</small></div>`;
+}
+function previaLote() {
+  const m = modelo(S.fab.modelo);
+  if (!m) return `<div class="previa"><p>Elige el jabón para ver el código del lote y cuándo termina el curado.</p></div>`;
+  const cant = Math.max(0, parseInt(S.fab.cant, 10) || 0);
+  const fecha = S.fab.fecha || S.d.hoy;
+  if (fecha > S.d.hoy) return `<div class="previa"><p><b>La fecha de elaboración no puede ser después de hoy.</b></p></div>`;
+  const cura = addDias(fecha, m.curado_dias);
+  const cod = `${m.codigo}-${String(m.ultimo_lote + 1).padStart(3, "0")}`;
+  const listo = cura <= S.d.hoy;
+  return `<div class="previa"><span class="codigo">${esc(cod)}</span>
+    <p>${plural(cant, "barra", "barras")} de ${esc(m.nombre)}</p>
+    <p>${listo ? `<b>Ya cumplió los ${m.curado_dias} días de curado:</b> entra directo a listas.` :
+      `Listo para vender el <b>${fLarga(cura)}</b> (${relativo(cura)}).`}</p></div>`;
+}
+function vFabricar() {
+  const d = S.d, act = d.modelos.filter((m) => m.activo);
+  if (S.fab.modelo && !act.some((m) => m.id === S.fab.modelo)) S.fab.modelo = null;
+  if (!S.fab.fecha) S.fab.fecha = d.hoy;
+  const ayer = addDias(d.hoy, -1);
+  const curando = d.lotes.filter((l) => l.cura_hasta > d.hoy), terminados = d.lotes.filter((l) => l.cura_hasta <= d.hoy).reverse();
+  let h = `<h1 class="titulo">Fabricar</h1><p class="bajada">Registra el lote el día que se vierte el molde. La app cuenta los días de curado y lo pasa a listas cuando termina.</p>
+  <form id="f-lote">
+    <div class="campo"><span class="etq">Jabón</span>`;
+  for (const marca of ["ÜINKY", "PORTHOS"]) {
+    const ms = act.filter((m) => m.marca === marca); if (!ms.length) continue;
+    h += `<div class="elige" role="radiogroup" aria-label="${marca}" style="margin-bottom:8px">${ms.map((m) =>
+      `<label><input type="radio" name="fab-modelo" value="${m.id}" ${S.fab.modelo === m.id ? "checked" : ""}>
+        <b><span class="punto ${claseMarca(m.marca)}"></span>${esc(m.nombre.replace(/^Jabón (de )?/i, ""))}</b><span>${m.gramos ? m.gramos + " g · " : ""}${esc(m.codigo)}</span></label>`).join("")}</div>`;
+  }
+  h += `</div>
+    <div class="dos-col">
+      <div class="campo"><span class="etq">Barras</span>${paso("fab-cant", S.fab.cant, 1, 1000)}</div>
+      <div class="campo"><label class="etq" for="fab-fecha">Elaborado el</label><input id="fab-fecha" type="date" max="${d.hoy}" value="${S.fab.fecha}">
+        <div class="atajos"><button class="atajo" type="button" data-accion="fab-fecha" data-f="${d.hoy}" aria-pressed="${S.fab.fecha === d.hoy}">Hoy</button>
+        <button class="atajo" type="button" data-accion="fab-fecha" data-f="${ayer}" aria-pressed="${S.fab.fecha === ayer}">Ayer</button></div></div>
+    </div>
+    <div id="fab-previa">${previaLote()}</div>
+    <div class="campo"><label class="etq" for="fab-notas">Notas (opcional)</label><textarea id="fab-notas" maxlength="300" placeholder="Ej.: molde 2, veta más oscura">${esc(S.fab.notas)}</textarea></div>
+    <button class="btn primario ancho" type="submit" ${S.fab.modelo ? "" : "disabled"}>Registrar lote</button>
+  </form>`;
+  h += `<h2 class="subtitulo">Curándose ahora</h2>`;
+  h += curando.length ? `<div class="lista">${curando.map(tarjetaLote).join("")}</div>` :
+    `<div class="vacio"><b>Nada curándose</b>Los lotes que registres aparecen aquí con los días que les faltan.</div>`;
+  if (terminados.length) h += `<h2 class="subtitulo">Terminaron hace poco</h2><div class="lista">${terminados.map(tarjetaLote).join("")}</div>`;
+  return h;
+}
+
+/* ---------- empacar ---------- */
+function opcionesModelo(sel) {
+  const ms = S.d.modelos.filter((m) => m.activo || m.id === sel);
+  return `<option value="">Elige el jabón</option>` + ["ÜINKY", "PORTHOS"].map((k) => {
+    const g = ms.filter((m) => m.marca === k); if (!g.length) return "";
+    return `<optgroup label="${k}">${g.map((m) => `<option value="${m.id}" ${m.id === sel ? "selected" : ""}>${esc(m.nombre)}</option>`).join("")}</optgroup>`;
+  }).join("");
+}
+function tarjetaPedido(p) {
+  const items = itemsDe(p);
+  const total = items.reduce((s, it) => s + (+it.cantidad || 0), 0);
+  const filas = items.map((it, i) => {
+    const m = modelo(it.modelo_id);
+    const falta = m && it.cantidad > m.listos ? `<span class="falta">Solo hay ${Math.max(0, m.listos)} ${m.listos === 1 ? "lista" : "listas"} de ${esc(m.nombre)}.</span>` : "";
+    return `<div class="item"><select data-campo="item-modelo" data-p="${p.id}" data-i="${i}" aria-label="Jabón">${opcionesModelo(it.modelo_id)}</select>
+      <span class="paso chico"><button type="button" data-accion="item-paso" data-p="${p.id}" data-i="${i}" data-delta="-1" aria-label="Menos">−</button>
+      <input type="number" inputmode="numeric" min="1" max="500" value="${it.cantidad}" data-campo="item-cant" data-p="${p.id}" data-i="${i}" aria-label="Cantidad">
+      <button type="button" data-accion="item-paso" data-p="${p.id}" data-i="${i}" data-delta="1" aria-label="Más">+</button></span>
+      <button class="quitar" type="button" data-accion="item-quitar" data-p="${p.id}" data-i="${i}" aria-label="Quitar">×</button>${falta}</div>`;
+  }).join("");
+  const entrega = p.entrega ? `<span class="chip">${esc(p.entrega)}</span>` : "";
+  return `<article class="pedido${S.nuevos.has(p.id) ? " nuevo" : ""}">
+    <div class="p-cab"><span class="p-num">#${p.id}</span><span class="p-quien">${esc(p.cliente || "Cliente")}${p.lugar ? " · " + esc(p.lugar) : ""}</span>${entrega}</div>
+    <p class="p-pago">Transferencia confirmada${p.pagado_en ? " · " + cuando(p.pagado_en) : ""}</p>
+    <p class="p-texto">${esc(p.productos || "Sin detalle de productos")}</p>
+    ${p.notas ? `<p class="p-notas">Notas: ${esc(p.notas)}</p>` : ""}
+    <div><span class="etq">Va en la caja${total ? ` · ${plural(total, "barra", "barras")}` : ""}</span></div>
+    <div class="items">${filas || `<p class="ayuda">No pude reconocer los jabones de este pedido. Agrégalos a mano.</p>`}</div>
+    <button class="btn" type="button" data-accion="item-agregar" data-p="${p.id}">+ Agregar jabón</button>
+    <button class="btn acento ancho" type="button" data-accion="empacar" data-p="${p.id}" ${items.length ? "" : "disabled"}>Marcar como empacado</button>
+  </article>`;
+}
+function vEmpacar() {
+  const d = S.d;
+  let h = `<h1 class="titulo">Por empacar</h1><p class="bajada">Aquí llegan los pedidos de WhatsApp de ÜINKY y PORTHOS cuando Matías confirma la transferencia. Revisa qué va en la caja y márcalo como empacado: se descuenta del inventario.</p>`;
+  if ("Notification" in window && Notification.permission === "default")
+    h += `<button class="aviso-barra" type="button" data-accion="permiso" style="background:var(--papel-2);color:var(--tinta)"><span>Activar avisos en este celular</span><b>Activar</b></button>`;
+  h += d.pedidos.length ? `<div class="lista" style="margin-top:14px">${d.pedidos.map(tarjetaPedido).join("")}</div>` :
+    `<div class="vacio" style="margin-top:14px"><b>No hay pedidos por empacar</b>Cuando se confirme un pago, el pedido aparece aquí y suena un aviso mientras la app está abierta.</div>`;
+  if (d.empacados.length) {
+    h += `<h2 class="subtitulo">Empacados hace poco</h2>` + d.empacados.map((e) => {
+      const n = (e.items || []).reduce((s, it) => s + (+it.cantidad || 0), 0);
+      const puede = Date.now() - new Date(e.creado_en).getTime() < 48 * 3600e3;
+      return `<div class="empacado"><div><b>#${e.pedido_id}${e.cliente ? " · " + esc(e.cliente) : ""}</b>
+        <small>${plural(n, "barra", "barras")} · ${cuando(e.creado_en)}${e.quien ? " · " + esc(e.quien) : ""}${e.estado === "enviado" ? " · ya enviado" : e.estado === "entregado" ? " · entregado" : ""}</small></div>
+        ${puede ? `<button class="deshacer" type="button" data-accion="anular" data-clase="empaque" data-id="${e.pedido_id}">Deshacer</button>` : ""}</div>`;
+    }).join("");
+  }
+  return h;
+}
+
+/* ---------- historial ---------- */
+function textoEvento(e) {
+  const m = modelo(e.modelo_id), nom = m ? esc(m.nombre) : "un jabón";
+  switch (e.clase) {
+    case "lote": return [`Lote <b>${esc(e.codigo)}</b>: ${plural(e.cantidad, "barra", "barras")} de ${nom}`, `Elaborado ${fCorta(e.elaborado)} · listo ${fCorta(e.cura_hasta)}${e.notas ? " · " + esc(e.notas) : ""}`];
+    case "conteo": return [`Contó ${e.cantidad} ${e.cantidad === 1 ? "lista" : "listas"} de ${nom}`, e.motivo ? esc(e.motivo) : ""];
+    case "inicial": return [`Dato de partida: ${e.cantidad} de ${nom}`, e.motivo ? esc(e.motivo) : ""];
+    case "salida": return [`Salieron ${e.cantidad} de ${nom}`, e.motivo ? esc(e.motivo) : ""];
+    case "empaque": {
+      const n = (e.items || []).reduce((s, it) => s + (+it.cantidad || 0), 0);
+      const det = (e.items || []).map((it) => { const mm = modelo(it.modelo_id); return `${it.cantidad} ${mm ? esc(mm.nombre.replace(/^Jabón (de )?/i, "")) : "?"}`; }).join(", ");
+      return [`Empacó el pedido #${e.pedido_id} · ${plural(n, "barra", "barras")}`, det];
+    }
+  }
+  return ["", ""];
+}
+const ETIQ = { lote: "Lote", conteo: "Conteo", inicial: "Inicio", salida: "Salida", empaque: "Pedido" };
+function vHistorial() {
+  const evs = S.d.historial;
+  let h = `<h1 class="titulo">Historial</h1><p class="bajada">Todo lo que se registra en el taller. Lo de las últimas 48 horas se puede deshacer.</p>`;
+  if (!evs.length) return h + `<div class="vacio"><b>Todavía no hay movimientos</b>Aquí verás los lotes, conteos y pedidos empacados.</div>`;
+  let dia = "";
+  for (const e of evs) {
+    const d = diaDe(e.creado_en);
+    if (d !== dia) { dia = d; h += `<h2 class="subtitulo">${d === S.d.hoy ? "Hoy" : diasEntre(d, S.d.hoy) === 1 ? "Ayer" : fDia(d)}</h2>`; }
+    const [a, b] = textoEvento(e);
+    const puede = !e.anulado && e.clase !== "inicial" && Date.now() - new Date(e.creado_en).getTime() < 48 * 3600e3;
+    h += `<div class="evento${e.anulado ? " anulado" : ""}"><span class="ev-tipo ${e.clase}">${ETIQ[e.clase] || ""}</span>
+      <div class="ev-txt">${a}<small>${b ? b + " · " : ""}${hora(e.creado_en)}${e.quien ? " · " + esc(e.quien) : ""}${e.anulado ? " · deshecho" : ""}</small></div>
+      ${puede ? `<button class="deshacer" type="button" data-accion="anular" data-clase="${e.clase}" data-id="${e.id}">Deshacer</button>` : ""}</div>`;
+  }
+  return h;
+}
+
+/* ---------- instalar ---------- */
+let eventoInstalar = null;
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); eventoInstalar = e; if (S.tab === "inventario") pintar(); });
+const instalada = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+function bloqueInstalar() {
+  if (instalada()) return "";
+  if (eventoInstalar) return `<div class="instalar"><b>Tenla como app.</b> Queda en la pantalla del celular y abre directo.<div style="margin-top:10px"><button class="btn acento" type="button" data-accion="instalar">Instalar app</button></div></div>`;
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  return `<div class="instalar"><b>Tenla como app.</b> ${ios ? "En Safari toca Compartir y luego «Agregar a inicio»." : "En el menú del navegador elige «Agregar a la pantalla de inicio» o «Instalar app»."}</div>`;
+}
+
+/* ---------- admin ---------- */
+function pantallaAdmin(msg = "") {
+  cerrarHoja();
+  const a = S.admin;
+  let cuerpo;
+  if (!a) {
+    cuerpo = `<div class="tarjeta-admin"><h2>Administrar</h2><p class="ayuda" style="margin-bottom:14px">Entra con tu correo y clave de la oficina para crear los PIN del equipo.</p>
+      <form id="f-admin-login"><div class="campo"><label class="etq" for="ad-email">Correo</label><input id="ad-email" type="email" autocomplete="username" required></div>
+      <div class="campo"><label class="etq" for="ad-clave">Clave</label><input id="ad-clave" type="password" autocomplete="current-password" required></div>
+      <p class="ayuda" style="color:var(--alerta);font-weight:700;min-height:18px" role="alert">${esc(msg)}</p>
+      <button class="btn primario ancho" type="submit">Entrar</button></form></div>`;
+  } else {
+    const ps = a.personas || [];
+    cuerpo = `<div class="tarjeta-admin"><h2>Equipo del taller</h2><p class="ayuda" style="margin-bottom:8px">Cada persona entra con su PIN. Lo que registra queda con su nombre.</p>
+      ${ps.length ? ps.map((p) => `<div class="persona"><div><b>${esc(p.nombre)}</b><small>${p.activo ? "Activo" : "Sin acceso"} · desde ${fCorta(diaDe(p.creado_en))}</small></div>
+        <button class="deshacer" type="button" data-accion="admin-editar" data-id="${p.id}">Editar</button></div>`).join("") : `<p class="ayuda">Todavía no hay nadie. Agrega a la primera persona.</p>`}
+      <h3 class="subtitulo">Agregar persona</h3>
+      <form id="f-admin-nuevo"><div class="campo"><label class="etq" for="an-nombre">Nombre</label><input id="an-nombre" type="text" maxlength="40" required placeholder="Ana"></div>
+      <div class="campo"><label class="etq" for="an-pin">PIN de 6 números</label><input id="an-pin" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" required>
+      <p class="ayuda">Díselo en persona. Después no se puede ver, solo cambiar.</p></div>
+      <p class="ayuda" style="color:var(--alerta);font-weight:700;min-height:18px" role="alert">${esc(msg)}</p>
+      <button class="btn primario ancho" type="submit">Agregar</button></form></div>`;
+  }
+  app.innerHTML = `<div class="entrar"><div class="envoltura" style="justify-content:flex-start;max-width:520px">
+    <div class="lockup" style="flex-direction:row;justify-content:center"><span class="barras"><i></i><i></i></span><h1 style="font-size:30px;margin:0">Taller</h1></div>
+    ${cuerpo}
+    <div class="pie-entrar"><button class="btn-link" type="button" data-accion="volver-entrar">Volver a la entrada</button>
+    ${a ? `<button class="btn-link" type="button" data-accion="admin-salir">Cerrar sesión de admin</button>` : ""}</div></div></div>`;
+}
+async function adminCargar() {
+  S.admin.personas = await rpc("taller_admin_trabajadores", {}, S.admin.token);
+}
+function hojaPersona(id) {
+  const p = (S.admin.personas || []).find((x) => x.id === Number(id)); if (!p) return;
+  abrirHoja(`<div class="hoja-cab"><div><h2>${esc(p.nombre)}</h2><p>Cambia el nombre, el PIN o quítale el acceso.</p></div><button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+    <form id="f-admin-editar" data-id="${p.id}">
+      <div class="campo"><label class="etq" for="ae-nombre">Nombre</label><input id="ae-nombre" type="text" maxlength="40" required value="${esc(p.nombre)}"></div>
+      <div class="campo"><label class="etq" for="ae-pin">PIN nuevo (opcional)</label><input id="ae-pin" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" placeholder="Déjalo vacío para no cambiarlo"></div>
+      <label class="campo" style="flex-direction:row;align-items:center;gap:10px"><input id="ae-activo" type="checkbox" ${p.activo ? "checked" : ""} style="width:22px;height:22px"><span>Puede entrar a la app</span></label>
+      <p class="ayuda" id="ae-msg" style="color:var(--alerta);font-weight:700;min-height:18px" role="alert"></p>
+      <button class="btn primario ancho" type="submit">Guardar</button></form>`);
+}
+
+/* ---------- eventos ---------- */
+document.addEventListener("click", async (e) => {
+  const tecla = e.target.closest("[data-tecla]");
+  if (tecla) { teclear(tecla.dataset.tecla); return; }
+  const ir = e.target.closest("[data-ir]");
+  if (ir && S.d) { irA(ir.dataset.ir); return; }
+  const b = e.target.closest("[data-accion]"); if (!b) return;
+  const ac = b.dataset.accion;
+
+  if (ac === "refrescar") return cargar();
+  if (ac === "cerrar") return cerrarHoja();
+  if (ac === "filtro") { S.filtro = b.dataset.f; LS.set("taller.filtro", S.filtro); return pintar(true); }
+  if (ac === "ver-modelo") return hojaModelo(b.dataset.id);
+  if (ac === "modelo-accion") return hojaModelo(S.hojaModelo, S.hojaAccion === b.dataset.a ? null : b.dataset.a);
+  if (ac === "nuevo-modelo") return hojaFormModelo(null);
+  if (ac === "editar-modelo") return hojaFormModelo(b.dataset.id);
+  if (ac === "fabricar-este") { S.fab.modelo = S.hojaModelo; cerrarHoja(); return irA("fabricar"); }
+  if (ac === "paso") {
+    const inp = document.getElementById(b.dataset.obj); if (!inp) return;
+    const v = (parseInt(inp.value, 10) || 0) + Number(b.dataset.delta);
+    inp.value = Math.min(Number(inp.max || 1e6), Math.max(Number(inp.min || 0), v));
+    inp.dispatchEvent(new Event("input", { bubbles: true }));
+    return;
+  }
+  if (ac === "motivo") {
+    b.parentElement.querySelectorAll(".atajo").forEach((x) => x.setAttribute("aria-pressed", x === b));
+    const otro = document.getElementById("s-otro"); otro.hidden = b.dataset.m !== "Otro"; if (!otro.hidden) otro.focus();
+    return;
+  }
+  if (ac === "guardar-conteo") {
+    const n = parseInt(document.getElementById("c-cant").value, 10);
+    if (!(n >= 0)) return toast("Escribe cuántas barras listas hay.");
+    const m = modelo(S.hojaModelo);
+    return hacer(b, async () => {
+      await rpc("taller_conteo", { p_pin: S.pin, p_modelo: m.id, p_listos: n, p_nota: document.getElementById("c-nota").value });
+      cerrarHoja(); toast(`Conteo guardado: ${n} listas de ${m.nombre}.`); await cargar();
+    });
+  }
+  if (ac === "guardar-salida") {
+    const n = parseInt(document.getElementById("s-cant").value, 10);
+    const sel = hoja.querySelector('.atajo[aria-pressed="true"]');
+    let mot = sel ? sel.dataset.m : "";
+    if (mot === "Otro") mot = document.getElementById("s-otro").value.trim();
+    if (!(n >= 1)) return toast("Indica cuántas barras salen.");
+    if (!mot) return toast("Escribe por qué salen las barras.");
+    const m = modelo(S.hojaModelo);
+    return hacer(b, async () => {
+      const r = await rpc("taller_salida", { p_pin: S.pin, p_modelo: m.id, p_cantidad: n, p_motivo: mot });
+      cerrarHoja(); toast(`Salieron ${n} de ${m.nombre}.`, "Deshacer", () => anular("salida", r.id)); await cargar();
+    });
+  }
+  if (ac === "fab-fecha") { S.fab.fecha = b.dataset.f; return pintar(true); }
+  if (ac === "item-paso" || ac === "item-quitar" || ac === "item-agregar") {
+    const p = S.d.pedidos.find((x) => x.id === Number(b.dataset.p)); if (!p) return;
+    const items = itemsDe(p), i = Number(b.dataset.i);
+    if (ac === "item-paso") items[i].cantidad = Math.min(500, Math.max(1, (+items[i].cantidad || 1) + Number(b.dataset.delta)));
+    if (ac === "item-quitar") items.splice(i, 1);
+    if (ac === "item-agregar") items.push({ modelo_id: null, cantidad: 1 });
+    return pintar(true);
+  }
+  if (ac === "empacar") {
+    const p = S.d.pedidos.find((x) => x.id === Number(b.dataset.p)); if (!p) return;
+    const items = itemsDe(p).filter((it) => it.modelo_id && it.cantidad > 0);
+    if (!items.length || items.length !== itemsDe(p).length) return toast("Elige el jabón de cada fila o quita las vacías.");
+    const n = items.reduce((s, it) => s + +it.cantidad, 0);
+    return hacer(b, async () => {
+      await rpc("taller_empacar", { p_pin: S.pin, p_pedido: p.id, p_items: items.map((it) => ({ modelo_id: it.modelo_id, cantidad: +it.cantidad })) });
+      S.nuevos.delete(p.id); delete S.edits[p.id];
+      toast(`Pedido #${p.id} empacado. Se descontaron ${n} ${n === 1 ? "barra" : "barras"}.`, "Deshacer", () => anular("empaque", p.id));
+      await cargar();
+    });
+  }
+  if (ac === "anular") return hacer(b, () => anular(b.dataset.clase, Number(b.dataset.id)));
+  if (ac === "permiso") {
+    try { const r = await Notification.requestPermission(); toast(r === "granted" ? "Listo: te aviso cuando llegue un pedido pagado." : "Sin permiso: el aviso suena solo con la app abierta."); } catch {}
+    return pintar(true);
+  }
+  if (ac === "instalar" && eventoInstalar) { eventoInstalar.prompt(); try { await eventoInstalar.userChoice; } catch {} eventoInstalar = null; return pintar(true); }
+  if (ac === "admin") return pantallaAdmin();
+  if (ac === "volver-entrar") { if (S.pin) { S.d = null; return cargar(); } return pantallaEntrar(); }
+  if (ac === "admin-salir") { S.admin = null; return pantallaAdmin(); }
+  if (ac === "admin-editar") return hojaPersona(b.dataset.id);
+});
+
+async function anular(clase, id) {
+  try {
+    await rpc("taller_anular", { p_pin: S.pin, p_clase: clase, p_id: id });
+    toast("Listo, se deshizo.");
+    await cargar();
+  } catch (e) { if (e instanceof ErrorPin) salir(e.message); else toast(e.message); }
+}
+
+document.addEventListener("input", (e) => {
+  const t = e.target;
+  if (t.id === "fab-cant") { S.fab.cant = t.value; const pv = document.getElementById("fab-previa"); if (pv) pv.innerHTML = previaLote(); }
+  else if (t.id === "fab-fecha") { S.fab.fecha = t.value || S.d.hoy; const pv = document.getElementById("fab-previa"); if (pv) pv.innerHTML = previaLote();
+    document.querySelectorAll('[data-accion="fab-fecha"]').forEach((x) => x.setAttribute("aria-pressed", x.dataset.f === S.fab.fecha)); }
+  else if (t.id === "fab-notas") S.fab.notas = t.value;
+  else if (t.dataset.campo === "item-cant") {
+    const p = S.d.pedidos.find((x) => x.id === Number(t.dataset.p)); if (!p) return;
+    const v = parseInt(t.value, 10); if (v >= 1) itemsDe(p)[Number(t.dataset.i)].cantidad = Math.min(500, v);
+  } else if (t.id === "fm-codigo") t.value = t.value.toUpperCase().replace(/[^A-Z]/g, "");
+});
+document.addEventListener("change", (e) => {
+  const t = e.target;
+  if (t.name === "fab-modelo") {
+    S.fab.modelo = Number(t.value);
+    const pv = document.getElementById("fab-previa"); if (pv) pv.innerHTML = previaLote();
+    const btn = document.querySelector('#f-lote [type="submit"]'); if (btn) btn.disabled = false;
+  } else if (t.dataset.campo === "item-modelo") {
+    const p = S.d.pedidos.find((x) => x.id === Number(t.dataset.p)); if (!p) return;
+    itemsDe(p)[Number(t.dataset.i)].modelo_id = t.value ? Number(t.value) : null;
+    t.blur(); pintar(true);
+  } else if (t.dataset.campo === "item-cant") { t.blur(); pintar(true); }
+});
+
+document.addEventListener("submit", async (e) => {
+  const f = e.target; e.preventDefault();
+  const btn = f.querySelector('[type="submit"]');
+  if (f.id === "f-lote") {
+    const m = modelo(S.fab.modelo); const cant = parseInt(S.fab.cant, 10);
+    if (!m) return toast("Elige el jabón.");
+    if (!(cant >= 1)) return toast("Indica cuántas barras salieron del molde.");
+    if (!S.fab.fecha || S.fab.fecha > S.d.hoy) return toast("Revisa la fecha de elaboración.");
+    return hacer(btn, async () => {
+      const r = await rpc("taller_lote", { p_pin: S.pin, p_modelo: m.id, p_cantidad: cant, p_elaborado: S.fab.fecha, p_notas: S.fab.notas });
+      S.fab = { modelo: null, cant: 10, fecha: null, notas: "" };
+      document.activeElement && document.activeElement.blur();
+      toast(`Lote ${r.codigo} registrado. Listo el ${fCorta(r.cura_hasta)}.`, "Deshacer", () => anular("lote", r.id));
+      await cargar();
+    });
+  }
+  if (f.id === "f-modelo") {
+    const id = f.dataset.id ? Number(f.dataset.id) : null;
+    const marca = (f.querySelector('input[name="marca"]:checked') || {}).value;
+    const args = { p_pin: S.pin, p_id: id, p_marca: marca, p_nombre: document.getElementById("fm-nombre").value,
+      p_codigo: document.getElementById("fm-codigo").value, p_gramos: parseInt(document.getElementById("fm-gramos").value, 10) || null,
+      p_curado: parseInt(document.getElementById("fm-curado").value, 10), p_minimo: parseInt(document.getElementById("fm-minimo").value, 10),
+      p_palabras: document.getElementById("fm-palabras").value,
+      p_activo: id ? !document.getElementById("fm-activo").checked : true };
+    if (isNaN(args.p_curado)) args.p_curado = 30;
+    if (isNaN(args.p_minimo)) args.p_minimo = 5;
+    return hacer(btn, async () => {
+      await rpc("taller_modelo_guardar", args);
+      cerrarHoja(); toast(id ? "Cambios guardados." : `${args.p_nombre.trim()} se agregó al inventario.`); await cargar();
+    });
+  }
+  if (f.id === "f-admin-login") {
+    const email = document.getElementById("ad-email").value.trim(), clave = document.getElementById("ad-clave").value;
+    btn.disabled = true;
+    try {
+      const r = await fetch(`${SB}/auth/v1/token?grant_type=password`, { method: "POST", headers: { apikey: KEY, "Content-Type": "application/json" }, body: JSON.stringify({ email, password: clave }) });
+      const j = await r.json().catch(() => null);
+      if (!r.ok || !j || !j.access_token) { btn.disabled = false; return pantallaAdmin("Correo o clave incorrectos."); }
+      S.admin = { token: j.access_token, personas: [] };
+      await adminCargar(); pantallaAdmin();
+    } catch (err) { S.admin = null; pantallaAdmin(err.message); }
+    return;
+  }
+  if (f.id === "f-admin-nuevo") {
+    btn.disabled = true;
+    try {
+      const nombre = document.getElementById("an-nombre").value;
+      await rpc("taller_admin_guardar", { p_id: null, p_nombre: nombre, p_pin: document.getElementById("an-pin").value, p_activo: true }, S.admin.token);
+      await adminCargar(); pantallaAdmin(); toast(`${nombre.trim()} ya puede entrar con su PIN.`);
+    } catch (err) { pantallaAdmin(err.message); }
+    return;
+  }
+  if (f.id === "f-admin-editar") {
+    btn.disabled = true;
+    try {
+      await rpc("taller_admin_guardar", { p_id: Number(f.dataset.id), p_nombre: document.getElementById("ae-nombre").value,
+        p_pin: document.getElementById("ae-pin").value, p_activo: document.getElementById("ae-activo").checked }, S.admin.token);
+      cerrarHoja(); await adminCargar(); pantallaAdmin(); toast("Guardado.");
+    } catch (err) { btn.disabled = false; const m = document.getElementById("ae-msg"); if (m) m.textContent = err.message; }
+  }
+});
+
+/* ---------- arranque ---------- */
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+if (S.pin) cargar(); else pantallaEntrar();
+</script>
+</body>
+</html>
