@@ -248,6 +248,16 @@ dialog.hoja::backdrop{background:rgba(20,14,10,.5)}
 .pie-entrar{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:13px;opacity:.85;text-align:center}
 .tarjeta-admin{background:var(--papel);color:var(--tinta);border-radius:18px;padding:18px}
 .tarjeta-admin h2{font:700 26px var(--f-num);margin:0 0 4px}
+.inst{text-align:center}
+.inst h2{font:700 30px/1.1 var(--f-num);margin:0 0 6px;text-wrap:balance}
+.inst p{margin:0 auto;opacity:.8;max-width:34ch;font-size:15px}
+.btn.grande{min-height:60px;font-size:18px;border-radius:16px}
+.nota-inst{text-align:center;font-size:14px;opacity:.75;margin:-8px 0 0}
+.pasos-inst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.pasos-inst li{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:12px 14px;font-size:15.5px;line-height:1.45}
+.pasos-inst .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--naranja);color:#3A2A1C;display:grid;place-items:center;font:700 16px var(--f-num)}
+.ico-inst{display:inline-flex;vertical-align:middle;padding:2px 4px;border-radius:6px;background:rgba(255,255,255,.12)}
+.paso-inst.listo{display:flex;flex-direction:column;gap:6px;text-align:center;background:rgba(62,163,152,.18);border:1px solid var(--jade);border-radius:14px;padding:16px;font-size:15.5px}
 .persona{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--linea)}
 .persona > div{flex:1;min-width:0}
 .persona small{display:block;color:var(--tinta-2);font-size:13px}
@@ -844,9 +854,50 @@ function vHistorial() {
 }
 
 /* ---------- instalar ---------- */
-let eventoInstalar = null;
-window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); eventoInstalar = e; if (S.tab === "inventario") pintar(); });
-const instalada = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+let eventoInstalar = null, recienInstalada = false;
+const instalada = () => window.matchMedia("(display-mode: standalone)").matches || window.matchMedia("(display-mode: fullscreen)").matches || navigator.standalone === true;
+const esIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const seguirNavegador = () => { try { return sessionStorage.getItem("taller.navegador") === "1"; } catch { return false; } };
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault(); eventoInstalar = e;
+  if (document.getElementById("pantalla-instalar")) pantallaInstalar(); else if (S.d && S.tab === "inventario") pintar();
+});
+window.addEventListener("appinstalled", () => { eventoInstalar = null; recienInstalada = true; if (document.getElementById("pantalla-instalar")) pantallaInstalar(); });
+
+const ICO_COMPARTIR = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Compartir"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+const ICO_MENU = '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-label="Menú"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
+const ICO_SUMAR = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>';
+
+function pantallaInstalar() {
+  cerrarHoja();
+  let cuerpo;
+  if (recienInstalada) {
+    cuerpo = `<div class="paso-inst listo"><b>Listo, ya está instalada.</b><span>Cierra el navegador y abre <b>Taller</b> desde la pantalla de inicio del celular.</span></div>`;
+  } else if (eventoInstalar) {
+    cuerpo = `<button class="btn acento ancho grande" type="button" data-accion="instalar">Instalar en el celular</button>
+      <p class="nota-inst">Queda como un ícono en la pantalla de inicio, igual que cualquier app.</p>`;
+  } else if (esIOS()) {
+    cuerpo = `<ol class="pasos-inst">
+      <li><span class="n">1</span><span>Abre este enlace en <b>Safari</b> y toca el botón Compartir <span class="ico-inst">${ICO_COMPARTIR}</span> en la barra de abajo.</span></li>
+      <li><span class="n">2</span><span>Baja y elige <b>«Agregar a inicio»</b> <span class="ico-inst">${ICO_SUMAR}</span>, luego toca <b>Agregar</b>.</span></li>
+      <li><span class="n">3</span><span>Abre <b>Taller</b> desde tu pantalla de inicio.</span></li></ol>`;
+  } else {
+    cuerpo = `<ol class="pasos-inst">
+      <li><span class="n">1</span><span>Toca el menú del navegador <span class="ico-inst">${ICO_MENU}</span> arriba a la derecha.</span></li>
+      <li><span class="n">2</span><span>Elige <b>«Instalar app»</b> o <b>«Agregar a la pantalla de inicio»</b>.</span></li>
+      <li><span class="n">3</span><span>Abre <b>Taller</b> desde tu pantalla de inicio.</span></li></ol>`;
+  }
+  app.innerHTML = `<div class="entrar" id="pantalla-instalar"><div class="envoltura">
+    <div class="lockup"><img src="icon-192.png" alt="" width="84" height="84" style="border-radius:20px"><h1>Taller</h1><p>ÜINKY · PORTHOS</p></div>
+    <div class="inst"><h2>Instala la app en tu celular</h2><p>Así la abres con un toque, sin buscar el enlace, y te avisa cuando hay pedidos para empacar.</p></div>
+    ${cuerpo}
+    <div class="pie-entrar"><button class="btn-link" type="button" data-accion="seguir-navegador">${recienInstalada ? "Seguir aquí por ahora" : "Ahora no, seguir en el navegador"}</button></div>
+  </div></div>`;
+}
+function arrancar() {
+  if (!instalada() && !seguirNavegador()) return pantallaInstalar();
+  if (S.pin) cargar(); else pantallaEntrar();
+}
 function bloqueInstalar() {
   if (instalada()) return "";
   if (eventoInstalar) return `<div class="instalar"><b>Tenla como app.</b> Queda en la pantalla del celular y abre directo.<div style="margin-top:10px"><button class="btn acento" type="button" data-accion="instalar">Instalar app</button></div></div>`;
@@ -974,7 +1025,15 @@ document.addEventListener("click", async (e) => {
     try { const r = await Notification.requestPermission(); toast(r === "granted" ? "Listo: te aviso cuando llegue un pedido pagado." : "Sin permiso: el aviso suena solo con la app abierta."); } catch {}
     return pintar(true);
   }
-  if (ac === "instalar" && eventoInstalar) { eventoInstalar.prompt(); try { await eventoInstalar.userChoice; } catch {} eventoInstalar = null; return pintar(true); }
+  if (ac === "instalar" && eventoInstalar) {
+    const ev = eventoInstalar; ev.prompt();
+    let r = null; try { r = await ev.userChoice; } catch {}
+    eventoInstalar = null;
+    if (r && r.outcome === "accepted") recienInstalada = true;
+    if (document.getElementById("pantalla-instalar")) return pantallaInstalar();
+    return pintar(true);
+  }
+  if (ac === "seguir-navegador") { try { sessionStorage.setItem("taller.navegador", "1"); } catch {} return arrancar(); }
   if (ac === "admin") return pantallaAdmin();
   if (ac === "volver-entrar") { if (S.pin) { S.d = null; return cargar(); } return pantallaEntrar(); }
   if (ac === "admin-salir") { S.admin = null; return pantallaAdmin(); }
@@ -1077,7 +1136,7 @@ document.addEventListener("submit", async (e) => {
 
 /* ---------- arranque ---------- */
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
-if (S.pin) cargar(); else pantallaEntrar();
+arrancar();
 </script>
 </body>
 </html>

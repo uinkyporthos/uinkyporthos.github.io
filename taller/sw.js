@@ -1,6 +1,6 @@
 // Taller ÜINKY · PORTHOS — guarda la app para que abra aunque la señal sea mala.
 // Los datos (Supabase) nunca se guardan aquí: siempre se piden en vivo.
-const CACHE = "taller-v1";
+const CACHE = "taller-v2";
 const BASE = ["./", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (e) => {
