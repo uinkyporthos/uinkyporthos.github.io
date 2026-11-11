@@ -1876,8 +1876,8 @@ html[data-marca="porthos"] .sx-chip-bar i{background:#3EA398}
        Formato: código de país + número, sin +, sin espacios, sin guiones.
        CATALOGO es el link al catálogo de WhatsApp Business (sólo ÜINKY).
    ======================================================================= */
-const WHATSAPP = "593969577774";
-const CATALOGO = "https://wa.me/c/593969577774";
+const WHATSAPP = "593969235680";
+const CATALOGO = "https://wa.me/593969235680";
 
 /* =======================================================================
    2 · EL SWITCH — qué marca se muestra.
@@ -2787,7 +2787,7 @@ function sxAutoplay({ end, chip, speed = .5, delay = 1700, offset = () => 0 }) {
   const top = () => (casa ? casa.offsetHeight : 0) + (($(`#${b()}-barra`) || {}).offsetHeight || 0);
   const setTop = () => html.style.setProperty('--sx-top', top() + 'px');
   setTop();
-  const waLink = t => (typeof wa === 'function') ? wa(t) : `https://wa.me/593969577774?text=${encodeURIComponent(t)}`;
+  const waLink = t => (typeof wa === 'function') ? wa(t) : `https://wa.me/593969235680?text=${encodeURIComponent(t)}`;
 
   // WhatsApp de la historia
   $$('.js-sxu-wa').forEach(a => { a.href = waLink(a.dataset.msg); a.target = '_blank'; a.rel = 'noopener'; });
