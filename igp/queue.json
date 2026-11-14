@@ -1257,5 +1257,433 @@
     ],
     "caption": "",
     "aprobado": true
+  },
+  {
+    "id": "w47_S01a",
+    "tipo": "story",
+    "fecha": "2026-11-16T08:30:00-05:00",
+    "archivos": [
+      "w47_S01a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P01_preguntas",
+    "tipo": "carrusel",
+    "fecha": "2026-11-16T09:00:00-05:00",
+    "archivos": [
+      "w47_P01_preguntas_1.jpg",
+      "w47_P01_preguntas_2.jpg",
+      "w47_P01_preguntas_3.jpg",
+      "w47_P01_preguntas_4.jpg",
+      "w47_P01_preguntas_5.jpg",
+      "w47_P01_preguntas_6.jpg",
+      "w47_P01_preguntas_7.jpg"
+    ],
+    "caption": "Lo que más nos preguntan, segunda parte.\n¿Qué otros jabones hay? ¿Hacen envíos? ¿Se puede retirar? ¿Son de Ecuador? ¿Se paga desde otro banco?\nLas respuestas, en el carrusel.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P02_pino",
+    "tipo": "post",
+    "fecha": "2026-11-16T13:00:00-05:00",
+    "archivos": [
+      "w47_P02_pino.jpg"
+    ],
+    "caption": "Pino 🌲\nAceite esencial de pino y carbón activado.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S01b",
+    "tipo": "story",
+    "fecha": "2026-11-16T13:30:00-05:00",
+    "archivos": [
+      "w47_S01b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P03_envios",
+    "tipo": "post",
+    "fecha": "2026-11-16T19:00:00-05:00",
+    "archivos": [
+      "w47_P03_envios.jpg"
+    ],
+    "caption": "¿Hacen envíos?\nSí, a todo Ecuador, por Servientrega. El costo depende de tu ciudad y se confirma antes del pago.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S01c",
+    "tipo": "story",
+    "fecha": "2026-11-16T20:30:00-05:00",
+    "archivos": [
+      "w47_S01c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S02a",
+    "tipo": "story",
+    "fecha": "2026-11-17T08:30:00-05:00",
+    "archivos": [
+      "w47_S02a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P04_bambu",
+    "tipo": "post",
+    "fecha": "2026-11-17T09:00:00-05:00",
+    "archivos": [
+      "w47_P04_bambu.jpg"
+    ],
+    "caption": "Bambú 🎋\nUn toque de árbol de té.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P05_lacasa",
+    "tipo": "carrusel",
+    "fecha": "2026-11-17T13:00:00-05:00",
+    "archivos": [
+      "w47_P05_lacasa_1.jpg",
+      "w47_P05_lacasa_2.jpg",
+      "w47_P05_lacasa_3.jpg",
+      "w47_P05_lacasa_4.jpg"
+    ],
+    "caption": "¿Qué otros jabones tienen?\nPORTHOS: Bambú y Pino.\nEn la casa también está ÜINKY (@uinky__): Cúrcuma, Vasija de Barro, Arroz y Mango.\nLa misma base de aceites y el mismo proceso en frío.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S02b",
+    "tipo": "story",
+    "fecha": "2026-11-17T13:30:00-05:00",
+    "archivos": [
+      "w47_S02b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_R8_sello",
+    "tipo": "reel",
+    "fecha": "2026-11-17T19:00:00-05:00",
+    "archivos": [
+      "w47_R8_sello.mp4"
+    ],
+    "caption": "El sello, uno por uno.\nJabón de Pino 🌲\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true,
+    "portada_ms": 5200
+  },
+  {
+    "id": "w47_S02c",
+    "tipo": "story",
+    "fecha": "2026-11-17T20:30:00-05:00",
+    "archivos": [
+      "w47_S02c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S03a",
+    "tipo": "story",
+    "fecha": "2026-11-18T08:30:00-05:00",
+    "archivos": [
+      "w47_S03a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P06_quito",
+    "tipo": "post",
+    "fecha": "2026-11-18T09:00:00-05:00",
+    "archivos": [
+      "w47_P06_quito.jpg"
+    ],
+    "caption": "¿Son hechos en Ecuador?\nSí. A mano, en Quito, en lotes pequeños.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P07_manos",
+    "tipo": "post",
+    "fecha": "2026-11-18T13:00:00-05:00",
+    "archivos": [
+      "w47_P07_manos.jpg"
+    ],
+    "caption": "Hecho a mano.\nCada barra pasa por las mismas manos.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S03b",
+    "tipo": "story",
+    "fecha": "2026-11-18T13:30:00-05:00",
+    "archivos": [
+      "w47_S03b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P08_retiro",
+    "tipo": "post",
+    "fecha": "2026-11-18T19:00:00-05:00",
+    "archivos": [
+      "w47_P08_retiro.jpg"
+    ],
+    "caption": "¿Se puede retirar el pedido?\nSí, previa verificación de datos. El punto y la hora te los confirma el equipo.\nTambién hay envío a todo Ecuador.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S03c",
+    "tipo": "story",
+    "fecha": "2026-11-18T20:30:00-05:00",
+    "archivos": [
+      "w47_S03c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S04a",
+    "tipo": "story",
+    "fecha": "2026-11-19T08:30:00-05:00",
+    "archivos": [
+      "w47_S04a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P09_fichabambu",
+    "tipo": "carrusel",
+    "fecha": "2026-11-19T09:00:00-05:00",
+    "archivos": [
+      "w47_P09_fichabambu_1.jpg",
+      "w47_P09_fichabambu_2.jpg",
+      "w47_P09_fichabambu_3.jpg",
+      "w47_P09_fichabambu_4.jpg"
+    ],
+    "caption": "¿Para qué sirve el Bambú? 🎋\nEs un jabón de cuerpo y manos: bambú con un toque de árbol de té, con vetas de carbón activado vegetal.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P10_naturales",
+    "tipo": "post",
+    "fecha": "2026-11-19T13:00:00-05:00",
+    "archivos": [
+      "w47_P10_naturales.jpg"
+    ],
+    "caption": "¿Son naturales?\nLa base son aceites naturales: oliva, coco, almendras y manteca de cacao.\nLos colores salen de elementos naturales, como el carbón activado vegetal.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S04b",
+    "tipo": "story",
+    "fecha": "2026-11-19T13:30:00-05:00",
+    "archivos": [
+      "w47_S04b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P11_formule",
+    "tipo": "post",
+    "fecha": "2026-11-19T19:00:00-05:00",
+    "archivos": [
+      "w47_P11_formule.jpg"
+    ],
+    "caption": "Formule française.\nProceso en frío y 30 días de curado.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S04c",
+    "tipo": "story",
+    "fecha": "2026-11-19T20:30:00-05:00",
+    "archivos": [
+      "w47_S04c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S05a",
+    "tipo": "story",
+    "fecha": "2026-11-20T08:30:00-05:00",
+    "archivos": [
+      "w47_S05a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P12_dura",
+    "tipo": "post",
+    "fecha": "2026-11-20T09:00:00-05:00",
+    "archivos": [
+      "w47_P12_dura.jpg"
+    ],
+    "caption": "¿Cuánto dura una barra?\nUsada a diario y bien seca entre usos, varias semanas.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P13_bosque",
+    "tipo": "carrusel",
+    "fecha": "2026-11-20T13:00:00-05:00",
+    "archivos": [
+      "w47_P13_bosque_1.jpg",
+      "w47_P13_bosque_2.jpg",
+      "w47_P13_bosque_3.jpg"
+    ],
+    "caption": "El bosque entero 🌲🎋\nBambú y Pino en un paquete. Un regalo de buen gusto.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S05b",
+    "tipo": "story",
+    "fecha": "2026-11-20T13:30:00-05:00",
+    "archivos": [
+      "w47_S05b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P14_banco",
+    "tipo": "post",
+    "fecha": "2026-11-20T19:00:00-05:00",
+    "archivos": [
+      "w47_P14_banco.jpg"
+    ],
+    "caption": "¿Se puede pagar desde otro banco?\nSí. El pago es por transferencia, desde cualquier banco.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S05c",
+    "tipo": "story",
+    "fecha": "2026-11-20T20:30:00-05:00",
+    "archivos": [
+      "w47_S05c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S06a",
+    "tipo": "story",
+    "fecha": "2026-11-21T08:30:00-05:00",
+    "archivos": [
+      "w47_S06a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P15_sellado",
+    "tipo": "post",
+    "fecha": "2026-11-21T09:00:00-05:00",
+    "archivos": [
+      "w47_P15_sellado.jpg"
+    ],
+    "caption": "Sellado a mano.\nCon mazo, una barra a la vez.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P16_todos",
+    "tipo": "post",
+    "fecha": "2026-11-21T13:00:00-05:00",
+    "archivos": [
+      "w47_P16_todos.jpg"
+    ],
+    "caption": "Todos para uno.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S06b",
+    "tipo": "story",
+    "fecha": "2026-11-21T13:30:00-05:00",
+    "archivos": [
+      "w47_S06b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S06c",
+    "tipo": "story",
+    "fecha": "2026-11-21T20:30:00-05:00",
+    "archivos": [
+      "w47_S06c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S07a",
+    "tipo": "story",
+    "fecha": "2026-11-22T08:30:00-05:00",
+    "archivos": [
+      "w47_S07a.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P17_formule",
+    "tipo": "post",
+    "fecha": "2026-11-22T09:00:00-05:00",
+    "archivos": [
+      "w47_P17_formule.jpg"
+    ],
+    "caption": "Formule française.\nAceites naturales, proceso en frío, 30 días de curado.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P18_fichapino",
+    "tipo": "carrusel",
+    "fecha": "2026-11-22T13:00:00-05:00",
+    "archivos": [
+      "w47_P18_fichapino_1.jpg",
+      "w47_P18_fichapino_2.jpg",
+      "w47_P18_fichapino_3.jpg",
+      "w47_P18_fichapino_4.jpg"
+    ],
+    "caption": "Ficha: Pino 🌲\nAceite esencial de pino y carbón activado, sobre la misma base: oliva, coco, almendras y manteca de cacao.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S07b",
+    "tipo": "story",
+    "fecha": "2026-11-22T13:30:00-05:00",
+    "archivos": [
+      "w47_S07b.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "w47_P19_pedidos",
+    "tipo": "post",
+    "fecha": "2026-11-22T19:00:00-05:00",
+    "archivos": [
+      "w47_P19_pedidos.jpg"
+    ],
+    "caption": "Bambú, Pino o El bosque entero.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "w47_S07c",
+    "tipo": "story",
+    "fecha": "2026-11-22T20:30:00-05:00",
+    "archivos": [
+      "w47_S07c.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
   }
 ]
