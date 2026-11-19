@@ -1259,7 +1259,7 @@ html[data-marca="porthos"] .sx-chip-bar i{background:#3EA398}
       <h2 class="tit">Jabón de Cúrcuma</h2>
       <p class="entrada">La cúrcuma va molida y repartida en la masa, así que el color y las motitas salen de la raíz y no de un colorante. Encima lleva una veta de masa blanca que se dibuja a mano, una sola vez, antes de que la mezcla espese. Por eso no hay dos barras iguales. La acompañan naranja y vainilla: cítrico al abrir el agua, dulce al terminar.</p>
       <ul class="notas-aroma">
-        <li>Cítrico</li><li>Cálido</li><li>Vainilla</li><li>Exfoliación suave</li>
+        <li>Cítrico</li><li>Cálido</li><li>Vainilla</li><li>Motitas de cúrcuma</li>
       </ul>
       <div class="precio-linea">
         <span class="p">$15</span><span class="g">barra de 130 g · alcanza para 4 a 6 semanas de ducha</span>
@@ -2137,7 +2137,7 @@ const JABONES_UINKY = [
   },
   {
     nombre:"Jabón de Arroz", gramos:"85 g", precio:8,
-    desc:"Vainilla, coco y café con harina de arroz. Barra pequeña para el lavamanos, exfoliación suave.",
+    desc:"Vainilla, coco y café con harina de arroz. Barra pequeña para el lavamanos, con la textura de la harina de arroz.",
     color:"#D9C9AC", veta:"#C0AC8A", estado:"disponible", etiqueta:"",
     historia:[
       {f:"../assets/uinky-arroz.webp",   pie:"Vainilla, coco y café, con harina de arroz."},
@@ -2208,10 +2208,10 @@ pinta("p-rejilla", JABONES_PORTHOS, "PORTHOS");
    ======================================================================= */
 /* la frase corta de cada jabón; un paquete puede poner la suya con `nota` */
 const BENEFICIO = {
-  "Jabón de Cúrcuma":"Anti-age.",
-  "Jabón Vasija de Barro":"Exfoliante.",
-  "Jabón de Arroz":"Blanqueador.",
-  "Jabón de Mango":"Hidratante."
+  "Jabón de Cúrcuma":"Cúrcuma, naranja y vainilla.",
+  "Jabón Vasija de Barro":"Vainilla, coco y café molido.",
+  "Jabón de Arroz":"Vainilla, coco y café, con harina de arroz.",
+  "Jabón de Mango":"Mango, naranja y mandarina."
 };
 const PAQUETES = [
   /* Navidad 2026: cajas con el Biscuit (índice 4) y la Cúrcuma (índice 0). Se muestran
@@ -2228,12 +2228,12 @@ const PAQUETES = [
 
   { marca:"uinky", nombre:"Baño de arroz", antes:16, precio:14,
     desc:"Dos diseños originales de ÜINKY, de 85 g.",
-    lleva:[{m:"uinky",i:2,nota:"Con notas de vainilla. Blanqueador."},{m:"uinky",i:3}] },
+    lleva:[{m:"uinky",i:2,nota:"Con notas de vainilla y harina de arroz."},{m:"uinky",i:3}] },
 
   { marca:"uinky", nombre:"Dos gemas de la casa", antes:30, precio:26,
     desc:"Las dos barras grandes de ÜINKY, de 130 g.",
-    lleva:[{m:"uinky",i:1,nota:"Jabón de temporada. Café con notas de vainilla y coco. Exfoliante."},
-           {m:"uinky",i:0,nota:"Vainilla y naranja. Anti-age."}] },
+    lleva:[{m:"uinky",i:1,nota:"Jabón de temporada. Café con notas de vainilla y coco."},
+           {m:"uinky",i:0,nota:"Vainilla, naranja y cúrcuma."}] },
 
   { marca:"uinky", nombre:"Multicolor", antes:46, precio:39,
     desc:"Estas son nuestras cuatro esencias sólidas.",
