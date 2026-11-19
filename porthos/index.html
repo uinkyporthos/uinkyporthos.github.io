@@ -236,7 +236,8 @@ html[data-marca="uinky"] :focus-visible{outline:2px solid var(--tinta);outline-o
 }
 .m-uinky .notas-aroma li{background:var(--durazno)}
 /* catálogo */
-.m-uinky .rejilla{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.4rem,2.6vw,2.2rem)}
+.m-uinky .rejilla{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(1.1rem,2vw,1.8rem)}
+@media(max-width:1240px){.m-uinky .rejilla{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1040px){.m-uinky .rejilla{grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.4rem)}}
 @media(max-width:540px){.m-uinky .rejilla{grid-template-columns:1fr}}
 .m-uinky .jabon{display:flex;flex-direction:column;background:var(--blanco);border-radius:3px}
@@ -1092,6 +1093,10 @@ html[data-marca="porthos"] .sx-chip-bar i{background:#3EA398}
   .sxu-fotos{display:none}
   .sxu-cards{grid-template-columns:repeat(2,minmax(0,1fr));width:min(420px,100%,calc(2 * 27svh * 3 / 4 + .7rem))}
   .sxu-card{aspect-ratio:3/4}
+  .sxu-cards[data-n="5"]{grid-template-columns:repeat(3,minmax(0,1fr));width:min(420px,100%,calc(3 * 26svh * 3 / 5 + 1.4rem))}
+  .sxu-cards[data-n="5"] .sxu-card{aspect-ratio:3/5}
+  .sxu-cards[data-n="5"] .info b{font-size:.95rem}
+  .sxu-cards[data-n="5"] .info .p{font-size:1.05rem}
   .sxu-card .info{padding:.5rem .6rem .6rem}
   .sxu-card .info small{display:none}
   .sxu-card .info a{display:none}
@@ -1209,7 +1214,7 @@ html[data-marca="porthos"] .sx-chip-bar i{background:#3EA398}
 
 <section class="sxu-s sxu-shop" aria-label="Los jabones">
   <div class="sxu-stage">
-    <div class="tit"><span class="ey">Paso 4 · Listos para salir</span><h2>Cuatro jabones.</h2></div>
+    <div class="tit"><span class="ey">Paso 4 · Listos para salir</span><h2>Cinco jabones.</h2></div>
     <div class="sxu-cards" data-dorso="../assets/uinky-marca-crema.png"></div>
     <div class="sxu-btns">
       <a class="sxu-btn lleno js-sxu-wa" href="#" data-msg="Hola ÜINKY, quiero hacer un pedido."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>Pedir por WhatsApp</a>
@@ -1268,7 +1273,7 @@ html[data-marca="porthos"] .sx-chip-bar i{background:#3EA398}
   <div class="env">
     <div class="cabecera centro">
       <p class="sup">Catálogo</p>
-      <h2 class="tit">Los cuatro jabones</h2>
+      <h2 class="tit">Los cinco jabones</h2>
       <p class="entrada" style="margin-inline:auto">Todos salen de la misma base de cuatro grasas. Lo único que cambia entre uno y otro es el bloque de aroma y color. Si algo se agota, el siguiente lote toma cuatro o cinco semanas.</p>
     </div>
     <div class="rejilla" id="u-rejilla"></div>
@@ -1351,7 +1356,7 @@ html[data-marca="porthos"] .sx-chip-bar i{background:#3EA398}
     <div class="rev">
       <p class="sup">La receta</p>
       <h2 class="tit">La base es siempre la misma</h2>
-      <p class="entrada">Cuatro grasas en la misma proporción para las cuatro recetas, con 9 % de sobreengrasado: queda aceite libre sin transformar, y es la razón por la que la barra limpia sin dejar la piel tirante.</p>
+      <p class="entrada">Cuatro grasas en la misma proporción para las cinco recetas, con 9 % de sobreengrasado: queda aceite libre sin transformar, y es la razón por la que la barra limpia sin dejar la piel tirante.</p>
       <ul class="tabla">
         <li><b>Aceite de oliva</b><span>50 %</span></li>
         <li><b>Aceite de coco</b><span>30 %</span></li>
@@ -2081,7 +2086,7 @@ function pinta(destino, jabones, marca){
       ? `Hola ${marca}, avísame cuando salga el ${j.nombre}.`
       : (j.precio == null
           ? `Hola ${marca}, quiero saber el precio del ${j.nombre}.`
-          : `Hola ${marca}, quiero pedir el ${j.nombre} (${j.gramos}) — $${j.precio}.`);
+          : `Hola ${marca}, quiero pedir el ${j.nombre} (${j.gramos}) — $${usd(j.precio)}.`);
     const figura = varias
       ? `<button class="figura abre" type="button" data-marca="${clave}" data-jabon="${n}"
                  aria-label="Ver las ${hist.length} fotos del ${esc(j.nombre)}">
@@ -2089,18 +2094,21 @@ function pinta(destino, jabones, marca){
          </button>`
       : `<div class="figura">${visual}${chip}</div>`;
     return `
-    <article class="jabon">
+    <article class="jabon"${j.destacado ? ' style="order:-1"' : ""}>
       ${figura}
       ${j.gramos ? `<p class="gramos">${esc(j.gramos)}</p>` : ``}
       <h3>${esc(j.nombre)}</h3>
       <p class="desc">${esc(j.desc)}</p>
-      <div class="fila"><span class="p">${j.precio == null ? "A confirmar" : "$"+j.precio}</span></div>
+      <div class="fila"><span class="p">${j.precio == null ? "A confirmar" : "$"+usd(j.precio)}</span></div>
       <a class="btn${proximo ? " linea" : ""}" href="${wa(mensaje)}" target="_blank" rel="noopener">
         ${proximo ? "" : ICONO_WA}${proximo ? "Avísame cuando salga" : "Pedir este jabón"}
       </a>
     </article>`;
   }).join("");
 }
+
+/* precios: enteros sin decimales ($15) y con centavos en formato local ($22,50) */
+function usd(v){ const n = Math.round(Number(v) * 100) / 100; return Number.isInteger(n) ? String(n) : n.toFixed(2).replace(".", ","); }
 
 const JABONES_UINKY = [
   {
@@ -2139,13 +2147,25 @@ const JABONES_UINKY = [
   },
   {
     nombre:"Jabón de Mango", gramos:"85 g", precio:8,
-    desc:"Mango, naranja y mandarina. Moldeado en flor, el más frutal de los cuatro.",
+    desc:"Mango, naranja y mandarina. Moldeado en flor, el más frutal de ÜINKY.",
     color:"#DE7420", veta:"#F5B171", estado:"disponible", etiqueta:"",
     historia:[
       {f:"../assets/uinky-mango.webp", pie:"Moldeado en flor."},
       {f:"../assets/uinky-mango-2.webp",      pie:"Mango, naranja y mandarina."},
       {f:"../assets/uinky-mango-3.webp",      pie:"Secando junto a los de vasija de barro."},
       {f:"../assets/uinky-mango-4.webp",      pie:"Un lote entero, secando."}
+    ]
+  },
+  {
+    nombre:"Jabón Biscuit de Noël", gramos:"250 g", precio:22.5,
+    desc:"Aroma a galletas, con aceites de oliva, coco y almendra. Parece un postre, pero es un jabón: un regalo de Navidad.",
+    color:"#F1DDB0", veta:"#E9A23B", estado:"disponible", etiqueta:"Edición de Navidad", destacado:true,
+    historia:[
+      {f:"../assets/uinky-biscuit.webp",   pie:"Aroma a galletas. Edición de Navidad."},
+      {f:"../assets/uinky-biscuit-2.webp", pie:"Parece un postre, pero es un jabón."},
+      {f:"../assets/uinky-biscuit-3.webp", pie:"Oliva, coco y almendra, con su veta dorada."},
+      {f:"../assets/uinky-biscuit-4.webp", pie:"Cada barra lleva su sello, a mano."},
+      {f:"../assets/uinky-biscuit-5.webp", pie:"El molde entero, listo para cortar."}
     ]
   }
 ];
@@ -2350,15 +2370,15 @@ const ARMA = (() => {
     const lineas = ["Hola, armé mi caja de jabones:"];
     c.filas.forEach(({j, n}) => {
       const pagados = n - (c.gratis[j.k] || 0);
-      if (pagados) lineas.push(`• ${pagados} × ${j.nombre} ${j.gramos} (${rotulo[j.m]}) — $${pagados * j.precio}`);
+      if (pagados) lineas.push(`• ${pagados} × ${j.nombre} ${j.gramos} (${rotulo[j.m]}) — $${usd(pagados * j.precio)}`);
     });
     c.filas.forEach(({j}) => {
       const g = c.gratis[j.k] || 0;
       if (g) lineas.push(`• ${g} × ${j.nombre} ${j.gramos} (${rotulo[j.m]}) — $0 (regalo)`);
     });
-    c.descuentos.filter(d => !d.t.startsWith("Regalo")).forEach(d => lineas.push(`Promo ${d.t}: −$${d.v}`));
+    c.descuentos.filter(d => !d.t.startsWith("Regalo")).forEach(d => lineas.push(`Promo ${d.t}: −$${usd(d.v)}`));
     if (c.regalos) lineas.push(`Promo: por cada ${PROMO.cada} de ${PROMO.paga}, uno de ${PROMO.regalo} de regalo.`);
-    lineas.push(`Total: $${c.total}`);
+    lineas.push(`Total: $${usd(c.total)}`);
     return lineas.join("\n");
   }
 
@@ -2400,7 +2420,7 @@ const ARMA = (() => {
         return `<div class="ar-item${n ? " lleno" : ""}">
           ${foto}
           <div><p class="ar-nombre">${esc(j.nombre)}</p>
-            <p class="ar-meta">${esc(j.gramos)} · $${j.precio}${j.k === CURCUMA.clave ? ` · <b>2 por $${CURCUMA.par}</b>` : ""}</p>
+            <p class="ar-meta">${esc(j.gramos)} · $${usd(j.precio)}${j.k === CURCUMA.clave ? ` · <b>2 por $${CURCUMA.par}</b>` : ""}</p>
             ${g ? `<span class="ar-regalo">${g === n ? "De regalo" : g + " de regalo"}</span>` : ""}</div>
           <div class="ar-paso" role="group" aria-label="Cantidad de ${esc(j.nombre)}">
             <button type="button" data-ar-menos="${j.k}" aria-label="Quitar uno" ${n ? "" : "disabled"}>−</button>
@@ -2412,7 +2432,7 @@ const ARMA = (() => {
     }).join("");
     const filas = c.filas.map(({j, n}) => {
       const g = c.gratis[j.k] || 0, pagados = n - g;
-      return (pagados ? `<li><span>${pagados} × ${esc(j.nombre)}</span><span>$${pagados * j.precio}</span></li>` : "") +
+      return (pagados ? `<li><span>${pagados} × ${esc(j.nombre)}</span><span>$${usd(pagados * j.precio)}</span></li>` : "") +
              (g ? `<li><span>${g} × ${esc(j.nombre)}</span><span>regalo</span></li>` : "");
     }).join("");
     const vacio = !c.filas.length;
@@ -2422,8 +2442,8 @@ const ARMA = (() => {
         <h3>Tu caja</h3>
         ${vacio ? `<p class="ar-vacio">Todavía está vacía. Usa el + para agregar jabones.</p>` : `<ul class="ar-filas">${filas}</ul>
         <div class="ar-cuentas">
-          ${c.descuento ? `<div><span>Subtotal</span><span>$${c.subtotal}</span></div>` + c.descuentos.map(d => `<div class="ar-desc"><span>${esc(d.t)}</span><span>−$${d.v}</span></div>`).join("") : ""}
-          <div class="ar-total"><span>Total</span><b>$${c.total}</b></div>
+          ${c.descuento ? `<div><span>Subtotal</span><span>$${usd(c.subtotal)}</span></div>` + c.descuentos.map(d => `<div class="ar-desc"><span>${esc(d.t)}</span><span>−$${usd(d.v)}</span></div>`).join("") : ""}
+          <div class="ar-total"><span>Total</span><b>$${usd(c.total)}</b></div>
         </div>`}
         ${pista(c)}
         ${pistaCurcuma(c)}
@@ -2573,7 +2593,7 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObse
     titulo.textContent = jabon.nombre;
     const mensaje = jabon.precio == null
       ? "Hola " + marca.toUpperCase() + ", quiero saber el precio del " + jabon.nombre + "."
-      : "Hola " + marca.toUpperCase() + ", quiero pedir el " + jabon.nombre + " (" + jabon.gramos + ") — $" + jabon.precio + ".";
+      : "Hola " + marca.toUpperCase() + ", quiero pedir el " + jabon.nombre + " (" + jabon.gramos + ") — $" + usd(jabon.precio) + ".";
     boton.href = wa(mensaje);
     boton.innerHTML = ICONO_WA + "Pedir este jabón";
     capa.hidden = false;
@@ -2799,13 +2819,14 @@ function sxAutoplay({ end, chip, speed = .5, delay = 1700, offset = () => 0 }) {
   historias.forEach(h => {
     const k = h.dataset.b, cont = $('.sxu-cards', h), jab = listas[k];
     cont.style.setProperty('--n', jab.length);
+    cont.dataset.n = jab.length;
     cont.innerHTML = jab.map(j => {
       const foto = (j.historia && j.historia[0] && j.historia[0].f) || j.foto || '';
-      const msg = `Hola ${nombre[k]}, quiero pedir el ${j.nombre} (${j.gramos}) — $${j.precio}.`;
-      return `<article class="sxu-card" style="--c:${e(j.color || '#999')}">
+      const msg = `Hola ${nombre[k]}, quiero pedir el ${j.nombre} (${j.gramos}) — $${usd(j.precio)}.`;
+      return `<article class="sxu-card" style="--c:${e(j.color || '#999')}${j.destacado ? ';order:-1' : ''}">
         <div class="cara frente"><img src="${e(foto)}" alt="${e(j.nombre)}" loading="lazy">
           <div class="info"><small>${e(j.gramos || '')}</small><b>${e(j.nombre.replace(/^Jabón (de )?/, ''))}</b>
-            <div class="fila"><span class="p">${j.precio == null ? '' : '$' + j.precio}</span><a href="${e(waLink(msg))}" target="_blank" rel="noopener">Pedir</a></div></div></div>
+            <div class="fila"><span class="p">${j.precio == null ? '' : '$' + usd(j.precio)}</span><a href="${e(waLink(msg))}" target="_blank" rel="noopener">Pedir</a></div></div></div>
         <div class="cara dorso" aria-hidden="true"><img src="${e(cont.dataset.dorso)}" alt=""></div>
       </article>`;
     }).join('');
