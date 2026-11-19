@@ -1951,5 +1951,79 @@
   ],
   "caption": "",
   "aprobado": true
+ },
+ {
+  "id": "nav26_ui_P1_cajas",
+  "tipo": "post",
+  "fecha": "2026-12-15T17:00:00-05:00",
+  "archivos": [
+   "nav26_ui_P1_cajas.jpg"
+  ],
+  "caption": "Cajas de Navidad 🎄\nBiscuit de Noël con Jabón de Cúrcuma, o la Caja: un Biscuit y tres Cúrcuma, con envío incluido. Del 15 al 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": true
+ },
+ {
+  "id": "nav26_ui_S1_cajas",
+  "tipo": "story",
+  "fecha": "2026-12-15T18:00:00-05:00",
+  "archivos": [
+   "nav26_ui_S1_cajas.jpg"
+  ],
+  "caption": "",
+  "aprobado": true
+ },
+ {
+  "id": "nav26_ui_R1_reel",
+  "tipo": "reel",
+  "fecha": "2026-12-17T17:00:00-05:00",
+  "archivos": [
+   "nav26_ui_R1_reel.mp4"
+  ],
+  "caption": "Para regalar en Navidad 🎄\nCajas ÜINKY con Biscuit de Noël y Jabón de Cúrcuma, hasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": true,
+  "portada_ms": 10500
+ },
+ {
+  "id": "nav26_ui_S2_clienta",
+  "tipo": "story",
+  "fecha": "2026-12-17T18:00:00-05:00",
+  "archivos": [
+   "nav26_ui_S2_clienta.jpg"
+  ],
+  "caption": "",
+  "aprobado": true
+ },
+ {
+  "id": "nav26_ui_P2_regalar",
+  "tipo": "carrusel",
+  "fecha": "2026-12-19T17:00:00-05:00",
+  "archivos": [
+   "nav26_ui_P2_regalar_1.jpg",
+   "nav26_ui_P2_regalar_2.jpg",
+   "nav26_ui_P2_regalar_3.jpg",
+   "nav26_ui_P2_regalar_4.jpg"
+  ],
+  "caption": "Para regalar en Navidad.\n01 Biscuit de Noël + Cúrcuma. 02 La Caja de Navidad: un Biscuit y tres Cúrcuma, con envío incluido. Hasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": true
+ },
+ {
+  "id": "nav26_ui_P3_ultimos",
+  "tipo": "post",
+  "fecha": "2026-12-22T17:00:00-05:00",
+  "archivos": [
+   "nav26_ui_P3_ultimos.jpg"
+  ],
+  "caption": "Últimos días 🎄\nLas Cajas de Navidad van hasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": true
+ },
+ {
+  "id": "nav26_ui_S3_manana",
+  "tipo": "story",
+  "fecha": "2026-12-23T18:00:00-05:00",
+  "archivos": [
+   "nav26_ui_S3_manana.jpg"
+  ],
+  "caption": "",
+  "aprobado": true
  }
 ]

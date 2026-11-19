@@ -1,0 +1,14 @@
+ÜINKY · audio para reels (Matías, 19-nov-2026)
+
+Regla: todos los reels de ÜINKY terminan con la voz «ÜINKY. Formule française».
+No se genera de nuevo: se usa el corte del reel del Biscuit de Noël.
+
+- uinky_cierre_voz.m4a  · 2,8 s · corte del reel del Biscuit (bdn_R1_reel), de 22,25 s a 25,05 s.
+  Trae la voz y la música de ese reel debajo. «ÜINKY» entra a los 0,3 s y «Formule française» termina a los 2,1 s.
+- uinky_musica_navidad.m4a · 34 s · la misma música del reel del Biscuit (ElevenLabs, take LwK7G8emv6XyXaILJ6CB).
+
+Cómo se arma (así se hizo nav26_ui_R1_reel):
+1. Pon el corte para que «ÜINKY» suene unos 0,2 s después de que aparece la tarjeta final (deja 3 s de tarjeta).
+2. Antes del corte, usa uinky_musica_navidad.m4a al 50 % desde el segundo (22,25 − momento del corte en tu reel):
+   así la música empalma exacta con la del corte. Fundido cruzado de 0,15 s.
+3. Fundido de entrada 0,3 s, de salida 0,6 s, y normaliza a −14 LUFS.

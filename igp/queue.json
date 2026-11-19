@@ -1685,5 +1685,89 @@
     ],
     "caption": "",
     "aprobado": true
+  },
+  {
+    "id": "nav26_po_P1_caja",
+    "tipo": "post",
+    "fecha": "2026-11-22T17:00:00-05:00",
+    "archivos": [
+      "nav26_po_P1_caja.jpg"
+    ],
+    "caption": "En caja de regalo.\nEl bosque entero: Bambú y Pino, listos para regalar esta Navidad. Hasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "nav26_po_S1_caja",
+    "tipo": "story",
+    "fecha": "2026-11-22T18:00:00-05:00",
+    "archivos": [
+      "nav26_po_S1_caja.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "nav26_po_P2_bosque",
+    "tipo": "carrusel",
+    "fecha": "2026-11-28T17:00:00-05:00",
+    "archivos": [
+      "nav26_po_P2_bosque_1.jpg",
+      "nav26_po_P2_bosque_2.jpg",
+      "nav26_po_P2_bosque_3.jpg",
+      "nav26_po_P2_bosque_4.jpg"
+    ],
+    "caption": "El bosque entero, en caja de regalo 🌲\nBambú y Pino, proceso en frío y 30 días de curado. Hasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "nav26_po_R1_reel",
+    "tipo": "reel",
+    "fecha": "2026-11-30T17:00:00-05:00",
+    "archivos": [
+      "nav26_po_R1_reel.mp4"
+    ],
+    "caption": "Bambú y Pino, en caja de regalo 🌲\nHasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true,
+    "portada_ms": 10500
+  },
+  {
+    "id": "nav26_po_P3_para_el",
+    "tipo": "post",
+    "fecha": "2026-12-05T17:00:00-05:00",
+    "archivos": [
+      "nav26_po_P3_para_el.jpg"
+    ],
+    "caption": "Un regalo para él.\nDos jabones de proceso en frío, curados 30 días, en su caja. Formule française.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "nav26_po_S2_para_el",
+    "tipo": "story",
+    "fecha": "2026-12-05T18:00:00-05:00",
+    "archivos": [
+      "nav26_po_S2_para_el.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
+  },
+  {
+    "id": "nav26_po_P4_ultimos",
+    "tipo": "post",
+    "fecha": "2026-12-19T17:00:00-05:00",
+    "archivos": [
+      "nav26_po_P4_ultimos.jpg"
+    ],
+    "caption": "Últimos días de la caja de regalo: hasta el 24 de diciembre.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #hechoamano #quito #formulefrancaise",
+    "aprobado": true
+  },
+  {
+    "id": "nav26_po_S3_hasta24",
+    "tipo": "story",
+    "fecha": "2026-12-22T18:00:00-05:00",
+    "archivos": [
+      "nav26_po_S3_hasta24.jpg"
+    ],
+    "caption": "",
+    "aprobado": true
   }
 ]
