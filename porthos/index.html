@@ -2214,6 +2214,18 @@ const BENEFICIO = {
   "Jabón de Mango":"Hidratante."
 };
 const PAQUETES = [
+  /* Navidad 2026: cajas con el Biscuit (índice 4) y la Cúrcuma (índice 0). Se muestran
+     del 15 al 24 de diciembre y desaparecen solas. */
+  { marca:"uinky", nombre:"Biscuit + Cúrcuma", antes:37.5, precio:34, etiqueta:"Navidad",
+    desde:"2026-12-15T00:00:00-05:00", hasta:"2026-12-25T00:00:00-05:00",
+    desc:"Un Biscuit de Noël y un Jabón de Cúrcuma, para regalar en Navidad.",
+    lleva:[{m:"uinky",i:4,nota:"Aroma a galletas. Es jabón: no se come."},{m:"uinky",i:0,nota:"Cúrcuma, naranja y vainilla."}] },
+
+  { marca:"uinky", nombre:"Caja de Navidad", antes:67.5, precio:55, etiqueta:"Navidad · envío incluido",
+    desde:"2026-12-15T00:00:00-05:00", hasta:"2026-12-25T00:00:00-05:00",
+    desc:"Un Biscuit de Noël y tres Jabones de Cúrcuma, con envío incluido.",
+    lleva:[{m:"uinky",i:4,nota:"Aroma a galletas. Es jabón: no se come."},{m:"uinky",i:0,n:3,nota:"Cúrcuma, naranja y vainilla."}] },
+
   { marca:"uinky", nombre:"Baño de arroz", antes:16, precio:14,
     desc:"Dos diseños originales de ÜINKY, de 85 g.",
     lleva:[{m:"uinky",i:2,nota:"Con notas de vainilla. Blanqueador."},{m:"uinky",i:3}] },
@@ -2233,6 +2245,8 @@ const PAQUETES = [
 
   { marca:"porthos", nombre:"El bosque entero", antes:30, precio:26, estado:"disponible",
     desc:"Bambú y Pino, las dos de PORTHOS.",
+    /* Navidad 2026: va en caja de regalo hasta el 24 de diciembre */
+    navidad:{desc:"Bambú y Pino, en caja de regalo. Hasta el 24 de diciembre.", etiqueta:"Navidad · caja de regalo", hasta:"2026-12-25T00:00:00-05:00"},
     lleva:[{m:"porthos",i:0},{m:"porthos",i:1}] },
 
   { marca:"casa", nombre:"Mitad y mitad", antes:30, precio:26,
@@ -2249,7 +2263,11 @@ function pintaPaquetes(destino, marca){
   if (!caja) return;
   const cajas = {uinky:JABONES_UINKY, porthos:JABONES_PORTHOS};
   const rotulo = {uinky:"ÜINKY", porthos:"PORTHOS"};
-  const lista = PAQUETES.filter(p => p.marca === marca || p.marca === "casa");
+  const ahora = Date.now();
+  const lista = PAQUETES
+    .filter(p => (p.marca === marca || p.marca === "casa") && (!p.desde || ahora >= Date.parse(p.desde)) && (!p.hasta || ahora < Date.parse(p.hasta)))
+    .map(p => p.navidad && ahora < Date.parse(p.navidad.hasta) ? {...p, desc:p.navidad.desc, etiqueta:p.navidad.etiqueta, regalo:true} : p)
+    .sort((a, b) => (b.etiqueta ? 1 : 0) - (a.etiqueta ? 1 : 0));
 
   caja.innerHTML = lista.map(p => {
     const piezas = [];
@@ -2293,20 +2311,20 @@ function pintaPaquetes(destino, marca){
     const quien = p.marca === "casa" ? "Hola" : "Hola " + rotulo[p.marca];
     const mensaje = proximo
       ? `${quien}, avísame cuando salga el paquete "${p.nombre}".`
-      : `${quien}, quiero el paquete "${p.nombre}" (${detalle}) — $${p.precio}.`;
+      : `${quien}, quiero el paquete "${p.nombre}"${p.regalo ? " en caja de regalo" : ""} (${detalle}) — $${usd(p.precio)}.`;
     const rotuloMarca = p.marca === "casa" ? "Una casa, dos marcas" : rotulo[p.marca];
 
     return `
     <article class="paquete${p.marca === "casa" ? " casa" : ""}">
       <div class="pq-fotos">${fotos}</div>
       <div class="pq-cuerpo">
-        <p class="pq-marca">${rotuloMarca}</p>
+        <p class="pq-marca">${rotuloMarca}${p.etiqueta ? " · " + esc(p.etiqueta) : ""}</p>
         <h3>${esc(p.nombre)}</h3>
         <p class="pq-desc">${esc(p.desc)}</p>
         <ul class="pq-lista">${items}</ul>
         <div class="pq-precio">
-          <s>$${p.antes}</s><b>$${p.precio}</b>
-          <em class="pq-ahorro">${proximo ? "Próximo lote" : "Ahorras $" + ahorro}</em>
+          <s>$${usd(p.antes)}</s><b>$${usd(p.precio)}</b>
+          <em class="pq-ahorro">${proximo ? "Próximo lote" : "Ahorras $" + usd(ahorro)}</em>
         </div>
         <a class="btn${proximo ? " linea" : ""}" href="${wa(mensaje)}" target="_blank" rel="noopener">
           ${proximo ? "" : ICONO_WA}${proximo ? "Avísame cuando salga" : "Pedir este paquete"}
