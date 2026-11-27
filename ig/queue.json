@@ -2515,5 +2515,27 @@
   ],
   "caption": "",
   "aprobado": true
+ },
+ {
+  "id": "hf27_R1_bano",
+  "tipo": "reel",
+  "fecha": "2026-11-27T16:00:00-05:00",
+  "archivos": [
+   "hf27_R1_bano.mp4"
+  ],
+  "caption": "Bonjour, hola 🌼 Tu momento de cada mañana.\nJabones de flores y frutas, hechos a mano en Quito con formule française (fórmula francesa) y 30 días de curado. Pour elle, para ella.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": true,
+  "portada_ms": 2000
+ },
+ {
+  "id": "hf27_R2_regalo",
+  "tipo": "reel",
+  "fecha": "2026-11-27T16:00:00-05:00",
+  "archivos": [
+   "hf27_R2_regalo.mp4"
+  ],
+  "caption": "Este año, regala algo hecho a mano 🎁\nJabones ÜINKY de flores y frutas, sellados uno por uno. Un regalo exquisito… y de buen gusto. Joyeux Noël, feliz Navidad!\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #regalodenavidad #quito #formulefrancaise",
+  "aprobado": true,
+  "portada_ms": 10500
  }
 ]
