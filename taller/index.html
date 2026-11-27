@@ -81,10 +81,10 @@ main.vista{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));padding-t
 
 /* navegación inferior */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--papel);border-top:1px solid var(--linea);padding-bottom:env(safe-area-inset-bottom,0px)}
-.nav .envoltura{display:grid;grid-template-columns:repeat(4,1fr)}
-.nav button{background:none;border:0;padding:8px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:700;color:var(--tinta-2);position:relative}
+.nav .envoltura{display:grid;grid-template-columns:repeat(5,1fr);padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
+.nav button{background:none;border:0;padding:8px 0 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;font-weight:700;color:var(--tinta-2);position:relative;min-width:0}
 .nav button[aria-current="page"]{color:var(--tinta)}
-.nav .ico{width:52px;height:30px;border-radius:999px;display:grid;place-items:center}
+.nav .ico{width:46px;height:30px;border-radius:999px;display:grid;place-items:center}
 .nav button[aria-current="page"] .ico{background:var(--naranja);color:var(--sobre-acento)}
 .nav svg{width:22px;height:22px}
 .insignia{position:absolute;top:3px;left:calc(50% + 12px);background:var(--alerta);color:#fff;font:700 11px/18px var(--f-texto);min-width:18px;height:18px;border-radius:9px;padding:0 5px;text-align:center}
@@ -273,6 +273,64 @@ details.archivados summary{cursor:pointer;color:var(--tinta-2);font-weight:700;p
 .instalar{margin-top:22px;padding:14px;border-radius:14px;background:var(--papel-2);font-size:14px;color:var(--tinta-2)}
 .instalar b{color:var(--tinta)}
 
+/* fotos de los lotes */
+.fotos-lote{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mini{width:64px;height:64px;border-radius:12px;border:1px solid var(--linea);background:var(--papel-2);padding:0;overflow:hidden;flex:none;display:grid;place-items:center;color:var(--tinta-2);font-size:24px;font-weight:700}
+.mini img{width:100%;height:100%;object-fit:cover;display:block}
+.mini.chica{width:44px;height:44px;border-radius:10px}
+.mini.mas{border-style:dashed;background:var(--papel)}
+.btn-chico{display:inline-flex;align-items:center;gap:6px;border:1px dashed var(--linea);background:var(--papel);border-radius:999px;padding:7px 12px;font-size:13.5px;font-weight:700;color:var(--tinta-2);align-self:flex-start}
+.btn-chico.alerta{border-style:solid;border-color:var(--alerta);color:var(--alerta)}
+.foto-fab{border:1px dashed var(--linea);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px;background:var(--papel-2)}
+.foto-fab .fotos-lote .mini{width:88px;height:88px}
+.mini-fab{position:relative}
+.quitar-foto{position:absolute;top:-8px;right:-8px;width:30px;height:30px;border-radius:50%;border:2px solid var(--papel);background:var(--tinta);color:var(--papel);font-size:17px;line-height:1;padding:0}
+.visor{width:100%;border-radius:14px;display:block;background:var(--papel-2);min-height:200px;object-fit:contain;max-height:62dvh}
+.link-receta{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;border:1px solid var(--linea);border-radius:12px;background:var(--papel);padding:11px 14px;font-weight:700;text-align:left;margin:-6px 0 16px}
+.link-receta span{color:var(--tinta-2);font-weight:500;font-size:13.5px}
+
+/* recetas */
+.receta-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:14px;box-shadow:var(--sombra)}
+.receta-card .m-info b{font-size:17px}
+.receta-card.base{background:var(--durazno);border-color:transparent}
+.flecha{font:700 22px var(--f-num);color:var(--tinta-2);flex:none}
+.seguridad{display:flex;gap:10px;align-items:flex-start;background:var(--alerta-fondo);color:var(--alerta);border-radius:12px;padding:11px 13px;font-size:14.5px;font-weight:700;margin:12px 0 4px}
+.seguridad span{color:var(--tinta);font-weight:500}
+.aviso-receta{background:var(--curando-fondo);color:var(--curando);border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700;margin:10px 0}
+.variantes{display:flex;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
+.ings{display:flex;flex-direction:column;border:1px solid var(--linea);border-radius:14px;overflow:hidden;margin:10px 0}
+.ing{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 12px;border:0;border-bottom:1px solid var(--linea);background:var(--papel);text-align:left;width:100%}
+.ing:last-child{border-bottom:0}
+.ing .check{width:24px;height:24px;border-radius:7px;border:2px solid var(--linea);display:grid;place-items:center;font-size:15px;color:transparent}
+.ing-n{font-weight:700;min-width:0;overflow-wrap:anywhere}
+.ing-n small{display:block;font-weight:500;color:var(--tinta-2);font-size:13px;margin-top:2px}
+.ing-c{font:700 21px/1 var(--f-num);white-space:nowrap;text-align:right}
+.ing.pesado{background:var(--listo-fondo)}
+.ing.pesado .check{background:var(--listo);border-color:var(--listo);color:#fff}
+.ing.pesado .ing-n,.ing.pesado .ing-c{opacity:.6}
+.ing-total{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--papel-2);font-weight:700}
+.progreso-pesado{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--tinta-2);margin:-2px 0 12px}
+.pasos{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:p}
+.pasos li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;font-size:15.5px;line-height:1.5}
+.pasos li::before{counter-increment:p;content:counter(p);width:28px;height:28px;border-radius:50%;background:var(--naranja);color:var(--sobre-acento);display:grid;place-items:center;font:700 16px var(--f-num);margin-top:1px}
+.pasos mark{background:var(--alerta-fondo);color:var(--alerta);font-weight:700;padding:1px 5px;border-radius:5px}
+.pasos p{margin:6px 0 0}
+.nota-receta{border-radius:12px;padding:11px 13px;font-size:14.5px;margin:8px 0;background:var(--papel-2)}
+.nota-receta.alerta{background:var(--alerta-fondo);color:var(--alerta);font-weight:700}
+
+/* asistente */
+.chat{border:1px solid var(--linea);border-radius:16px;padding:14px;margin:16px 0 4px;background:var(--papel)}
+.chat-cab b{display:block;font:700 20px/1.1 var(--f-num)}
+.chat-cab span{font-size:13.5px;color:var(--tinta-2)}
+.chat-msgs{display:flex;flex-direction:column;gap:8px;margin:12px 0 10px;max-height:46dvh;overflow:auto}
+.burbuja{max-width:88%;padding:9px 12px;border-radius:14px;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
+.burbuja.yo{align-self:flex-end;background:var(--tinta);color:var(--papel);border-bottom-right-radius:5px}
+.burbuja.el{align-self:flex-start;background:var(--papel-2);border-bottom-left-radius:5px}
+.burbuja.error{color:var(--alerta)}
+.chat form{display:flex;gap:8px}
+.chat form input{flex:1;min-width:0}
+.chat form .btn{flex:none}
+
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 @media (min-width:560px){.elige{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
@@ -281,13 +339,17 @@ details.archivados summary{cursor:pointer;color:var(--tinta-2);font-weight:700;p
 <div id="app"><div class="entrar"><div class="envoltura"><div class="lockup"><span class="barras"><i></i><i></i></span><h1>Taller</h1><p>ÜINKY · PORTHOS</p></div><p class="msg-entrar">Cargando…</p></div></div></div>
 <dialog id="hoja" class="hoja" aria-label="Detalle"></dialog>
 <div id="toast" role="status" aria-live="polite" hidden></div>
+<input id="foto-input" type="file" accept="image/*" tabindex="-1" aria-hidden="true" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0">
+
 <noscript><p style="padding:16px">Esta app necesita JavaScript activado.</p></noscript>
 
 <script>
 "use strict";
 const SB = "https://jlyrymgbykhpktabvlkl.supabase.co";
 const KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpseXJ5bWdieWtocGt0YWJ2bGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM2NjA0NjAsImV4cCI6MjEwOTIzNjQ2MH0.WX1GQOGDa6iFIjodwBbP9kts60HePGaShKCSzW8fmwI";
-const PESTANAS = ["inventario", "empacar", "fabricar", "historial"];
+const PESTANAS = ["inventario", "empacar", "fabricar", "recetas", "historial"];
+const ASISTENTE = `${SB}/functions/v1/asistente-taller`;
+const MAX_FOTOS_FAB = 3;
 const MOTIVOS = ["Venta en persona", "Regalo", "Muestra", "Dañada", "Otro"];
 const NUMS = { un: 1, una: 1, uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10 };
 
@@ -310,11 +372,16 @@ const S = {
   cargando: false,
   ultima: 0,
   pendiente: false,
-  fab: { modelo: null, cant: 10, fecha: null, notas: "" },
+  fab: { modelo: null, cant: 10, fecha: null, notas: "", fotos: [] },
   hojaModelo: null, hojaAccion: null,
   admin: null,
   tecleado: "",
+  recetas: null, cargandoRecetas: false, recetasError: null, ultimaReceta: "",
+  pesados: {},
+  minis: {}, minisPedidos: new Set(), pendientes: {}, preparandoFoto: false, fotoDestino: null,
+  asistente: null, chat: [], chatEsperando: false,
 };
+try { const r = JSON.parse(LS.get("taller.recetas") || "null"); if (S.pin && r && Array.isArray(r.recetas)) S.recetas = r; } catch {}
 
 const app = document.getElementById("app");
 const hoja = document.getElementById("hoja");
@@ -473,6 +540,7 @@ async function cargar() {
     document.title = (d.pedidos.length ? `(${d.pedidos.length}) ` : "") + "Taller ÜINKY · PORTHOS";
     if (!document.querySelector(".cabecera")) pantallaPrincipal(); else pintar();
     if (nuevos.length) avisarNuevos(nuevos.length);
+    if (d.recetas_v && (!S.recetas || S.recetas.version !== d.recetas_v)) cargarRecetas();
   } catch (e) {
     if (e instanceof ErrorPin) { salir(e.message); return; }
     if (!S.d) pantallaEntrar(e.message); else toast(e.message);
@@ -529,6 +597,7 @@ async function entrarCon(pin) {
 }
 function salir(msg) {
   S.pin = null; S.d = null; LS.del("taller.pin");
+  S.recetas = null; LS.del("taller.recetas"); S.minis = {}; S.minisPedidos = new Set(); S.chat = []; S.pendientes = {};
   try { navigator.clearAppBadge && navigator.clearAppBadge(); } catch {}
   pantallaEntrar(msg || "");
 }
@@ -543,9 +612,12 @@ const ICONOS = {
   inventario: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="2"/><rect x="3" y="11" width="18" height="5" rx="2"/><path d="M6 20h12"/></svg>',
   empacar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>',
   fabricar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M9 6v12M15 6v12"/></svg>',
+  recetas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7.5h6M9 11h4"/></svg>',
   historial: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
 };
-const NOMBRES = { inventario: "Inventario", empacar: "Empacar", fabricar: "Fabricar", historial: "Historial" };
+const NOMBRES = { inventario: "Inventario", empacar: "Empacar", fabricar: "Fabricar", recetas: "Recetas", historial: "Historial" };
+const ICO_CAMARA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+const ICO_GALERIA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>';
 
 function pantallaPrincipal() {
   app.innerHTML = `<header class="cabecera"><div class="envoltura">
@@ -578,7 +650,8 @@ function pintar(forzar) {
   if (!forzar && (ocupadoEditando() || hoja.open)) { S.pendiente = true; return; }
   S.pendiente = false;
   const v = document.getElementById("vista"); if (!v) return;
-  v.innerHTML = { inventario: vInventario, empacar: vEmpacar, fabricar: vFabricar, historial: vHistorial }[S.tab]();
+  v.innerHTML = { inventario: vInventario, empacar: vEmpacar, fabricar: vFabricar, recetas: vRecetas, historial: vHistorial }[S.tab]();
+  pedirMinis();
 }
 function irA(tab) {
   if (!PESTANAS.includes(tab)) return;
@@ -594,7 +667,7 @@ document.addEventListener("focusout", () => setTimeout(() => { if (S.pendiente &
 function tarjetaModelo(m, ap) {
   const apart = ap[m.id] || 0, disp = m.listos - apart;
   const chips = [];
-  if (m.curando > 0) chips.push(`<span class="chip curando">${m.curando} curándose · listas ${fCorta(m.proximo)}</span>`);
+  if (m.curando > 0) chips.push(`<span class="chip curando">${m.curando} en reposo · listas ${fCorta(m.proximo)}</span>`);
   if (apart) chips.push(`<span class="chip">${apart} para pedidos</span>`);
   if (m.listos < 0) chips.push(`<span class="chip alerta">Revisa: haz un conteo</span>`);
   else if (m.activo && disp <= m.minimo) chips.push(`<span class="chip alerta">${disp <= 0 ? "Sin barras libres" : "Quedan pocas"} · mínimo ${m.minimo}</span>`);
@@ -611,8 +684,8 @@ function vInventario() {
   const activos = d.modelos.filter((m) => m.activo), arch = d.modelos.filter((m) => !m.activo);
   const totL = activos.reduce((s, m) => s + Math.max(0, m.listos), 0), totC = activos.reduce((s, m) => s + m.curando, 0);
   const nP = d.pedidos.length;
-  let h = `<h1 class="titulo">Inventario</h1><p class="bajada">Barras listas para vender. Las que siguen curándose se suman solas cuando cumplen sus días.</p>`;
-  h += `<div class="resumen"><div><b>${totL}</b><span>listas</span></div><div><b>${totC}</b><span>curándose</span></div>
+  let h = `<h1 class="titulo">Inventario</h1><p class="bajada">Barras listas para vender. Las que están en reposo se suman solas cuando cumplen sus días de curado.</p>`;
+  h += `<div class="resumen"><div><b>${totL}</b><span>listas</span></div><div><b>${totC}</b><span>en reposo</span></div>
     <button type="button" data-ir="empacar" class="${nP ? "hay" : ""}"><b>${nP}</b><span>${nP === 1 ? "pedido" : "pedidos"} por empacar</span></button></div>`;
   h += `<div class="filtros" role="group" aria-label="Marca">${[["todas", "Todas", ""], ["ÜINKY", "ÜINKY", "uinky"], ["PORTHOS", "PORTHOS", "porthos"]].map(([k, t, c]) =>
     `<button class="filtro" type="button" data-accion="filtro" data-f="${k}" aria-pressed="${S.filtro === k}">${c ? `<span class="punto ${c}"></span>` : ""}${t}</button>`).join("")}</div>`;
@@ -649,7 +722,7 @@ function hojaModelo(id, accion) {
   let panel = "";
   if (accion === "contar") {
     panel = `<div class="panel"><div class="campo"><span class="etq">Barras listas ahora</span>${paso("c-cant", Math.max(0, m.listos), 0, 100000)}
-      <p class="ayuda">Cuenta solo las que ya terminaron el curado. Las de los lotes que siguen curándose no van aquí.</p></div>
+      <p class="ayuda">Cuenta solo las que ya terminaron el curado. Las de los lotes que siguen en reposo no van aquí.</p></div>
       <div class="campo"><label class="etq" for="c-nota">Nota (opcional)</label><input id="c-nota" type="text" maxlength="200" placeholder="Ej.: conteo del lunes"></div>
       <button class="btn primario ancho" type="button" data-accion="guardar-conteo">Guardar conteo</button></div>`;
   } else if (accion === "sacar") {
@@ -664,14 +737,17 @@ function hojaModelo(id, accion) {
     `Último conteo: ${m.conteo.cantidad} listas, ${cuando(m.conteo.creado_en)}${m.conteo.quien ? " por " + esc(m.conteo.quien) : ""}.`) : "Todavía no se ha contado.";
   abrirHoja(`<div class="hoja-cab"><div><h2>${esc(m.nombre)}</h2><p><span class="punto ${claseMarca(m.marca)}"></span> ${m.marca}${m.gramos ? " · " + m.gramos + " g" : ""} · ${m.curado_dias} días de curado · mínimo ${m.minimo}</p></div>
       <button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
-    <div class="cifras"><div><b>${m.listos}</b><span>listas</span></div><div><b>${ap}</b><span>para pedidos</span></div><div><b>${m.curando}</b><span>curándose</span></div></div>
+    <div class="cifras"><div><b>${m.listos}</b><span>listas</span></div><div><b>${ap}</b><span>para pedidos</span></div><div><b>${m.curando}</b><span>en reposo</span></div></div>
     <p class="ayuda" style="margin:-4px 0 12px">${conteo}</p>
     <div class="acciones"><button class="btn" type="button" data-accion="modelo-accion" data-a="contar" aria-pressed="${accion === "contar"}">Contar</button>
       <button class="btn" type="button" data-accion="modelo-accion" data-a="sacar" aria-pressed="${accion === "sacar"}">Sacar</button>
       <button class="btn" type="button" data-accion="fabricar-este" ${m.activo ? "" : "disabled"}>Fabricar</button></div>
     ${panel}
-    ${lotes.length ? `<h3 class="subtitulo" style="margin-top:6px">Curándose</h3><div class="lista">${lotes.map(tarjetaLote).join("")}</div>` : ""}
-    <div style="margin-top:16px"><button class="btn ancho" type="button" data-accion="editar-modelo" data-id="${m.id}">Editar datos del jabón</button></div>`);
+    ${lotes.length ? `<h3 class="subtitulo" style="margin-top:6px">En reposo</h3><div class="lista">${lotes.map(tarjetaLote).join("")}</div>` : ""}
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+      ${recetaDe(m.id) ? `<button class="btn ancho" type="button" data-accion="ver-receta" data-id="${recetaDe(m.id).id}">Ver la receta</button>` : ""}
+      <button class="btn ancho" type="button" data-accion="editar-modelo" data-id="${m.id}">Editar datos del jabón</button></div>`);
+  pedirMinis();
 }
 
 function codigoSugerido(nombre) {
@@ -712,14 +788,24 @@ function hojaFormModelo(id) {
 }
 
 /* ---------- fabricar ---------- */
+function miniFoto(id, clase, etiqueta) {
+  return `<button class="mini${clase ? " " + clase : ""}" type="button" data-accion="ver-foto" data-id="${id}" aria-label="${esc(etiqueta || "Ver foto")}"><img data-mini="${id}" alt=""${S.minis[id] ? ` src="${S.minis[id]}"` : ""}></button>`;
+}
 function tarjetaLote(l) {
   const m = modelo(l.modelo_id), hoy = S.d.hoy;
   const total = Math.max(1, diasEntre(l.elaborado, l.cura_hasta)), pasados = Math.min(total, Math.max(0, diasEntre(l.elaborado, hoy)));
   const lista = l.cura_hasta <= hoy, faltan = diasEntre(hoy, l.cura_hasta);
+  const fotos = l.fotos || [];
+  let fh = "";
+  if (S.pendientes[l.id]) fh = `<button class="btn-chico alerta" type="button" data-accion="reintentar-foto" data-id="${l.id}">${ICO_CAMARA}Reintentar subir la foto</button>`;
+  else if (fotos.length) fh = `<div class="fotos-lote">${fotos.map((id) => miniFoto(id, "", `Ver foto del lote ${l.codigo}`)).join("")}${fotos.length < 4 && !lista ?
+    `<button class="mini mas" type="button" data-accion="lote-foto" data-id="${l.id}" aria-label="Agregar otra foto al lote ${esc(l.codigo)}">+</button>` : ""}</div>`;
+  else if (!lista) fh = `<button class="btn-chico" type="button" data-accion="lote-foto" data-id="${l.id}">${ICO_CAMARA}Agregar foto</button>`;
   return `<div class="lote"><div class="lote-cab"><span><span class="codigo">${esc(l.codigo)}</span> · ${plural(l.cantidad, "barra", "barras")}</span>
       <span class="der">${lista ? `<b style="color:var(--listo)">Lista desde ${fCorta(l.cura_hasta)}</b>` : `faltan <b>${faltan}</b> ${faltan === 1 ? "día" : "días"} · ${fDia(l.cura_hasta)}`}</span></div>
     <div class="prog${lista ? " lista" : ""}" role="img" aria-label="${pasados} de ${total} días de curado"><i style="width:${Math.round((pasados / total) * 100)}%"></i></div>
-    <small>${m ? esc(m.nombre) + " · " : ""}elaborado ${fCorta(l.elaborado)}${l.quien ? " por " + esc(l.quien) : ""}${l.notas ? " · " + esc(l.notas) : ""}</small></div>`;
+    <small>${m ? esc(m.nombre) + " · " : ""}elaborado ${fCorta(l.elaborado)}${l.quien ? " por " + esc(l.quien) : ""}${l.notas ? " · " + esc(l.notas) : ""}</small>
+    ${fh}</div>`;
 }
 function previaLote() {
   const m = modelo(S.fab.modelo);
@@ -735,13 +821,28 @@ function previaLote() {
     <p>${listo ? `<b>Ya cumplió los ${m.curado_dias} días de curado:</b> entra directo a listas.` :
       `Listo para vender el <b>${fLarga(cura)}</b> (${relativo(cura)}).`}</p></div>`;
 }
+function linkReceta() {
+  const r = S.fab.modelo ? recetaDe(S.fab.modelo) : null;
+  if (!r) return "";
+  return `<button class="link-receta" type="button" data-accion="ver-receta" data-id="${r.id}">Ver la receta de ${esc(r.titulo)}<span>${esc(resumenVariantes(r))} ›</span></button>`;
+}
+function bloqueFotosFab() {
+  const fs = S.fab.fotos;
+  const thumbs = fs.map((f, i) => `<span class="mini-fab"><span class="mini"><img src="${f.url}" alt="Foto ${i + 1} del lote"></span>
+      <button class="quitar-foto" type="button" data-accion="foto-quitar" data-i="${i}" aria-label="Quitar foto ${i + 1}">×</button></span>`).join("");
+  const botones = S.preparandoFoto ? `<p class="ayuda"><span class="girando">↻</span> Preparando la foto…</p>` : fs.length < MAX_FOTOS_FAB ?
+    `<div class="fila-btn"><button class="btn${fs.length ? "" : " acento"}" type="button" data-accion="foto-tomar" data-destino="fab">${ICO_CAMARA}${fs.length ? "Otra foto" : "Tomar foto"}</button>
+      <button class="btn" type="button" data-accion="foto-galeria" data-destino="fab">${ICO_GALERIA}Galería</button></div>` : "";
+  return `<div class="foto-fab">${fs.length ? `<div class="fotos-lote">${thumbs}</div>` : ""}${botones}
+    <p class="ayuda">${fs.length ? "La foto se guarda con el lote. Puedes poner hasta 3." : "Una foto de los jabones recién hechos, en el molde. Queda guardada con el lote."}</p></div>`;
+}
 function vFabricar() {
   const d = S.d, act = d.modelos.filter((m) => m.activo);
   if (S.fab.modelo && !act.some((m) => m.id === S.fab.modelo)) S.fab.modelo = null;
   if (!S.fab.fecha) S.fab.fecha = d.hoy;
   const ayer = addDias(d.hoy, -1);
   const curando = d.lotes.filter((l) => l.cura_hasta > d.hoy), terminados = d.lotes.filter((l) => l.cura_hasta <= d.hoy).reverse();
-  let h = `<h1 class="titulo">Fabricar</h1><p class="bajada">Registra el lote el día que se vierte el molde. La app cuenta los días de curado y lo pasa a listas cuando termina.</p>
+  let h = `<h1 class="titulo">Fabricar</h1><p class="bajada">Cuando termines de llenar los moldes: elige el jabón, toma una foto y ponlo en reposo. La app cuenta los días de curado y lo pasa a listas cuando termina.</p>
   <form id="f-lote">
     <div class="campo"><span class="etq">Jabón</span>`;
   for (const marca of ["ÜINKY", "PORTHOS"]) {
@@ -751,21 +852,260 @@ function vFabricar() {
         <b><span class="punto ${claseMarca(m.marca)}"></span>${esc(m.nombre.replace(/^Jabón (de )?/i, ""))}</b><span>${m.gramos ? m.gramos + " g · " : ""}${esc(m.codigo)}</span></label>`).join("")}</div>`;
   }
   h += `</div>
+    <div id="fab-receta">${linkReceta()}</div>
     <div class="dos-col">
       <div class="campo"><span class="etq">Barras</span>${paso("fab-cant", S.fab.cant, 1, 1000)}</div>
       <div class="campo"><label class="etq" for="fab-fecha">Elaborado el</label><input id="fab-fecha" type="date" max="${d.hoy}" value="${S.fab.fecha}">
         <div class="atajos"><button class="atajo" type="button" data-accion="fab-fecha" data-f="${d.hoy}" aria-pressed="${S.fab.fecha === d.hoy}">Hoy</button>
         <button class="atajo" type="button" data-accion="fab-fecha" data-f="${ayer}" aria-pressed="${S.fab.fecha === ayer}">Ayer</button></div></div>
     </div>
+    <div class="campo"><span class="etq">Foto de los jabones</span><div id="fab-fotos">${bloqueFotosFab()}</div></div>
     <div id="fab-previa">${previaLote()}</div>
     <div class="campo"><label class="etq" for="fab-notas">Notas (opcional)</label><textarea id="fab-notas" maxlength="300" placeholder="Ej.: molde 2, veta más oscura">${esc(S.fab.notas)}</textarea></div>
-    <button class="btn primario ancho" type="submit" ${S.fab.modelo ? "" : "disabled"}>Registrar lote</button>
+    <button class="btn primario ancho grande" type="submit" ${S.fab.modelo ? "" : "disabled"}>Poner en reposo</button>
   </form>`;
-  h += `<h2 class="subtitulo">Curándose ahora</h2>`;
+  h += `<h2 class="subtitulo">En reposo ahora</h2>`;
   h += curando.length ? `<div class="lista">${curando.map(tarjetaLote).join("")}</div>` :
-    `<div class="vacio"><b>Nada curándose</b>Los lotes que registres aparecen aquí con los días que les faltan.</div>`;
-  if (terminados.length) h += `<h2 class="subtitulo">Terminaron hace poco</h2><div class="lista">${terminados.map(tarjetaLote).join("")}</div>`;
+    `<div class="vacio"><b>Nada en reposo</b>Los lotes que pongas en reposo aparecen aquí, con su foto y los días que les faltan.</div>`;
+  if (terminados.length) h += `<h2 class="subtitulo">Terminaron el reposo hace poco</h2><div class="lista">${terminados.map(tarjetaLote).join("")}</div>`;
   return h;
+}
+
+/* ---------- fotos ---------- */
+async function leerImagen(file) {
+  if (!file) throw new Error("No llegó ninguna foto.");
+  if (file.type && !/^image\//.test(file.type)) throw new Error("Ese archivo no es una foto.");
+  let fuente, w, h, soltar = () => {};
+  try {
+    const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+    fuente = bmp; w = bmp.width; h = bmp.height; soltar = () => { try { bmp.close(); } catch {} };
+  } catch {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    await new Promise((ok, mal) => { img.onload = ok; img.onerror = () => mal(new Error("No pude abrir esa foto. Prueba con otra.")); img.src = url; });
+    fuente = img; w = img.naturalWidth; h = img.naturalHeight; soltar = () => URL.revokeObjectURL(url);
+  }
+  if (!w || !h) { soltar(); throw new Error("No pude abrir esa foto. Prueba con otra."); }
+  const hacer = (max, q) => {
+    const s = Math.min(1, max / Math.max(w, h));
+    const c = document.createElement("canvas");
+    c.width = Math.max(1, Math.round(w * s)); c.height = Math.max(1, Math.round(h * s));
+    const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height);
+    x.drawImage(fuente, 0, 0, c.width, c.height);
+    return c.toDataURL("image/jpeg", q);
+  };
+  try {
+    let foto = hacer(1280, 0.74);
+    if (foto.length > 1100000) foto = hacer(1024, 0.62);
+    if (foto.length > 1100000) foto = hacer(800, 0.55);
+    let mini = hacer(320, 0.62);
+    if (mini.length > 70000) mini = hacer(240, 0.5);
+    return { foto: foto.split(",")[1], mini: mini.split(",")[1], url: mini };
+  } finally { soltar(); }
+}
+const fotoInput = document.getElementById("foto-input");
+function pedirFoto(destino, camara) {
+  S.fotoDestino = destino;
+  if (camara) fotoInput.setAttribute("capture", "environment"); else fotoInput.removeAttribute("capture");
+  fotoInput.value = "";
+  fotoInput.click();
+}
+fotoInput.addEventListener("change", async () => {
+  const file = fotoInput.files && fotoInput.files[0];
+  const destino = S.fotoDestino; S.fotoDestino = null;
+  if (!file || !destino) return;
+  if (destino.tipo === "fab") {
+    S.preparandoFoto = true; pintarFotosFab();
+    try { const f = await leerImagen(file); if (S.fab.fotos.length < MAX_FOTOS_FAB) S.fab.fotos.push(f); }
+    catch (e) { toast(e.message); }
+    finally { S.preparandoFoto = false; pintarFotosFab(); }
+    return;
+  }
+  if (destino.tipo === "lote") {
+    toast("Subiendo la foto…");
+    try {
+      const f = await leerImagen(file);
+      const r = await rpc("taller_foto_subir", { p_pin: S.pin, p_lote: destino.id, p_foto: f.foto, p_mini: f.mini });
+      S.minis[r.id] = f.url;
+      toast("Foto guardada en el lote.");
+      await cargar();
+    } catch (e) { if (e instanceof ErrorPin) salir(e.message); else toast(e.message); }
+  }
+});
+function pintarFotosFab() { const el = document.getElementById("fab-fotos"); if (el) el.innerHTML = bloqueFotosFab(); }
+
+async function subirFotos(loteId, fotos) {
+  const fallaron = [];
+  for (const f of fotos) {
+    try {
+      const r = await rpc("taller_foto_subir", { p_pin: S.pin, p_lote: loteId, p_foto: f.foto, p_mini: f.mini });
+      S.minis[r.id] = f.url;
+    } catch (e) { if (e instanceof ErrorPin) throw e; fallaron.push(f); }
+  }
+  if (fallaron.length) S.pendientes[loteId] = fallaron; else delete S.pendientes[loteId];
+  return fallaron.length;
+}
+
+function ponerMinis() {
+  document.querySelectorAll("img[data-mini]").forEach((img) => { const s = S.minis[img.dataset.mini]; if (s && img.getAttribute("src") !== s) img.src = s; });
+}
+let pidiendoMinis = false;
+async function pedirMinis() {
+  ponerMinis();
+  if (!S.d || !S.pin || pidiendoMinis) return;
+  const ids = new Set();
+  S.d.lotes.forEach((l) => (l.fotos || []).forEach((id) => ids.add(id)));
+  S.d.historial.forEach((e) => { if (e.clase === "lote" && e.fotos && e.fotos.length) ids.add(e.fotos[0]); });
+  const faltan = [...ids].filter((id) => !S.minis[id] && !S.minisPedidos.has(id)).slice(0, 60);
+  if (!faltan.length) return;
+  faltan.forEach((id) => S.minisPedidos.add(id));
+  pidiendoMinis = true;
+  try {
+    const r = await rpc("taller_fotos_mini", { p_pin: S.pin, p_ids: faltan });
+    for (const [id, b] of Object.entries(r.fotos || {})) S.minis[id] = "data:image/jpeg;base64," + b;
+    ponerMinis();
+  } catch (e) { faltan.forEach((id) => S.minisPedidos.delete(id)); if (e instanceof ErrorPin) salir(e.message); }
+  finally { pidiendoMinis = false; }
+}
+
+async function hojaFoto(id) {
+  abrirHoja(`<div class="hoja-cab"><div><h2>Foto del lote</h2><p>Cargando…</p></div><button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+    ${S.minis[id] ? `<img class="visor" src="${S.minis[id]}" alt="">` : `<div class="visor"></div>`}`);
+  try {
+    const f = await rpc("taller_foto", { p_pin: S.pin, p_id: id });
+    if (!hoja.open) return;
+    const l = S.d.lotes.find((x) => x.id === f.lote_id), m = l ? modelo(l.modelo_id) : null;
+    abrirHoja(`<div class="hoja-cab"><div><h2>Lote ${esc(f.codigo)}</h2><p>${m ? esc(m.nombre) + " · " : ""}foto ${cuando(f.creado_en)}${f.quien ? " por " + esc(f.quien) : ""}</p></div>
+        <button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+      <img class="visor" src="data:image/jpeg;base64,${f.foto}" alt="Foto del lote ${esc(f.codigo)}">
+      ${f.puede_borrar ? `<div style="margin-top:14px"><button class="btn peligro ancho" type="button" data-accion="borrar-foto" data-id="${f.id}">Borrar esta foto</button></div>` : ""}`);
+  } catch (e) { if (e instanceof ErrorPin) salir(e.message); else { cerrarHoja(); toast(e.message); } }
+}
+
+/* ---------- recetas ---------- */
+async function cargarRecetas() {
+  if (S.cargandoRecetas || !S.pin) return;
+  S.cargandoRecetas = true;
+  try {
+    const r = await rpc("taller_recetas", { p_pin: S.pin });
+    S.recetas = { version: r.version, recetas: r.recetas || [] }; S.recetasError = null;
+    LS.set("taller.recetas", JSON.stringify(S.recetas));
+  } catch (e) {
+    if (e instanceof ErrorPin) { S.cargandoRecetas = false; salir(e.message); return; }
+    S.recetasError = e.message;
+  } finally {
+    S.cargandoRecetas = false;
+    if (S.d && (S.tab === "recetas" || S.tab === "fabricar")) pintar();
+  }
+}
+const recetaDe = (modeloId) => (S.recetas ? S.recetas.recetas.find((r) => r.tipo === "receta" && r.modelo_id === Number(modeloId)) : null);
+const recetaPorId = (id) => (S.recetas ? S.recetas.recetas.find((r) => r.id === Number(id)) : null);
+const recetaBase = () => (S.recetas ? S.recetas.recetas.find((r) => r.tipo === "base") : null);
+function resumenVariantes(r) {
+  const vs = (r.contenido && r.contenido.variantes) || [];
+  const us = vs.map((v) => v.unidades).filter(Boolean);
+  return us.length > 1 ? us.join(" · ") + " jabones" : vs.length > 1 ? `${vs.length} versiones` : `${(vs[0] && vs[0].ingredientes || []).length} ingredientes`;
+}
+
+function vRecetas() {
+  let h = `<h1 class="titulo">Recetas</h1><p class="bajada">Las fórmulas de ÜINKY y PORTHOS. Al pesar, toca cada ingrediente para marcarlo y no perderte.</p>`;
+  if (!S.recetas) {
+    if (!S.cargandoRecetas && !S.recetasError) cargarRecetas();
+    return h + (S.recetasError ? `<div class="vacio"><b>No pude cargar las recetas</b>${esc(S.recetasError)}<div style="margin-top:12px"><button class="btn" type="button" data-accion="recargar-recetas">Intentar de nuevo</button></div></div>`
+      : `<div class="vacio"><b><span class="girando">↻</span> Cargando recetas…</b></div>`);
+  }
+  if (S.asistente === null) probarAsistente();
+  const base = recetaBase();
+  if (base && base.contenido.seguridad) h += `<div class="seguridad"><span aria-hidden="true">⚠</span><div>Seguridad<br><span>${esc(base.contenido.seguridad)}</span></div></div>`;
+  if (base) h += `<h2 class="subtitulo">Antes de empezar</h2><button class="receta-card base" type="button" data-accion="ver-base">
+      <span class="m-info"><b>Preparación paso a paso</b><span class="m-meta">${esc(base.titulo)} · ${(base.contenido.pasos || []).length} pasos</span></span><span class="flecha">›</span></button>`;
+  for (const marca of ["ÜINKY", "PORTHOS"]) {
+    const rs = S.recetas.recetas.filter((r) => r.tipo === "receta" && r.marca === marca);
+    if (!rs.length) continue;
+    h += `<h2 class="subtitulo"><span class="punto ${claseMarca(marca)}"></span>${marca}</h2><div class="lista">${rs.map((r) =>
+      `<button class="receta-card" type="button" data-accion="ver-receta" data-id="${r.id}"><span class="m-info"><b>${esc(r.titulo)}</b>
+        <span class="m-meta">${esc(resumenVariantes(r))}</span>${r.contenido.aviso ? `<span class="chips"><span class="chip curando">Por confirmar con Matías</span></span>` : ""}</span><span class="flecha">›</span></button>`).join("")}</div>`;
+  }
+  if (S.asistente === true) h += bloqueChat();
+  return h;
+}
+
+function hojaBase() {
+  const b = recetaBase(); if (!b) return;
+  const c = b.contenido;
+  abrirHoja(`<div class="hoja-cab"><div><h2>Preparación paso a paso</h2><p>${esc(b.titulo)}</p></div><button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+    ${c.seguridad ? `<div class="seguridad"><span aria-hidden="true">⚠</span><div>Seguridad<br><span>${esc(c.seguridad)}</span></div></div>` : ""}
+    <ol class="pasos">${(c.pasos || []).map((p) => `<li><div>${esc(p.t)}${p.alerta ? ` <mark>${esc(p.alerta)}</mark>` : ""}${p.sigue ? `<p>${esc(p.sigue)}</p>` : ""}</div></li>`).join("")}</ol>
+    ${(c.notas || []).map((n) => `<div class="nota-receta${n.alerta ? " alerta" : ""}">${n.alerta ? "Ojo: " : "Nota: "}${esc(n.t)}</div>`).join("")}
+    <div class="panel" style="margin-top:16px;margin-bottom:0"><b>Cuando llenes los moldes</b><p class="ayuda" style="margin:4px 0 12px">Toma una foto de los jabones y ponlos en reposo para que la app cuente los días de curado.</p>
+      <button class="btn acento ancho" type="button" data-accion="ir-fabricar">${ICO_CAMARA}Foto y poner en reposo</button></div>`);
+}
+
+function hojaReceta(id, vi) {
+  const r = recetaPorId(id); if (!r) return;
+  const c = r.contenido, vs = c.variantes || [];
+  vi = Math.min(vs.length - 1, Math.max(0, Number(vi) || 0));
+  const v = vs[vi] || { ingredientes: [] };
+  const clave = `${r.id}:${vi}`, pes = S.pesados[clave] || new Set();
+  const m = r.modelo_id ? modelo(r.modelo_id) : null;
+  S.ultimaReceta = r.titulo;
+  const n = (v.ingredientes || []).length;
+  abrirHoja(`<div class="hoja-cab"><div><h2>${esc(r.titulo)}</h2><p><span class="punto ${claseMarca(r.marca)}"></span> ${esc(r.marca)} · en el documento: ${esc(c.documento || r.titulo)}</p></div>
+      <button class="cerrar" type="button" data-accion="cerrar" aria-label="Cerrar">×</button></div>
+    ${c.aviso ? `<div class="aviso-receta">Por confirmar: ${esc(c.aviso)}</div>` : ""}
+    ${vs.length > 1 ? `<div class="variantes" role="group" aria-label="Tamaño del lote">${vs.map((x, i) =>
+      `<button class="atajo" type="button" data-accion="receta-var" data-id="${r.id}" data-v="${i}" aria-pressed="${i === vi}">${esc(x.nombre)}</button>`).join("")}</div>` : ""}
+    ${v.detalle ? `<p class="ayuda">${esc(v.detalle)}</p>` : ""}
+    <div class="ings">${(v.ingredientes || []).map((it, i) => `<button class="ing${pes.has(i) ? " pesado" : ""}" type="button" data-accion="pesar" data-k="${clave}" data-i="${i}" aria-pressed="${pes.has(i)}">
+        <span class="check" aria-hidden="true">✓</span><span class="ing-n">${esc(it.i)}${it.nota ? `<small>${esc(it.nota)}</small>` : ""}</span><b class="ing-c">${esc(it.c)}</b></button>`).join("")}
+      ${v.total ? `<div class="ing-total"><span>Total</span><span class="num" style="font-size:20px">${esc(v.total)}</span></div>` : ""}</div>
+    <div class="progreso-pesado"><span id="pesados-txt">${pes.size} de ${n} pesados</span><button class="btn-link" type="button" data-accion="despesar" data-k="${clave}" data-id="${r.id}" data-v="${vi}">Desmarcar todo</button></div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button class="btn ancho" type="button" data-accion="ver-base">Ver la preparación paso a paso</button>
+      ${m && m.activo ? `<button class="btn primario ancho" type="button" data-accion="fabricar-receta" data-m="${m.id}" data-n="${v.unidades || ""}">${ICO_CAMARA}Foto y poner en reposo${v.unidades ? ` (${v.unidades} barras)` : ""}</button>` : ""}</div>`);
+}
+
+/* ---------- asistente (solo aparece si la función está publicada) ---------- */
+async function probarAsistente() {
+  S.asistente = "probando";
+  try {
+    const r = await fetch(ASISTENTE, { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+    S.asistente = r.status === 401;
+  } catch { S.asistente = false; }
+  if (S.asistente && S.tab === "recetas") pintar();
+}
+const formatoChat = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>");
+function mensajesChat() {
+  const ms = S.chat.map((m) => `<div class="burbuja ${m.role === "user" ? "yo" : "el"}${m.error ? " error" : ""}">${formatoChat(m.content)}</div>`).join("");
+  return ms + (S.chatEsperando ? `<div class="burbuja el"><span class="girando">↻</span></div>` : "");
+}
+function bloqueChat() {
+  const sug = ["¿A qué temperatura van los aceites?", "¿Cuánta cúrcuma lleva?", "¿Qué hago si se espesa rápido?"];
+  return `<section class="chat" aria-label="Preguntar sobre las recetas"><div class="chat-cab"><b>Pregunta sobre las recetas</b>
+      <span>Responde con las recetas de aquí. Si algo no está, te dice que le preguntes a Matías.</span></div>
+    <div class="chat-msgs" id="chat-msgs" aria-live="polite">${mensajesChat()}</div>
+    ${S.chat.length ? "" : `<div class="atajos" style="margin-bottom:10px">${sug.map((s) => `<button class="atajo" type="button" data-accion="chat-sug" data-t="${esc(s)}">${esc(s)}</button>`).join("")}</div>`}
+    <form id="f-chat"><input id="chat-in" type="text" maxlength="500" autocomplete="off" placeholder="Escribe tu pregunta" aria-label="Tu pregunta"><button class="btn primario" type="submit">Enviar</button></form></section>`;
+}
+async function preguntar(texto) {
+  texto = String(texto || "").trim();
+  if (!texto || S.chatEsperando) return;
+  S.chat.push({ role: "user", content: texto });
+  S.chatEsperando = true;
+  const pintarChat = () => { const el = document.getElementById("chat-msgs"); if (el) { el.innerHTML = mensajesChat(); el.scrollTop = el.scrollHeight; } };
+  pintarChat();
+  document.querySelectorAll('[data-accion="chat-sug"]').forEach((b) => b.parentElement.remove());
+  try {
+    const r = await fetch(ASISTENTE, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pin: S.pin, contexto: S.ultimaReceta, mensajes: S.chat.filter((m) => !m.error).map(({ role, content }) => ({ role, content })) }) });
+    const j = await r.json().catch(() => ({}));
+    if (j.error === "pin") { S.chatEsperando = false; return salir("Tu PIN ya no es válido. Vuelve a entrar."); }
+    if (j.error === "bloqueado") throw new Error("Demasiados intentos con PIN incorrecto. Espera 15 minutos.");
+    if (!r.ok || !j.respuesta) throw new Error(j.error || "No pude responder ahora. Revisa la receta.");
+    S.chat.push({ role: "assistant", content: j.respuesta });
+  } catch (e) {
+    S.chat.push({ role: "assistant", content: e instanceof TypeError ? "Sin conexión. Revisa el internet e intenta de nuevo." : e.message, error: true });
+  } finally { S.chatEsperando = false; pintarChat(); }
 }
 
 /* ---------- empacar ---------- */
@@ -823,7 +1163,7 @@ function vEmpacar() {
 function textoEvento(e) {
   const m = modelo(e.modelo_id), nom = m ? esc(m.nombre) : "un jabón";
   switch (e.clase) {
-    case "lote": return [`Lote <b>${esc(e.codigo)}</b>: ${plural(e.cantidad, "barra", "barras")} de ${nom}`, `Elaborado ${fCorta(e.elaborado)} · listo ${fCorta(e.cura_hasta)}${e.notas ? " · " + esc(e.notas) : ""}`];
+    case "lote": return [`Lote <b>${esc(e.codigo)}</b> en reposo: ${plural(e.cantidad, "barra", "barras")} de ${nom}`, `Elaborado ${fCorta(e.elaborado)} · listo ${fCorta(e.cura_hasta)}${e.fotos && e.fotos.length ? " · " + plural(e.fotos.length, "foto", "fotos") : ""}${e.notas ? " · " + esc(e.notas) : ""}`];
     case "conteo": return [`Contó ${e.cantidad} ${e.cantidad === 1 ? "lista" : "listas"} de ${nom}`, e.motivo ? esc(e.motivo) : ""];
     case "inicial": return [`Dato de partida: ${e.cantidad} de ${nom}`, e.motivo ? esc(e.motivo) : ""];
     case "salida": return [`Salieron ${e.cantidad} de ${nom}`, e.motivo ? esc(e.motivo) : ""];
@@ -848,7 +1188,8 @@ function vHistorial() {
     const puede = !e.anulado && e.clase !== "inicial" && Date.now() - new Date(e.creado_en).getTime() < 48 * 3600e3;
     h += `<div class="evento${e.anulado ? " anulado" : ""}"><span class="ev-tipo ${e.clase}">${ETIQ[e.clase] || ""}</span>
       <div class="ev-txt">${a}<small>${b ? b + " · " : ""}${hora(e.creado_en)}${e.quien ? " · " + esc(e.quien) : ""}${e.anulado ? " · deshecho" : ""}</small></div>
-      ${puede ? `<button class="deshacer" type="button" data-accion="anular" data-clase="${e.clase}" data-id="${e.id}">Deshacer</button>` : ""}</div>`;
+      ${e.clase === "lote" && e.fotos && e.fotos.length ? miniFoto(e.fotos[0], "chica", `Ver foto del lote ${e.codigo}`) : ""}
+      ${puede ?`<button class="deshacer" type="button" data-accion="anular" data-clase="${e.clase}" data-id="${e.id}">Deshacer</button>` : ""}</div>`;
   }
   return h;
 }
@@ -1000,6 +1341,48 @@ document.addEventListener("click", async (e) => {
     });
   }
   if (ac === "fab-fecha") { S.fab.fecha = b.dataset.f; return pintar(true); }
+  if (ac === "foto-tomar" || ac === "foto-galeria") return pedirFoto({ tipo: "fab" }, ac === "foto-tomar");
+  if (ac === "foto-quitar") { S.fab.fotos.splice(Number(b.dataset.i), 1); return pintarFotosFab(); }
+  if (ac === "lote-foto") return pedirFoto({ tipo: "lote", id: Number(b.dataset.id) }, false);
+  if (ac === "reintentar-foto") {
+    const id = Number(b.dataset.id), fs = S.pendientes[id]; if (!fs) return;
+    return hacer(b, async () => {
+      const n = await subirFotos(id, fs);
+      toast(n ? "Todavía no se pudo subir. Revisa el internet e intenta otra vez." : "Foto guardada en el lote.");
+      await cargar();
+    });
+  }
+  if (ac === "ver-foto") return hojaFoto(Number(b.dataset.id));
+  if (ac === "borrar-foto") {
+    if (b.dataset.confirmar !== "1") { b.dataset.confirmar = "1"; b.textContent = "Toca otra vez para borrarla"; return; }
+    return hacer(b, async () => {
+      await rpc("taller_foto_borrar", { p_pin: S.pin, p_id: Number(b.dataset.id) });
+      delete S.minis[b.dataset.id];
+      cerrarHoja(); toast("Foto borrada."); await cargar();
+    });
+  }
+  if (ac === "ver-receta") return hojaReceta(b.dataset.id, 0);
+  if (ac === "receta-var") return hojaReceta(b.dataset.id, b.dataset.v);
+  if (ac === "ver-base") return hojaBase();
+  if (ac === "recargar-recetas") { S.recetasError = null; pintar(true); return cargarRecetas(); }
+  if (ac === "pesar") {
+    const k = b.dataset.k, i = Number(b.dataset.i);
+    const set = S.pesados[k] || (S.pesados[k] = new Set());
+    if (set.has(i)) set.delete(i); else set.add(i);
+    b.classList.toggle("pesado", set.has(i)); b.setAttribute("aria-pressed", set.has(i));
+    const t = document.getElementById("pesados-txt"), n = hoja.querySelectorAll(".ing").length;
+    if (t) t.textContent = `${set.size} de ${n} pesados`;
+    try { navigator.vibrate && navigator.vibrate(15); } catch {}
+    return;
+  }
+  if (ac === "despesar") { delete S.pesados[b.dataset.k]; return hojaReceta(b.dataset.id, b.dataset.v); }
+  if (ac === "fabricar-receta") {
+    S.fab.modelo = Number(b.dataset.m);
+    if (b.dataset.n) S.fab.cant = Number(b.dataset.n);
+    cerrarHoja(); return irA("fabricar");
+  }
+  if (ac === "ir-fabricar") { cerrarHoja(); return irA("fabricar"); }
+  if (ac === "chat-sug") return preguntar(b.dataset.t);
   if (ac === "item-paso" || ac === "item-quitar" || ac === "item-agregar") {
     const p = S.d.pedidos.find((x) => x.id === Number(b.dataset.p)); if (!p) return;
     const items = itemsDe(p), i = Number(b.dataset.i);
@@ -1064,6 +1447,7 @@ document.addEventListener("change", (e) => {
   if (t.name === "fab-modelo") {
     S.fab.modelo = Number(t.value);
     const pv = document.getElementById("fab-previa"); if (pv) pv.innerHTML = previaLote();
+    const lr = document.getElementById("fab-receta"); if (lr) lr.innerHTML = linkReceta();
     const btn = document.querySelector('#f-lote [type="submit"]'); if (btn) btn.disabled = false;
   } else if (t.dataset.campo === "item-modelo") {
     const p = S.d.pedidos.find((x) => x.id === Number(t.dataset.p)); if (!p) return;
@@ -1080,13 +1464,25 @@ document.addEventListener("submit", async (e) => {
     if (!m) return toast("Elige el jabón.");
     if (!(cant >= 1)) return toast("Indica cuántas barras salieron del molde.");
     if (!S.fab.fecha || S.fab.fecha > S.d.hoy) return toast("Revisa la fecha de elaboración.");
-    return hacer(btn, async () => {
-      const r = await rpc("taller_lote", { p_pin: S.pin, p_modelo: m.id, p_cantidad: cant, p_elaborado: S.fab.fecha, p_notas: S.fab.notas });
-      S.fab = { modelo: null, cant: 10, fecha: null, notas: "" };
-      document.activeElement && document.activeElement.blur();
-      toast(`Lote ${r.codigo} registrado. Listo el ${fCorta(r.cura_hasta)}.`, "Deshacer", () => anular("lote", r.id));
-      await cargar();
-    });
+    if (S.preparandoFoto) return toast("Espera un momento: la foto se está preparando.");
+    const fotos = S.fab.fotos.slice();
+    const txt = btn.textContent;
+    btn.textContent = fotos.length ? "Subiendo la foto…" : "Guardando…";
+    try {
+      return await hacer(btn, async () => {
+        const r = await rpc("taller_lote", { p_pin: S.pin, p_modelo: m.id, p_cantidad: cant, p_elaborado: S.fab.fecha, p_notas: S.fab.notas });
+        S.fab = { modelo: null, cant: 10, fecha: null, notas: "", fotos: [] };
+        document.activeElement && document.activeElement.blur();
+        const fallaron = fotos.length ? await subirFotos(r.id, fotos) : 0;
+        if (fallaron) toast(`Lote ${r.codigo} en reposo, pero ${fallaron === 1 ? "la foto no se subió" : "las fotos no se subieron"}. Toca «Reintentar» en el lote.`);
+        else toast(`Lote ${r.codigo} en reposo${fotos.length ? " con su foto" : ""}. Listo el ${fCorta(r.cura_hasta)}.`, "Deshacer", () => anular("lote", r.id));
+        await cargar();
+      });
+    } finally { if (btn.isConnected) btn.textContent = txt; }
+  }
+  if (f.id === "f-chat") {
+    const inp = document.getElementById("chat-in"); const t = inp.value; inp.value = "";
+    return preguntar(t);
   }
   if (f.id === "f-modelo") {
     const id = f.dataset.id ? Number(f.dataset.id) : null;

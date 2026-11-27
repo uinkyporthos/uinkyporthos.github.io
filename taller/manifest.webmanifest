@@ -1,7 +1,7 @@
 {
   "name": "Taller ÜINKY · PORTHOS",
   "short_name": "Taller",
-  "description": "Inventario de jabones, lotes en curado y pedidos por empacar.",
+  "description": "Inventario de jabones, lotes en reposo con foto, recetas y pedidos por empacar.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",
