@@ -2213,5 +2213,27 @@
     ],
     "caption": "",
     "aprobado": true
+  },
+  {
+    "id": "hf27_R1_ducha",
+    "tipo": "reel",
+    "fecha": "2026-11-27T16:00:00-05:00",
+    "archivos": [
+      "hf27_R1_ducha.mp4"
+    ],
+    "caption": "Bonjour, hola. PORTHOS, pour lui, para él 🌲\nPino, bambú y carbón activado. Hecho a mano en Quito, proceso en frío y 30 días de curado. Tous pour un, todos para uno ⚔️\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #jabonparahombre #hechoamano #quito",
+    "aprobado": true,
+    "portada_ms": 10500
+  },
+  {
+    "id": "hf27_R2_lavabo",
+    "tipo": "reel",
+    "fecha": "2026-11-27T16:00:00-05:00",
+    "archivos": [
+      "hf27_R2_lavabo.mp4"
+    ],
+    "caption": "Así empieza el día de un caballero ⚔️\nBambú y carbón activado, hecho a mano en Quito y sellado uno por uno. Pour lui, para él. Tous pour un, todos para uno.\nPedidos por WhatsApp, link en el perfil.\n\n#porthos #jabonartesanal #jabonparahombre #hechoamano #quito",
+    "aprobado": true,
+    "portada_ms": 4000
   }
 ]
