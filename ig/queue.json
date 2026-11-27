@@ -2463,39 +2463,19 @@
   "aprobado": true
  },
  {
-  "id": "arz_P1_teaser",
+  "id": "arz_P2_luna",
   "tipo": "post",
   "fecha": "2026-11-28T17:00:00-05:00",
   "archivos": [
-   "arz_P1_teaser.jpg"
-  ],
-  "caption": "Nouvelle édition 🌙\nYa está lista una nueva serie de jabones de arroz. Síguenos para conocerla.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
-  "aprobado": false
- },
- {
-  "id": "arz_S1_teaser",
-  "tipo": "story",
-  "fecha": "2026-11-28T18:00:00-05:00",
-  "archivos": [
-   "arz_S1_teaser.jpg"
-  ],
-  "caption": "",
-  "aprobado": false
- },
- {
-  "id": "arz_P2_luna",
-  "tipo": "post",
-  "fecha": "2026-12-01T17:00:00-05:00",
-  "archivos": [
    "arz_P2_luna.jpg"
   ],
-  "caption": "Blancura de luna, serena y misteriosa 🌙\nNuestro Jabón de Arroz llega en nouvelle édition: una barra blanca, sedosa y aterciopelada, con la calma de la noche.\nHecho a mano en Quito, con 30 días de curado.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "caption": "Blancura de luna, serena y misteriosa 🌙\nNuestro Jabón de Arroz es una barra blanca, sedosa y aterciopelada, con vainilla, coco y café. Un detalle para regalar esta Navidad.\nHecho a mano en Quito, con 30 días de curado.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
   "aprobado": false
  },
  {
   "id": "arz_S2_luna",
   "tipo": "story",
-  "fecha": "2026-12-01T18:00:00-05:00",
+  "fecha": "2026-11-28T18:00:00-05:00",
   "archivos": [
    "arz_S2_luna.jpg"
   ],
@@ -2505,7 +2485,7 @@
  {
   "id": "arz_P3_carrusel",
   "tipo": "carrusel",
-  "fecha": "2026-12-04T17:00:00-05:00",
+  "fecha": "2026-12-01T17:00:00-05:00",
   "archivos": [
    "arz_P3_carrusel_1.jpg",
    "arz_P3_carrusel_2.jpg",
@@ -2513,7 +2493,27 @@
    "arz_P3_carrusel_4.jpg",
    "arz_P3_carrusel_5.jpg"
   ],
-  "caption": "Una experiencia táctil y luminosa ✨\nAl enjuagarte, el almidón de arroz evoca una película suave y ligera. Douceur, nada más.\nJabón de Arroz · ÜINKY. Hecho a mano en Quito.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "caption": "Una experiencia táctil y luminosa ✨\nAl enjuagarte, el almidón de arroz evoca una película suave y ligera. Douceur, nada más.\nPara regalar: solo, en el Baño de arroz o de regalo en Arma tu caja.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": false
+ },
+ {
+  "id": "arz_P4_regalo",
+  "tipo": "post",
+  "fecha": "2026-12-04T17:00:00-05:00",
+  "archivos": [
+   "arz_P4_regalo.jpg"
+  ],
+  "caption": "Un detalle de luna para el amigo secreto 🌙🎁\nJabón de Arroz: blanco, sedoso y hecho a mano en Quito. También va en el Baño de arroz, junto al de Mango, y de regalo en Arma tu caja.\nPedidos por WhatsApp, link en el perfil.\n\n#uinky #jabonartesanal #hechoamano #quito #formulefrancaise",
+  "aprobado": false
+ },
+ {
+  "id": "arz_S4_regalo",
+  "tipo": "story",
+  "fecha": "2026-12-04T18:00:00-05:00",
+  "archivos": [
+   "arz_S4_regalo.jpg"
+  ],
+  "caption": "",
   "aprobado": false
  }
 ]
